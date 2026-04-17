@@ -1,0 +1,8 @@
+{
+  "best_model": "mbert",
+  "total": 2194,
+  "correct": 1599,
+  "incorrect": 595,
+  "false_negatives": 94,
+  "false_positives": 292
+}

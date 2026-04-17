@@ -1,0 +1,41 @@
+{
+  "muril": {
+    "accuracy": 0.7114858705560619,
+    "f1_weighted": 0.731003883183564,
+    "f1_macro": 0.44047470411205875,
+    "precision_weighted": 0.7636916276148379,
+    "recall_weighted": 0.7114858705560619,
+    "f1_Not_offensive": 0.8632421614409607,
+    "f1_Offensive_Untargeted": 0.38333333333333336,
+    "f1_Offensive_Targeted_Individual": 0.22950819672131148,
+    "f1_Offensive_Targeted_Group": 0.32061068702290074,
+    "f1_Offensive_Targeted_Other": 0.0,
+    "f1_not-Tamil": 0.8461538461538461
+  },
+  "xlm-roberta": {
+    "accuracy": 0.7019143117593437,
+    "f1_weighted": 0.7275233902031292,
+    "f1_macro": 0.47425694865683354,
+    "precision_weighted": 0.7791034499445074,
+    "recall_weighted": 0.7019143117593437,
+    "f1_Not_offensive": 0.8348306841741534,
+    "f1_Offensive_Untargeted": 0.4110169491525424,
+    "f1_Offensive_Targeted_Individual": 0.4212962962962963,
+    "f1_Offensive_Targeted_Group": 0.36164383561643837,
+    "f1_Offensive_Targeted_Other": 0.0,
+    "f1_not-Tamil": 0.8167539267015707
+  },
+  "mbert": {
+    "accuracy": 0.7288058340929808,
+    "f1_weighted": 0.7505324331114669,
+    "f1_macro": 0.4972205737444227,
+    "precision_weighted": 0.7839694037291712,
+    "recall_weighted": 0.7288058340929808,
+    "f1_Not_offensive": 0.8627844712182061,
+    "f1_Offensive_Untargeted": 0.4052863436123348,
+    "f1_Offensive_Targeted_Individual": 0.44510385756676557,
+    "f1_Offensive_Targeted_Group": 0.36,
+    "f1_Offensive_Targeted_Other": 0.0821917808219178,
+    "f1_not-Tamil": 0.8279569892473119
+  }
+}

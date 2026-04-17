@@ -1,0 +1,62 @@
+{
+  "muril": {
+    "model": "MuRIL",
+    "hf_id": "google/muril-base-cased",
+    "best_f1_weighted": 0.7308645928702235,
+    "train_runtime": 1605.3383,
+    "eval_metrics": {
+      "eval_loss": 1.387338638305664,
+      "eval_accuracy": 0.715587967183227,
+      "eval_f1_macro": 0.43628291977818884,
+      "eval_f1_weighted": 0.7308645928702235,
+      "eval_precision_macro": 0.41723667620383004,
+      "eval_recall_macro": 0.4696142405547086,
+      "eval_precision_weighted": 0.7557020954787897,
+      "eval_recall_weighted": 0.715587967183227,
+      "eval_runtime": 3.877,
+      "eval_samples_per_second": 565.897,
+      "eval_steps_per_second": 17.797,
+      "epoch": 5.0
+    }
+  },
+  "xlm-roberta": {
+    "model": "XLM-RoBERTa",
+    "hf_id": "xlm-roberta-base",
+    "best_f1_weighted": 0.7287251931095041,
+    "train_runtime": 2365.2036,
+    "eval_metrics": {
+      "eval_loss": 1.2675656080245972,
+      "eval_accuracy": 0.7092069279854147,
+      "eval_f1_macro": 0.4596331035825381,
+      "eval_f1_weighted": 0.7283738784239323,
+      "eval_precision_macro": 0.4240271095709569,
+      "eval_recall_macro": 0.5227629301449507,
+      "eval_precision_weighted": 0.7667516780636638,
+      "eval_recall_weighted": 0.7092069279854147,
+      "eval_runtime": 3.9791,
+      "eval_samples_per_second": 551.385,
+      "eval_steps_per_second": 17.341,
+      "epoch": 5.0
+    }
+  },
+  "mbert": {
+    "model": "mBERT",
+    "hf_id": "bert-base-multilingual-cased",
+    "best_f1_weighted": 0.7321751657691549,
+    "train_runtime": 1603.1596,
+    "eval_metrics": {
+      "eval_loss": 1.4439520835876465,
+      "eval_accuracy": 0.7160437556973565,
+      "eval_f1_macro": 0.4652845997538931,
+      "eval_f1_weighted": 0.7323288434403342,
+      "eval_precision_macro": 0.4436374160074245,
+      "eval_recall_macro": 0.4955338950533192,
+      "eval_precision_weighted": 0.7550212088748902,
+      "eval_recall_weighted": 0.7160437556973565,
+      "eval_runtime": 3.9304,
+      "eval_samples_per_second": 558.217,
+      "eval_steps_per_second": 17.556,
+      "epoch": 5.0
+    }
+  }
+}

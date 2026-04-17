@@ -1,0 +1,596 @@
+text,true_label,true_label_name,pred_muril,pred_muril_name,pred_xlm-roberta,pred_xlm-roberta_name,pred_mbert,pred_mbert_name,correct
+eppdi thalaiva unakku mattum ippdi script ah amaithu,0,Not_offensive,0,Not_offensive,1,Offensive_Untargeted,2,Offensive_Targeted_Individual,False
+1k dislikes yaaru da nengala,0,Not_offensive,1,Offensive_Untargeted,1,Offensive_Untargeted,1,Offensive_Untargeted,False
+nadaka kudathuna director s film nadaka vidamaatanna athu thala film,0,Not_offensive,0,Not_offensive,0,Not_offensive,3,Offensive_Targeted_Group,False
+ithu sunda podara neram illa moviekku support neram,0,Not_offensive,3,Offensive_Targeted_Group,0,Not_offensive,1,Offensive_Untargeted,False
+ethum blockbuster nu soluvanga parungala wait panii amaingaaaa danger paaaaaa,3,Offensive_Targeted_Group,0,Not_offensive,0,Not_offensive,0,Not_offensive,False
+innoru rekka movie ah aagita poguthu,1,Offensive_Untargeted,2,Offensive_Targeted_Individual,0,Not_offensive,3,Offensive_Targeted_Group,False
+doi ethu koddai eduththa,0,Not_offensive,1,Offensive_Untargeted,1,Offensive_Untargeted,1,Offensive_Untargeted,False
+பெரிய குடும்பம் மண்ணு பொண்ணு அப்டீன்னு இன்னுமாடா சாதி வெறி புடிச்சு திரியறீங்க உங்கள முன்னுக்கு கொண்டு வர பொறந்த பெரியாரையும் அம்பேத்க்கரையும் அசிங்கப் படுத்தாதீங்கடா,0,Not_offensive,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,4,Offensive_Targeted_Other,False
+ratatouille la varavan madriye irukka kooda irukkavan hope sandhanam rocks again,0,Not_offensive,1,Offensive_Untargeted,0,Not_offensive,2,Offensive_Targeted_Individual,False
+கடைசியா நான் அரசியலுக்கு வருவது உருதி இது 96 யார ஏமாத்துரீங்க,0,Not_offensive,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,False
+adeii ellai meeri poringa da,1,Offensive_Untargeted,3,Offensive_Targeted_Group,1,Offensive_Untargeted,4,Offensive_Targeted_Other,False
+sathiyama oodathu da daeee dialogues kevalam theme baga baga,3,Offensive_Targeted_Group,2,Offensive_Targeted_Individual,1,Offensive_Untargeted,1,Offensive_Untargeted,False
+ennoda channlai subecribe panna maatingala kizha comment pannuga,0,Not_offensive,1,Offensive_Untargeted,1,Offensive_Untargeted,1,Offensive_Untargeted,False
+what did u say,0,Not_offensive,0,Not_offensive,0,Not_offensive,1,Offensive_Untargeted,False
+waннн waннн waннн тнala тнala тнala enge тнala nale мaѕѕ тan ѕeммeeee,0,Not_offensive,5,not-Tamil,5,not-Tamil,5,not-Tamil,False
+அருமையான நடுத்தர மக்களுக்கான படம் உங்கள் பணி சிறக்க வாழ்த்துக்கள் இயக்குனரே இங்க யாரும் தான் வீட்டு பொண்ணுகள அடுதவனுக இழுத்துட்டு போறத வேடிக்க பாக்க மாட்டனுக,0,Not_offensive,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,False
+nadaga kathaluku kuruma group kum entha padam oru mutru pulli vaikum super director sir hat s off,3,Offensive_Targeted_Group,0,Not_offensive,0,Not_offensive,0,Not_offensive,False
+nice trailer but dhool padam maathiri irukumonu oru chinna doubt vera yaarkavathu intha doubt vanthrukaa,4,Offensive_Targeted_Other,1,Offensive_Untargeted,1,Offensive_Untargeted,0,Not_offensive,False
+chala bavundhi nxt step movie,5,not-Tamil,1,Offensive_Untargeted,5,not-Tamil,0,Not_offensive,False
+ennada ithu oru phone 0 23 kooraya pichikkittu pohuthu,0,Not_offensive,1,Offensive_Untargeted,1,Offensive_Untargeted,1,Offensive_Untargeted,False
+ipo kadharunga daw vfw nuuu pakkkaaaa maaaassss,0,Not_offensive,1,Offensive_Untargeted,1,Offensive_Untargeted,1,Offensive_Untargeted,False
+ini ella actor fansku allllu adhikamairukum,0,Not_offensive,0,Not_offensive,0,Not_offensive,3,Offensive_Targeted_Group,False
+solrathuku onumey ela simply west yatho seriyal pakara mathre eruku,1,Offensive_Untargeted,1,Offensive_Untargeted,2,Offensive_Targeted_Individual,0,Not_offensive,False
+intha kelattu naaya inthamari pathu rombha naalachu nalaarkuda trailer,2,Offensive_Targeted_Individual,2,Offensive_Targeted_Individual,1,Offensive_Untargeted,0,Not_offensive,False
+looks like vjs plays as villain,0,Not_offensive,2,Offensive_Targeted_Individual,2,Offensive_Targeted_Individual,2,Offensive_Targeted_Individual,False
+2050 naan arasiyalukku varuvadhu urudhi yen adutha padatha jeikka vaikkanum,2,Offensive_Targeted_Individual,2,Offensive_Targeted_Individual,0,Not_offensive,3,Offensive_Targeted_Group,False
+vivagam pathu vijay fans mersal aairuvaanga,0,Not_offensive,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,False
+u1 visay ku eppa sir intha mathiri music poda poringa,0,Not_offensive,2,Offensive_Targeted_Individual,2,Offensive_Targeted_Individual,2,Offensive_Targeted_Individual,False
+for haters அசுரன் பரியேறும்பெருமாள் மெட்ராஸ் அட்டகத்தி காலா இந்த படம் எடுக்கும் போது எங்க போயிருந்தீங்க,0,Not_offensive,0,Not_offensive,3,Offensive_Targeted_Group,4,Offensive_Targeted_Other,False
+dei idhu dumb and dumber dhane,0,Not_offensive,1,Offensive_Untargeted,1,Offensive_Untargeted,4,Offensive_Targeted_Other,False
+oru like ku mela pota mudila da ena panrathu,0,Not_offensive,1,Offensive_Untargeted,1,Offensive_Untargeted,1,Offensive_Untargeted,False
+marana mass but paruthikulam cvf 20891,1,Offensive_Untargeted,0,Not_offensive,0,Not_offensive,0,Not_offensive,False
+al vijay un ex wife amala paul vachu padam edu theivaillama ethukuda jj ippadi eduthuvachruka,0,Not_offensive,3,Offensive_Targeted_Group,2,Offensive_Targeted_Individual,2,Offensive_Targeted_Individual,False
+rajini ah mokka panninathu than vera level,2,Offensive_Targeted_Individual,1,Offensive_Untargeted,2,Offensive_Targeted_Individual,1,Offensive_Untargeted,False
+para_pasanga ellam dislike potu irukaga kumurals starts elarume theatre la poi paaru movie industry ku tough kudunga bro,3,Offensive_Targeted_Group,2,Offensive_Targeted_Individual,1,Offensive_Untargeted,1,Offensive_Untargeted,False
+hey idhu 96 su yaara yeamadhuringa veera level hahaha,0,Not_offensive,1,Offensive_Untargeted,1,Offensive_Untargeted,1,Offensive_Untargeted,False
+yenda thirunthave mattengringala werum aracha maawe pottu araikkiringa,1,Offensive_Untargeted,2,Offensive_Targeted_Individual,1,Offensive_Untargeted,3,Offensive_Targeted_Group,False
+avanugala nalavangala kamichiye padam varuthe avanuga panra thapu velila theriyale pathen entha trailer patha apuram en manasula eruka barame erangichii director sir and team unga kudubam nala erukanum mass kamichi erukenga,0,Not_offensive,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,False
+போலி நாடக கும்பலின் முகத்திரையை கிழித்த நண்பன் மோகன் அவர்களுக்கு ஒரு சல்யூட் மென்மேலும் பல வெற்றிக்களை பெற்று வளர வாழ்த்துக்கள் படம் வெற்றி பெற வாழ்த்துக்கள்,0,Not_offensive,0,Not_offensive,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,False
+idhu 2016 illa 1996 uh,3,Offensive_Targeted_Group,2,Offensive_Targeted_Individual,3,Offensive_Targeted_Group,1,Offensive_Untargeted,False
+எல்லாரும் மனுசங்க தான அப்புறம் எப்படி ஜாதி ய சொல்லி மக்கள பிறிக்கிரிங்க ஒரே ஊர் ல தான் இருக்கோம் ஒரே மொழி தான் பேசுறோம் அப்புறம் ஏன் அடிச்சிக்கிறிங்க,0,Not_offensive,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,False
+yow teejay ne inga ennaya pannura idhu rattha boomi aachea,1,Offensive_Untargeted,2,Offensive_Targeted_Individual,2,Offensive_Targeted_Individual,2,Offensive_Targeted_Individual,False
+vj fans vj64 katta waiting daa,1,Offensive_Untargeted,5,not-Tamil,5,not-Tamil,5,not-Tamil,False
+dai entha trailer ku dislike poodavan mental nu ninaikiren,5,not-Tamil,1,Offensive_Untargeted,1,Offensive_Untargeted,1,Offensive_Untargeted,False
+6 2k dislike நாடக காதல் கும்பல் கதறல் திமிராய வருகிறாள் திரளபதி,0,Not_offensive,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,False
+enna eedhu bollywood pink movie marri aah eeruku,0,Not_offensive,1,Offensive_Untargeted,0,Not_offensive,5,not-Tamil,False
+720 la vachu pathe 360 la pakura maari iruku,0,Not_offensive,2,Offensive_Targeted_Individual,1,Offensive_Untargeted,3,Offensive_Targeted_Group,False
+teaser aa vida trailer konjam mokka dha,0,Not_offensive,1,Offensive_Untargeted,1,Offensive_Untargeted,3,Offensive_Targeted_Group,False
+raja to 96 music composer unakku vandha ratham enakku vandha thakaali chutney,1,Offensive_Untargeted,1,Offensive_Untargeted,2,Offensive_Targeted_Individual,2,Offensive_Targeted_Individual,False
+உன்ன நெனச்சு நெனச்சு உருகி போனேன் மெழுகா 3,0,Not_offensive,0,Not_offensive,0,Not_offensive,2,Offensive_Targeted_Individual,False
+sema sema maasss dislikes podrathukunae oru sila vetti group suthitu iruku avanungalukulam velaiyae ila pola dai neenga evalo oruthara pathi pesaringalo avalavum avanga valarathuku da atha purinjikonga intha ulagathula yarum periyavanga ila cenima na athu msg sivaji than matha elarum onu than atha vitutu avanga periyavangala ivaga periyavangalanu pesaringa poi neenga periya ala aga vendiya velaiya parunga da vetti kadha pesaratha vitutu,1,Offensive_Untargeted,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,False
+அடேய் சிறுத்தை குஞ்சுகளா இதுநாள் வரை எங்க மேலயே பழிய போட்டுகிட்டு இருந்தீங்க விட்டோம் இனிமேல் நாங்களே வெட்டுவோம்அதுவும் சாதாரணமா இல்ல கண்டந்துண்டமா,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,4,Offensive_Targeted_Other,False
+ottha fur elise pottu joliya mudichita,1,Offensive_Untargeted,1,Offensive_Untargeted,2,Offensive_Targeted_Individual,2,Offensive_Targeted_Individual,False
+வெறித்தனம் மண்ண தொட்டவனை கூட விட்ருவோம் ஆனா பொண்ண தொட்டவனை கண்டம் துண்டமா வெட்டுவோம்,0,Not_offensive,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,False
+love you akshay kumar and rajnikant sir,1,Offensive_Untargeted,0,Not_offensive,0,Not_offensive,0,Not_offensive,False
+paathuda aamaigala dislike panrathuku bathila like pannida poringa,3,Offensive_Targeted_Group,1,Offensive_Untargeted,1,Offensive_Untargeted,1,Offensive_Untargeted,False
+trenda maathungadabigil like kaithi comment,0,Not_offensive,1,Offensive_Untargeted,1,Offensive_Untargeted,1,Offensive_Untargeted,False
+saale 43 views aur 157 likes,5,not-Tamil,5,not-Tamil,0,Not_offensive,0,Not_offensive,False
+andha car parakura scene a cut pannirunga sir pls wtf nu irukku,0,Not_offensive,2,Offensive_Targeted_Individual,1,Offensive_Untargeted,1,Offensive_Untargeted,False
+பேர்தான் காப்பான் ஆனா படம் புல்லா பாம் வச்சு அழிப்பான் அங்கிட்டு போய் தண்ணிதுப்பாக்கி சுட்டு விளாடுங்கடா,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,4,Offensive_Targeted_Other,4,Offensive_Targeted_Other,False
+oorukula yaaru varanu antha aalunga makkala yenga pathalu vettu ithella iruka intha padatha ban pannanum nadaga kathal ah pathi maatum pesirkanum naadaka kaathal yaaru pananlum thappu thaan and i never support naadaka kathaal oruthan vazhkaila olachitha munneranu ipdi adutha panakaara veetu ponna kalyaanam panni ilaa apdi yaaru pannanlu athu thappu thaan,0,Not_offensive,0,Not_offensive,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,False
+vaiyiru yerinjavangalam dislikes poda aarambichutaanga seekram sethrunga da deii,0,Not_offensive,1,Offensive_Untargeted,1,Offensive_Untargeted,1,Offensive_Untargeted,False
+ivanuku nadikave varathu intha padam oduna mathiri than en da comedy pandringa build up kuduthu kuduthe onnum illama aakidunga,1,Offensive_Untargeted,2,Offensive_Targeted_Individual,2,Offensive_Targeted_Individual,2,Offensive_Targeted_Individual,False
+rajni sir sonnathu oru nabara pathi ierukkalam ana avanla oru ala thalaiver enka intha naiii eanka,1,Offensive_Untargeted,1,Offensive_Untargeted,2,Offensive_Targeted_Individual,2,Offensive_Targeted_Individual,False
+opening nalla than iruku finishing nenachathan bayama iruku,3,Offensive_Targeted_Group,1,Offensive_Untargeted,1,Offensive_Untargeted,1,Offensive_Untargeted,False
+dai pandey thala ya vey yethirthu pesuriya goyala theater pakkam varuvala va,1,Offensive_Untargeted,1,Offensive_Untargeted,2,Offensive_Targeted_Individual,2,Offensive_Targeted_Individual,False
+thayavu senji antha shratha srinath voice ah mathunga da antha dialogue ku intha voice set eh agala mathapadi ellam super,1,Offensive_Untargeted,2,Offensive_Targeted_Individual,2,Offensive_Targeted_Individual,3,Offensive_Targeted_Group,False
+dhanush oda character puthu sa erukay mass ta,0,Not_offensive,1,Offensive_Untargeted,2,Offensive_Targeted_Individual,1,Offensive_Untargeted,False
+yetho miss aguthu thala teaser patha feel illa but puthusaa irukku,0,Not_offensive,2,Offensive_Targeted_Individual,1,Offensive_Untargeted,1,Offensive_Untargeted,False
+haha thalaivar 96 la irunthu solraru ana varallenu solringala seri,2,Offensive_Targeted_Individual,1,Offensive_Untargeted,3,Offensive_Targeted_Group,1,Offensive_Untargeted,False
+yella nigazhvukkumm katahaikkum innoru pakkam irukkirathu innoru pakkam irukkirathu nichayamaaga irukiradhu naandru peru kathi kathari sondraaal ore pakkam matrume unmayaaagaadhu appadi anda marupakuthukaaga kaathukondirinden inda thiraipadam appadi patra oru padam daaan unmaya pesuna indha padathay varaverkanum appadi varaverkillayendraal these guys r just annoying they want to portray only one side and absolutely it wont be tolerated,0,Not_offensive,0,Not_offensive,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,False
+anil kunjunga neruku ner modha mudiyama fake id la varanga paaaaaaaaaaaavam sottapathi yoda anil kunjunga,1,Offensive_Untargeted,2,Offensive_Targeted_Individual,1,Offensive_Untargeted,3,Offensive_Targeted_Group,False
+indha gangster movies konjam niruthana nalla irukum marana mokka orey template,0,Not_offensive,1,Offensive_Untargeted,2,Offensive_Targeted_Individual,1,Offensive_Untargeted,False
+will gonna blockbuster for surya bhai,0,Not_offensive,0,Not_offensive,0,Not_offensive,5,not-Tamil,False
+avengers end game a keduthan ippa director pariu kuduka pooran,0,Not_offensive,2,Offensive_Targeted_Individual,2,Offensive_Targeted_Individual,2,Offensive_Targeted_Individual,False
+pon manikavel name ithuku yenda vachinga vera name ey kidaklaya ungaluku,3,Offensive_Targeted_Group,1,Offensive_Untargeted,1,Offensive_Untargeted,1,Offensive_Untargeted,False
+pakka mokka movie 2019 surya unga 2d after 0d than,3,Offensive_Targeted_Group,1,Offensive_Untargeted,2,Offensive_Targeted_Individual,2,Offensive_Targeted_Individual,False
+pa ranjith edukkum padangal anaithum sadhi veriyinai thoondukoodaiya vagaiyil irukkindradhu anal oodagangal pichai eduthukondu avargal pinnae selkindradhu,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,2,Offensive_Targeted_Individual,2,Offensive_Targeted_Individual,False
+intha kali aatm kali viswasam trailer 7 ours 1m like,2,Offensive_Targeted_Individual,0,Not_offensive,0,Not_offensive,0,Not_offensive,False
+original pink copy nerkonda paarvai,0,Not_offensive,0,Not_offensive,2,Offensive_Targeted_Individual,2,Offensive_Targeted_Individual,False
+idhu keka beka keka beka short film oda copy,3,Offensive_Targeted_Group,2,Offensive_Targeted_Individual,3,Offensive_Targeted_Group,1,Offensive_Untargeted,False
+என் தலைவன பாக்க 100 வினாடிகள் wait பண்ண வச்சுடீங்களேப்பா rasool,0,Not_offensive,0,Not_offensive,0,Not_offensive,1,Offensive_Untargeted,False
+petta or viswasam me perso petta,0,Not_offensive,0,Not_offensive,2,Offensive_Targeted_Individual,2,Offensive_Targeted_Individual,False
+அங்க இருந்து ஆதரவு இங்க இருந்து ஆதரவு இப்படி மொத்த பயலும் சேர்ந்து ஒருத்தன எதிர்த்தா அவன் எவ்ளோ கெத்து,0,Not_offensive,0,Not_offensive,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,False
+உண்மை சம்பவம் ஊர் பெயர் சொல்ல நான் விரும்பவில்லை கஜா புயல் போது நாடக காதல் பிரதிநிதியோடு பக்கத்து மாவட்ட பெண் சென்று விட்டது இதனை அறிந்த பெண்ணின் அம்மா அப்பா இருவரும் விழம் குடித்து தற்கொலை செய்து கொண்டனர் ஆனால் இதனை வெளியே சொல்லாமல் கஜா புயலில் தென்னை தோப்பு அழிந்ததால் தற்கொலை என பேப்பரில் போட்டாச்சி இப்படி அழிந்த சமுதாயத்தை மீட்க வருகிறாள் அக்னி குல தாய் திரௌபதி,0,Not_offensive,0,Not_offensive,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,False
+kaithi like bigil comment,1,Offensive_Untargeted,1,Offensive_Untargeted,2,Offensive_Targeted_Individual,2,Offensive_Targeted_Individual,False
+ranjith and co padichu munneru thiruppi avangalukku seiyyadha saadhi veri bundais avana vettu ivana kollu,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,2,Offensive_Targeted_Individual,2,Offensive_Targeted_Individual,False
+bro negala 2013 regulation aa sema intha jenmathuku all clear pna mudiythu,1,Offensive_Untargeted,0,Not_offensive,0,Not_offensive,0,Not_offensive,False
+இப்படி ஒரு படம் தான் அவங்களுக்கு ஒரு பாடம் இருக்க முடியும் ரஞ்சித் எடுக்கும் போது யாரும் வேண்டும் நாளும் எடுக்கலாம்,0,Not_offensive,0,Not_offensive,2,Offensive_Targeted_Individual,3,Offensive_Targeted_Group,False
+thathaavin nadippu nalla irukku 70 vayasila hero vaa kadavulee makeup man a thukadaa,0,Not_offensive,2,Offensive_Targeted_Individual,2,Offensive_Targeted_Individual,2,Offensive_Targeted_Individual,False
+saathi veriyanunga inthinaperu irukeengala da ulagam enga poikittu irukuthu innum saakadailaye poralunga,0,Not_offensive,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,4,Offensive_Targeted_Other,False
+முற்போக்குச் சிந்தனைகளை படம் எடுங்க டான்ன ஏன்டா இப்படி பிற்போக்குத்தனமா பின்னோக்கிப் போயிட்டு இருக்கீங்க,0,Not_offensive,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,False
+broo teaser views hang aah irukaa,3,Offensive_Targeted_Group,0,Not_offensive,3,Offensive_Targeted_Group,0,Not_offensive,False
+makka ithu kanyakumari peachu maathiri thoonuvu,0,Not_offensive,3,Offensive_Targeted_Group,2,Offensive_Targeted_Individual,2,Offensive_Targeted_Individual,False
+pollachula ponungala panna asinga pudecha jadhiikarana ennga pa kanom,0,Not_offensive,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,False
+அடங்க மறு nu எங்க அண்ணன் அப்பவே சொல்லுகிறார் போல ம்மாள டேய்,3,Offensive_Targeted_Group,0,Not_offensive,3,Offensive_Targeted_Group,4,Offensive_Targeted_Other,False
+pengal meedhu kai vaithal thalaiyai vettuvadhil thavaru illai,3,Offensive_Targeted_Group,2,Offensive_Targeted_Individual,1,Offensive_Untargeted,1,Offensive_Untargeted,False
+epo pa indha padam release aagum,0,Not_offensive,0,Not_offensive,0,Not_offensive,3,Offensive_Targeted_Group,False
+indha teaser ku dislike pana avaga amma silku da,1,Offensive_Untargeted,2,Offensive_Targeted_Individual,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,False
+back suriya ayan face bt indha harish jayaraj dhan ellathukum ore madhiri bgm podra madhiriye iruku enna sir aachi ungalukuelwv nalla music panna neenga why now ipidi ellam,2,Offensive_Targeted_Individual,3,Offensive_Targeted_Group,2,Offensive_Targeted_Individual,0,Not_offensive,False
+idhu 96 yara emathringa ultimate,0,Not_offensive,1,Offensive_Untargeted,1,Offensive_Untargeted,1,Offensive_Untargeted,False
+தல பேன்ஸ்க்கு நல்ல ஆக்ஷன் பேக் buyrava troll meme கிடைச்சிருக்கு hmmm தெறிக்க விடுங்கள்,0,Not_offensive,0,Not_offensive,2,Offensive_Targeted_Individual,3,Offensive_Targeted_Group,False
+உங்கள நம்பாம தாண்ட உங்க பொண்ணுக எங்களை தேடி வராங்க அப்டி வந்தா நாங்க ஏமாத்த மாட்டோம்,0,Not_offensive,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,False
+oruthana vachi padam yedutha oda matengidhu nu 4 hero va as usual trailer super padam yeppudi irukkumo,0,Not_offensive,1,Offensive_Untargeted,3,Offensive_Targeted_Group,1,Offensive_Untargeted,False
+tsk teaser ha vechu buy rava teaser ha adikanum,1,Offensive_Untargeted,0,Not_offensive,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,False
+bgm mind le odite irukku குருமா பாவம் இவ்வளவு கம்மியான பட்ஜெட்டில் தரமான சம்பவம்,2,Offensive_Targeted_Individual,3,Offensive_Targeted_Group,2,Offensive_Targeted_Individual,3,Offensive_Targeted_Group,False
+வசதியான வீட்டு பொண்ணுங்களை நாடக காதல் பண்ணி கூட்டிட்டு போயிடுறானுங்க தம்பி அப்படிங்களா உங்க சொத்து எவ்ளோ தேறும் இருங்க தம்பி ரேசன்ல அரிசி போடுறாங்களாம் வாங்கி வெச்சிட்டு வர்றேன்,0,Not_offensive,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,False
+இயற்கையா இருக்க நிலத்தை நீங்கள் எல்லாம் உங்க சொத்துன்னு சொல்லி உரிமை கொண்டாடும் போது தப்பில்லை நதிய உரிமை கொண்டாடுனா தப்பா,0,Not_offensive,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,False
+tapsee pannu yave vechu eduthu irundha nalla irundukko pink movie in hindi,0,Not_offensive,3,Offensive_Targeted_Group,1,Offensive_Untargeted,1,Offensive_Untargeted,False
+ithe mari short film onnu knjm varsham munnadi vanthuche gunda oru aal nadichirpapula yarachum pathurkingala,0,Not_offensive,1,Offensive_Untargeted,5,not-Tamil,1,Offensive_Untargeted,False
+செல்வராகவனுக்கு வயசும் இல்ல அறிவும் இல்ல because இந்த படத்த நாம இப்ப பார்த்தால் புரியுரது கஷ்டம் 10 வருஷம் கழித்து பார்த்தால் புரியும் எ கா ஆயிரத்தில் ஒருவன் வேறலெவல் இயக்குநர்,2,Offensive_Targeted_Individual,0,Not_offensive,2,Offensive_Targeted_Individual,0,Not_offensive,False
+hama athe nallu fight nallu song social actor apdi solikitu oru dialogue illa oru scene ithathan oru 20 varusama pakren konjama character a mathi nadika matraru 60 padam vanthachu innum antha thirumalai padam mathiri than irruku ineme periya hero padamla waste ine talented directors ku chance kudukanum d16 managaram,4,Offensive_Targeted_Other,3,Offensive_Targeted_Group,2,Offensive_Targeted_Individual,2,Offensive_Targeted_Individual,False
+trailer last varaikkum nalla paathutay irunden last la oru twist vacheenga paaru director rathina siva nu ayooo aala vidunga da saaamy rekka ila vaangunadu innum valikkudu rekka rathinasiva seeru jeeva vel sinternational,2,Offensive_Targeted_Individual,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,False
+last dialouge la thala ya adikuringala da kaithi team atha yenda neyaba paduthuringa,2,Offensive_Targeted_Individual,1,Offensive_Untargeted,1,Offensive_Untargeted,1,Offensive_Untargeted,False
+முடிந்தால் படம் பார் முடியலன மூடிட்டு போல சின்ன புண்டைகளா,1,Offensive_Untargeted,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,False
+surya super mohanlal dubbing very bad,0,Not_offensive,1,Offensive_Untargeted,2,Offensive_Targeted_Individual,2,Offensive_Targeted_Individual,False
+entha pada tha yenga yoo patha mathiri eruku,0,Not_offensive,1,Offensive_Untargeted,1,Offensive_Untargeted,3,Offensive_Targeted_Group,False
+எப்போது ஒருவர் தனக்கும் கீழ் ஜாதி இவர் என்பதை நினைக்காமல் சக மனிதர்கள் என்று பார்கின்றாரோ அப்போது தான் ஒருவர் முழு மனிதர் ஆகின்றார் enoda comment padichitu na intha jaathikarana irupanu nenaikravnga iruka varaikum ethuvum maraporathu ila,0,Not_offensive,0,Not_offensive,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,False
+இந்த நாடாக காதலை உணர்த்தும் படத்தோடு அதை நேரடியாக ஆதரித்து அதற்கு ஊக்கம் தரும் விசிக திருமா கட்சி திமுக போன்ற கட்சிகளின் உண்மை முகத்தையும் புரிந்து கொள்ள வேண்டும் இது போன்ற கட்சிகளை தமிழ் நாட்டில் சுவடே இல்லாமல் அழிக்க வேண்டும்,0,Not_offensive,0,Not_offensive,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,False
+nadakarathu yethum unmaila vanthathuku apramthan therium athu paruntha illa kakkavanu kanavo kanbathu yen urimai all the best thala,0,Not_offensive,0,Not_offensive,0,Not_offensive,1,Offensive_Untargeted,False
+kabali kaalaa madhri parapaiyan padama irundha padam odadhu be careful,2,Offensive_Targeted_Individual,3,Offensive_Targeted_Group,0,Not_offensive,0,Not_offensive,False
+எந்த நிறம் இருந்தாலும் அவை யாவும் ஒரே தரம் அன்றோ இயக்குனர் g mohan அவர்களே நவீன நாடக காதலை சாதிய வெச்சு தான் சொல்லணும்னு இல்லையே நீ காதலையும் கொச்ச படுத்தர சாதியையும் கோச்ச படுத்துர நானும் பாண்டிய குழத்தவனே ஆனால் நீதியை சாதியனு பாத்தா நீதி தாண்டா உன் மொழியே உன் அடையாளம் உன் சாதியல்ல தமிழ் வாழ்க,2,Offensive_Targeted_Individual,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,False
+ommala vera level thala marana mass,0,Not_offensive,0,Not_offensive,0,Not_offensive,1,Offensive_Untargeted,False
+yov mapla ne ethukku ya bigil la nadiche unna dammi panni vachirukkanuga ne veramari aalu ya getha nillu ya un thiramai unakke theriyathu padam vetri pera vaalthukkal,0,Not_offensive,3,Offensive_Targeted_Group,0,Not_offensive,2,Offensive_Targeted_Individual,False
+hyyy super pa waiting to watch last la rajini ya kalachadhu innu super,1,Offensive_Untargeted,0,Not_offensive,0,Not_offensive,0,Not_offensive,False
+thala innum ipdi full white evvalavu naal nadippenga kaduppa irukku thala,2,Offensive_Targeted_Individual,0,Not_offensive,0,Not_offensive,0,Not_offensive,False
+ethuku yethuku da naadodigal 2 nu vachinga,0,Not_offensive,3,Offensive_Targeted_Group,1,Offensive_Untargeted,1,Offensive_Untargeted,False
+1st unga thalaivara age ku thaguntha mathiri natikka sollunga appuram vijay ajith pathi peasalam,2,Offensive_Targeted_Individual,1,Offensive_Untargeted,0,Not_offensive,3,Offensive_Targeted_Group,False
+mersal scene vare mothe adhi sir apidi siritharu anaa viswasam scene vare mothe adhi sir konjamma siritharu why,0,Not_offensive,1,Offensive_Untargeted,5,not-Tamil,3,Offensive_Targeted_Group,False
+1 55 naanga unkitta vishvasam kaatuvom thala,0,Not_offensive,0,Not_offensive,0,Not_offensive,1,Offensive_Untargeted,False
+mediava ipathan sariya use pana kathukitanga,0,Not_offensive,1,Offensive_Untargeted,2,Offensive_Targeted_Individual,1,Offensive_Untargeted,False
+directer thadi veri pidicha nadhathari nadaka kathal kandu pudichathe droupathi thanda ellarukum therinje 5peru theriyama ethna peru,2,Offensive_Targeted_Individual,0,Not_offensive,2,Offensive_Targeted_Individual,1,Offensive_Untargeted,False
+romba perumaya iruku da deiii yenga irunthu da vareenga nengalam,0,Not_offensive,1,Offensive_Untargeted,3,Offensive_Targeted_Group,1,Offensive_Untargeted,False
+deiii t paiya naarakoodhi paiya indha channel oda amma va ooka yaara pathida pressuringa,2,Offensive_Targeted_Individual,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,1,Offensive_Untargeted,False
+troll pandravan la pakka dash than surya sir semaya iruku by thala thalapathy fanz,1,Offensive_Untargeted,0,Not_offensive,2,Offensive_Targeted_Individual,0,Not_offensive,False
+காலா கபாலி அசுரன் பரியேரும் பெருமாள் போன்ற படங்களுக்கு முற்றுப்புள்ளி வைக்க பல வருடம் காத்து கொண்டு இருக்கும் வன்னியர் சங்கம் சார்பாக படம் வெற்றி பெற வாழ்த்துக்கள் நண்பா,0,Not_offensive,0,Not_offensive,0,Not_offensive,3,Offensive_Targeted_Group,False
+eppo release family oda vandhu paakkanum,0,Not_offensive,0,Not_offensive,0,Not_offensive,1,Offensive_Untargeted,False
+thalaivaaa ennaa thalaivaaaa graphics idhuuu really dissapointed,2,Offensive_Targeted_Individual,1,Offensive_Untargeted,1,Offensive_Untargeted,1,Offensive_Untargeted,False
+புரட்சி பன்ன போறிங்களா முடியல டா அடக்குனா அடங்க கூடாது அது தான் வீரம் மேங்கோ ஆரமிச்சி புலிபடை வரைக்கும் படத்துல இருக்கு அருமையா வரும்டா படம் அம்மணம் பொண்ணுக்கு அவமானம் இது பொள்ளாச்சி கதை போல இருக்கே பொள்ளாச்சில பாதிக்கபட்ட பொண்ணும் பாதிக்க வச்ச பயலும் ஒரு சாதியாமே,0,Not_offensive,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,False
+views got stuck on 70k,1,Offensive_Untargeted,3,Offensive_Targeted_Group,1,Offensive_Untargeted,3,Offensive_Targeted_Group,False
+adicha thirupi adikuravan dhan da sathriyan,3,Offensive_Targeted_Group,2,Offensive_Targeted_Individual,2,Offensive_Targeted_Individual,2,Offensive_Targeted_Individual,False
+valakam pola heroine ah oru frame la formality kaaga kaamichitaanga,0,Not_offensive,0,Not_offensive,2,Offensive_Targeted_Individual,1,Offensive_Untargeted,False
+dislike பன்னவன் எல்லாம் குருமாவின் கூஊஊ கள்,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,2,Offensive_Targeted_Individual,4,Offensive_Targeted_Other,False
+38 it s superstar rajini not rajni spelling mistake,0,Not_offensive,2,Offensive_Targeted_Individual,2,Offensive_Targeted_Individual,2,Offensive_Targeted_Individual,False
+ethu ellam oruu trailar ah thu naiya,1,Offensive_Untargeted,1,Offensive_Untargeted,1,Offensive_Untargeted,3,Offensive_Targeted_Group,False
+கார்ப்பரேட் டேய் தமிழ்நாடு பாலைவனம் ஆகிட்டு இந்தியா பெருத்து கொழுத்து போகலஞம் துபாய் பாலைவனம் தான் அஞ்க பணம் கொட்டல முப்போகம் விளையும் மன்னு கூடிய சீக்கிரம் நாசம் பண்ண போறீங்க என்று சொல்லாமல் சொல்றீங்க,4,Offensive_Targeted_Other,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,False
+eppa sami siricchi vayiru valikkidhu da mudyala thalaivaaa ne vera level jayamravi aayittta,0,Not_offensive,1,Offensive_Untargeted,1,Offensive_Untargeted,1,Offensive_Untargeted,False
+zee tamil puthu nadakam ma ithu aj lam irukkanu,1,Offensive_Untargeted,0,Not_offensive,2,Offensive_Targeted_Individual,0,Not_offensive,False
+ending scenes look like power rangers but it s gud,1,Offensive_Untargeted,3,Offensive_Targeted_Group,1,Offensive_Untargeted,3,Offensive_Targeted_Group,False
+mega akash intha padamaavathu release pannunga daa,1,Offensive_Untargeted,1,Offensive_Untargeted,1,Offensive_Untargeted,4,Offensive_Targeted_Other,False
+eaduku karanam pa rangeathu tan,2,Offensive_Targeted_Individual,1,Offensive_Untargeted,1,Offensive_Untargeted,0,Not_offensive,False
+padam flop mani ratnam soup ila but sila paithiyanga oh mani ratnam magic mairu magicnu solitu thiruyum,0,Not_offensive,3,Offensive_Targeted_Group,2,Offensive_Targeted_Individual,3,Offensive_Targeted_Group,False
+dei romba seen podateda taanga mudiyale,2,Offensive_Targeted_Individual,1,Offensive_Untargeted,3,Offensive_Targeted_Group,1,Offensive_Untargeted,False
+ayaz kutti moonji fans hit like,0,Not_offensive,0,Not_offensive,0,Not_offensive,3,Offensive_Targeted_Group,False
+vada chennai sequel nenaichan paravala ithuvam nala than iruku,0,Not_offensive,1,Offensive_Untargeted,2,Offensive_Targeted_Individual,1,Offensive_Untargeted,False
+arjun malayalam movie marakkar katta waiting,0,Not_offensive,5,not-Tamil,5,not-Tamil,5,not-Tamil,False
+community certificate irukakoodadhunu veliela nalla dhanya peasaranga but comments la padichi paatha rmba kastama iruku ivlo peru jadhi veri ya irukangalanu rmba kastam da,0,Not_offensive,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,False
+trending 1 ccv trending 3 96 sethu_anna ellaam idamum irrukiyae,0,Not_offensive,0,Not_offensive,1,Offensive_Untargeted,1,Offensive_Untargeted,False
+enna da viswasam bgma slow motionla potrukaan,0,Not_offensive,1,Offensive_Untargeted,1,Offensive_Untargeted,1,Offensive_Untargeted,False
+super athum finalah sottaiyana vachi senchitinka,2,Offensive_Targeted_Individual,2,Offensive_Targeted_Individual,0,Not_offensive,0,Not_offensive,False
+trailer la nalla thaan iruku ana sound thaan keka matingudhu,4,Offensive_Targeted_Other,1,Offensive_Untargeted,1,Offensive_Untargeted,1,Offensive_Untargeted,False
+not worthy vfx illana shakthi man pakkura mathiri than irukkum,2,Offensive_Targeted_Individual,2,Offensive_Targeted_Individual,1,Offensive_Untargeted,4,Offensive_Targeted_Other,False
+mahabharatham pola annan thambinga kullaye sanda pola,0,Not_offensive,1,Offensive_Untargeted,0,Not_offensive,2,Offensive_Targeted_Individual,False
+surya maranan mass acting thala thalapathy thalli ponge,4,Offensive_Targeted_Other,0,Not_offensive,0,Not_offensive,0,Not_offensive,False
+roma naal kalichi oru family kooda 3d padam release aaga poudhu,0,Not_offensive,0,Not_offensive,0,Not_offensive,3,Offensive_Targeted_Group,False
+vijay sethu pathu mangatha thala maariye irruku,0,Not_offensive,2,Offensive_Targeted_Individual,2,Offensive_Targeted_Individual,2,Offensive_Targeted_Individual,False
+pink movie ka south remake,5,not-Tamil,5,not-Tamil,5,not-Tamil,0,Not_offensive,False
+enna pannalum vetrimaaran maari padam edukka mudiyadhu,2,Offensive_Targeted_Individual,2,Offensive_Targeted_Individual,0,Not_offensive,0,Not_offensive,False
+தோல்வியெனும் படிக்கட்டு உச்சம் ஏறி கொடி கட்டு,0,Not_offensive,0,Not_offensive,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,False
+bigil ku toughuu koduka worth ahh naa padam thaan,1,Offensive_Untargeted,2,Offensive_Targeted_Individual,2,Offensive_Targeted_Individual,2,Offensive_Targeted_Individual,False
+rajini from 1996 still same announcement semmaaaaaa kalaai,2,Offensive_Targeted_Individual,0,Not_offensive,0,Not_offensive,0,Not_offensive,False
+teaser evalo seena kamichitu padam,0,Not_offensive,1,Offensive_Untargeted,0,Not_offensive,3,Offensive_Targeted_Group,False
+thala fans ennada seireenga trailer vanthu 3naal aachu innum 10m varalla,0,Not_offensive,1,Offensive_Untargeted,0,Not_offensive,1,Offensive_Untargeted,False
+dislike itta ella makkalkkum kuru potti kkanum,3,Offensive_Targeted_Group,1,Offensive_Untargeted,1,Offensive_Untargeted,1,Offensive_Untargeted,False
+to 14k unlikers orutharmela viswasam kaatrathuku eathuku inoruthara asinga paduthuringa,0,Not_offensive,1,Offensive_Untargeted,1,Offensive_Untargeted,1,Offensive_Untargeted,False
+இந்த அசுரன் பரியேறும் பெருமாள் காலா கபாலி அதெல்லாம் எந்த வகை சார்ந்தது இயக்குனர் ரின் கருத்து அது ஜாதி தீண்டாமை படம் என் கருத்து அதுவும் ஜாதி வெறி பிடித்தவர்களின் படமே,0,Not_offensive,0,Not_offensive,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,False
+டிஸ்லைக்கு போட்டவனெல்லாம் தண்ணிய குடிச்சிக்கோ இல்லைனா பயர்எஞ்சின கூப்பிட்டுக்கோ,1,Offensive_Untargeted,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,False
+padam nalla irundha sandhosam who r u nu keta pera sollalam seiyura thozhila sollalam endha ooru nu sollalam adha vittutu edhirla nikkura nee dhan mudivu pannanum na enna vasanam idhellam konjam pazhaya vasanama theriyudhu phoenix paravai nu rombo naala sollikitu irukaradhum salippu thattudhu indha kuraigal padatthoda rasanaiya anubavattha kedukkama irundhurum nu namburen vaazhthukkal to the efforts put by the whole team god bless,4,Offensive_Targeted_Other,0,Not_offensive,0,Not_offensive,0,Not_offensive,False
+dear viewers vivegam teaser also paarunga already 536k likes bahubali 656k likes easya beat pannalaam,0,Not_offensive,0,Not_offensive,0,Not_offensive,1,Offensive_Untargeted,False
+suriya super but sai pulav over makeup,2,Offensive_Targeted_Individual,2,Offensive_Targeted_Individual,0,Not_offensive,0,Not_offensive,False
+திரௌபதி நிச்சயமாக மிரட்டுவாள் வன்னியர்கள் சார்பாக வாழ்த்துக்கள் மோகன் ஜி அனைத்து சமுதாய மக்களும் நிச்சயமாக ஆதரவு தருமாறு கேட்டுக்கொள்கிறேன் இது அத்துமீறும் கும்பலுக்கு பிற சமூகத்தினர் தரும் சவுக்கு அடி,0,Not_offensive,0,Not_offensive,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,False
+othaaaaaaaaaaaaaaaaa adichiiiii piri thalapathy da m,0,Not_offensive,1,Offensive_Untargeted,1,Offensive_Untargeted,1,Offensive_Untargeted,False
+kula thozhil thiruttu pappa aana aanda parambaranu peethipom pappa kaata emathi vanguvom pappa apram kaata vithe kudipom pappa jaathi peruma pesittu suthuvom pappa oora vittu veliya pona otha vangittu varuvom pappa aanda jathi nu sollipom pappa ana enga v2 pengalaye adimaya vachipom pappa veeratha pathi pesuvom pappa ana pappankitta mattum kumututtu poiduvom pappa udamba nalla valappom pappa ana ariva valakkama tik tok la jathi video poduvom pappa dai sollanumna yar venalum sollalam ella samuthayathulayum nallavanum irukkan kevalamanavanum irukkan,0,Not_offensive,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,False
+elaam mariduchi indha kuruvi jump mattum marala,0,Not_offensive,1,Offensive_Untargeted,1,Offensive_Untargeted,2,Offensive_Targeted_Individual,False
+நீ என்ன பெரிய வசூல் மன்னனா தெரியல்ல அப்படித்தான் பேசிக்கிறானுங்க d,3,Offensive_Targeted_Group,0,Not_offensive,3,Offensive_Targeted_Group,2,Offensive_Targeted_Individual,False
+நான் என் சகோதிரியுடன் செல்வேன் இப்படத்தை காண sex education போன்று love and marriage education மிகவும் முக்கியமான ஒன்று நாடக நாய்களிடம் இருந்து என் குல பெண்ணை காப்பாற்ற உதவும் நன்றி இயக்குனரே இது போன்ற விழிப்புணர்வு மிகுந்த படத்தை மேலும் எதிர்பார்க்கிறேன்,0,Not_offensive,0,Not_offensive,0,Not_offensive,3,Offensive_Targeted_Group,False
+amy jackson is looking very different,0,Not_offensive,0,Not_offensive,0,Not_offensive,2,Offensive_Targeted_Individual,False
+cut panni cut panni podathingada kaduppaguthu,0,Not_offensive,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,1,Offensive_Untargeted,False
+movie parthu tu vanthu trailer parthu rasichukittu irukean,0,Not_offensive,0,Not_offensive,0,Not_offensive,3,Offensive_Targeted_Group,False
+look like joker costume like doraemon,0,Not_offensive,3,Offensive_Targeted_Group,2,Offensive_Targeted_Individual,2,Offensive_Targeted_Individual,False
+surya annan polichu lalettanum poli ith pwolikkum,0,Not_offensive,5,not-Tamil,5,not-Tamil,5,not-Tamil,False
+thalaaaaaaaaaaa da omaleyyyy vera yevan da gotha thala than massssss,1,Offensive_Untargeted,0,Not_offensive,0,Not_offensive,0,Not_offensive,False
+one day 700k likes varanum kill the like button,0,Not_offensive,0,Not_offensive,0,Not_offensive,1,Offensive_Untargeted,False
+ommala marana mass ya directoruchumma kzkhli,0,Not_offensive,0,Not_offensive,0,Not_offensive,1,Offensive_Untargeted,False
+jathi irukka kudathu than ana athuku nu pre planned ah organised ah seiypadum intha mari nadaga kadhal velai ah la yethuku mudiyathu,0,Not_offensive,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,False
+10 thadavaiku mela pathuten gubeer siripu trailer ima90skid,3,Offensive_Targeted_Group,0,Not_offensive,1,Offensive_Untargeted,0,Not_offensive,False
+சூப்பரா இருக்கு சில பேருக்கு கனவுல கூட இந்த மாதிரி நடக்காது சில பேருக்கு வயிற்றில் எரிச்சல் ஏற்படும்,1,Offensive_Untargeted,0,Not_offensive,3,Offensive_Targeted_Group,0,Not_offensive,False
+ivan tholla vera thaangala da yeppa,1,Offensive_Untargeted,1,Offensive_Untargeted,2,Offensive_Targeted_Individual,2,Offensive_Targeted_Individual,False
+நான் அரசியலுக்கு வருவது உறுதி ஏ இது 96 யார ஏமாத்துறீங்க,1,Offensive_Untargeted,2,Offensive_Targeted_Individual,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,False
+kadhal apo epo nala explanation,0,Not_offensive,0,Not_offensive,0,Not_offensive,1,Offensive_Untargeted,False
+thalapa thy ya kalaichai avaru topla than povaru,0,Not_offensive,1,Offensive_Untargeted,2,Offensive_Targeted_Individual,2,Offensive_Targeted_Individual,False
+hit like for nawaz n rajinikanth sit,2,Offensive_Targeted_Individual,0,Not_offensive,0,Not_offensive,0,Not_offensive,False
+intha bgm mobile la piano music app use panna athula varum,2,Offensive_Targeted_Individual,1,Offensive_Untargeted,1,Offensive_Untargeted,1,Offensive_Untargeted,False
+கொங்குநாடு வேட்டுவக்கவுண்டர்கள் சார்பாக திரொபதி பட குழுவினர்க்கு வாழ்த்துக்கள் மண்ணும் பெண்னும் இரண்டுமே எங்களுக்கு முக்கியம் தான் எங்க மீறி என் காட்டு மண்ணுமேல கால வெச்சலும் என் வீட்டு பொண்னுமேல கைய வைச்சாலும் அவ காலி,1,Offensive_Untargeted,0,Not_offensive,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,False
+oru unmaiya othukitu than aaganum vijay sethupathy lam screen la theriyave ila thalaivar elarayum ninnu saaptutaaru,2,Offensive_Targeted_Individual,0,Not_offensive,2,Offensive_Targeted_Individual,1,Offensive_Untargeted,False
+enna ga neenga ipadi pani vachu tinking marana masssss rajni mania starts,0,Not_offensive,3,Offensive_Targeted_Group,1,Offensive_Untargeted,2,Offensive_Targeted_Individual,False
+santhanam s comedy than kovama kuttyma maari iruku mathapadi theri,0,Not_offensive,2,Offensive_Targeted_Individual,2,Offensive_Targeted_Individual,2,Offensive_Targeted_Individual,False
+karur ptp kongu gounders sairbaga vaalthukkal yengal mulu aatharavum padathukku undo,0,Not_offensive,0,Not_offensive,0,Not_offensive,5,not-Tamil,False
+fire force anime shinara lam copy adikuranungalae,0,Not_offensive,1,Offensive_Untargeted,1,Offensive_Untargeted,1,Offensive_Untargeted,False
+but still vfx not upto mark,0,Not_offensive,1,Offensive_Untargeted,1,Offensive_Untargeted,4,Offensive_Targeted_Other,False
+யார்ரா கோமாளி நா நா கோமாளி நீதா கோமாளி ஆகப்போர ஏமாளி,0,Not_offensive,3,Offensive_Targeted_Group,2,Offensive_Targeted_Individual,2,Offensive_Targeted_Individual,False
+தெருபொறுக்கி நாய்களிடமிருந்து குலம்காக்க குடிகாக்க வருகிறாள் உங்களின் திரவுளபதி,0,Not_offensive,0,Not_offensive,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,False
+epdiyum padam odadhu manasulla periya batman nu nenapu,2,Offensive_Targeted_Individual,2,Offensive_Targeted_Individual,2,Offensive_Targeted_Individual,0,Not_offensive,False
+நீ பழனிகே பால் காவடி எடுத்தாலும் படம் ஓடாது டா டேய் என்னடா பண்ணி வச்சிருக்கீங்க,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,2,Offensive_Targeted_Individual,2,Offensive_Targeted_Individual,False
+spoiler alert reduce ur volume,2,Offensive_Targeted_Individual,1,Offensive_Untargeted,1,Offensive_Untargeted,1,Offensive_Untargeted,False
+ayyooooo surya eyes was killed me,0,Not_offensive,2,Offensive_Targeted_Individual,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,False
+eduthaa ipdi movies edungapa naangalum konjam 16 varusam pinuku poyi nalla padam paatha feel kidaikkum illa,0,Not_offensive,0,Not_offensive,3,Offensive_Targeted_Group,1,Offensive_Untargeted,False
+1 04 intha simbu va paaka thanda pala varsho ma wait pandro thalaivaa ipdi ye nadi athu pothu yengaluku,0,Not_offensive,0,Not_offensive,2,Offensive_Targeted_Individual,1,Offensive_Untargeted,False
+ennappa bigil satham kakevayilla oothannegala illaya enrum thalathan no1 trending,2,Offensive_Targeted_Individual,1,Offensive_Untargeted,1,Offensive_Untargeted,1,Offensive_Untargeted,False
+ji appadiye eranki sollittinga ji super ji super,0,Not_offensive,0,Not_offensive,0,Not_offensive,5,not-Tamil,False
+saathi olipu theva illa saathi otruma samathuvam thaan venum,0,Not_offensive,3,Offensive_Targeted_Group,0,Not_offensive,3,Offensive_Targeted_Group,False
+marana mass suriya sir ee kola mass uuh,0,Not_offensive,0,Not_offensive,1,Offensive_Untargeted,5,not-Tamil,False
+ungaluku promo venumnalum thalaivara thanda theduringa unga padam sathyama odathuda,3,Offensive_Targeted_Group,1,Offensive_Untargeted,3,Offensive_Targeted_Group,1,Offensive_Untargeted,False
+ena sir rajini ku rajni nu varuthu,0,Not_offensive,2,Offensive_Targeted_Individual,2,Offensive_Targeted_Individual,2,Offensive_Targeted_Individual,False
+ajith paraellama nadipenga epom rompa mosam,2,Offensive_Targeted_Individual,2,Offensive_Targeted_Individual,2,Offensive_Targeted_Individual,0,Not_offensive,False
+மனிதன் பிறந்த மறுநொடியில் இருந்து சுடுகாடு நோக்கி நடக்க ஆரம்பித்து விட்டான் நம் வாழ்க்கையே ஒரு சிறு பயணம் தான் இதில் சாதியை இவ்வளவு தீவிரமாக நம்பும் மனிதர்களை நினைத்தால் மனதில் சிரிப்பு தான் வருகிறது,0,Not_offensive,0,Not_offensive,0,Not_offensive,3,Offensive_Targeted_Group,False
+pakathane poringa viswasam ah petta ah nu,3,Offensive_Targeted_Group,1,Offensive_Untargeted,2,Offensive_Targeted_Individual,1,Offensive_Untargeted,False
+என்னடா இது ட்ரைலர் மயிரு மாதிரி இருக்கு,0,Not_offensive,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,False
+and in the end நான் பில்டப் கொடுக்கவில்லை தானாக இப்படி ஆகிவிட்டது worst ra dai about thalaivar on tv screen,3,Offensive_Targeted_Group,2,Offensive_Targeted_Individual,2,Offensive_Targeted_Individual,1,Offensive_Untargeted,False
+இந்த படம் மூலமா கிறுக்கு ரஞ்சித் மற்றும் பட்டியல் இன இளைஞர்ககளை தவறாக வழி நடத்தி அவர்கள் மனதில் சாதிய வன்மத்தை விசமாக விதைத்து திரவிட தெலுங்கு கட்சிகளுக்கு முட்டி போட்டு பிழைக்கும் குருமாவளவனுக்கும் கிறுக்குசாமி போன்றோக்கும் நல்ல செருப்படி கள்ளர் குல தொண்டைமான் சமுதாயம் முக்குலத்தோர் சமுதாயம் திருநெல்வேலி மற்றும் தென்காசி மாவட்டம்,0,Not_offensive,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,False
+thala thalapathy rendu perium ooititaan,3,Offensive_Targeted_Group,1,Offensive_Untargeted,0,Not_offensive,0,Not_offensive,False
+padam release late aanalum paravaa illa aana date mattum sollungga paa thalaiya pichikkura mathiri irukku,2,Offensive_Targeted_Individual,1,Offensive_Untargeted,0,Not_offensive,0,Not_offensive,False
+nangge thala fans da vijay 63 kuda nangge support panuvum tamilan da ennore tamilanne kille thaliyude mathum,0,Not_offensive,0,Not_offensive,2,Offensive_Targeted_Individual,1,Offensive_Untargeted,False
+daii rajamoulii summa irunthaa singathaa thatti ezhupitiyee daaww shankar vera level pannirukuraru daww eppaaaa hollywood la illa ithu athuku melaaa,2,Offensive_Targeted_Individual,0,Not_offensive,2,Offensive_Targeted_Individual,0,Not_offensive,False
+adeiiiiii inda chellakutty petta apadiye thokunga da,0,Not_offensive,1,Offensive_Untargeted,2,Offensive_Targeted_Individual,2,Offensive_Targeted_Individual,False
+உதய சூரியன் வந்து ஊம்பி விடுங்க காசு நான் கொடுக்கரன்,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,2,Offensive_Targeted_Individual,0,Not_offensive,False
+trailer theri mass ah irukku ana konjam over scene kaatra maari irukku,1,Offensive_Untargeted,2,Offensive_Targeted_Individual,0,Not_offensive,2,Offensive_Targeted_Individual,False
+trealier super ana rajini ya kalai ka thevaille,2,Offensive_Targeted_Individual,5,not-Tamil,2,Offensive_Targeted_Individual,0,Not_offensive,False
+warning unakku screen la thala varumpodhu unoda vaiii la sripu pakka kudahu ellundhu ninu clap pannanumm okay thala rasigar sangam madhura,0,Not_offensive,0,Not_offensive,2,Offensive_Targeted_Individual,1,Offensive_Untargeted,False
+thevidiya pulla pola eruku da baadu semma comedy,1,Offensive_Untargeted,2,Offensive_Targeted_Individual,2,Offensive_Targeted_Individual,2,Offensive_Targeted_Individual,False
+idhu padam adha vitutu viswasam vivegam nu,0,Not_offensive,2,Offensive_Targeted_Individual,2,Offensive_Targeted_Individual,3,Offensive_Targeted_Group,False
+சப்பாத்த தண்ணீக்க விட்டே இந்த விஜய் ஓட்டிட்டிருக்கார் ரொம்ப நாளா நாமளும் பண்ணலாம் ஆனா சொக்ஸ் எல்லாம் நாறிடும,2,Offensive_Targeted_Individual,3,Offensive_Targeted_Group,2,Offensive_Targeted_Individual,3,Offensive_Targeted_Group,False
+திரௌபதி is good but at the same time பரியேறும் பெருமாள் அசுரன் படங்கள் நல்ல கதை தளம் உள்ள படங்களே அதில் முழுவதும் சொல்ல பட வேண்டியது தேவேந்திர குல வேளாளர் சமுதாய மக்களின் பிரச்சினைகள் ஆனால் மற்ற ஒரு தாழ்த்த பட்ட சமுதாயத்தை சேர்த்து சொன்னதுதான் மன வருத்தம்,3,Offensive_Targeted_Group,0,Not_offensive,0,Not_offensive,0,Not_offensive,False
+vedio pakradhuku munnadiye oru like potuten,0,Not_offensive,1,Offensive_Untargeted,0,Not_offensive,1,Offensive_Untargeted,False
+inga ivalo caste unity a iruku nijama tamilnadu unity a than iruku thiruma mari nainga than oru cast young people a thapa kondu poran,2,Offensive_Targeted_Individual,0,Not_offensive,3,Offensive_Targeted_Group,1,Offensive_Untargeted,False
+indha trailor ah enakku thirumba thirumba paaka thonudhu ungaluku,4,Offensive_Targeted_Other,0,Not_offensive,3,Offensive_Targeted_Group,0,Not_offensive,False
+thala pola varuma daa koothipathy vijay fans,1,Offensive_Untargeted,0,Not_offensive,0,Not_offensive,0,Not_offensive,False
+படம் மிகப்பெரிய அளவில் வெற்றிபெற வாழ்த்துக்கள் போராளிகள் இந்த ட்ரைலரை பார்த்து கதறி சாவுங்கடா,0,Not_offensive,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,False
+10 339 333 views r rocking r 777k r likes r 65k r dis l,1,Offensive_Untargeted,1,Offensive_Untargeted,0,Not_offensive,0,Not_offensive,False
+kunjamavathu puriura mathi podunghada pakka mudiyala,0,Not_offensive,1,Offensive_Untargeted,1,Offensive_Untargeted,2,Offensive_Targeted_Individual,False
+paakkadhaane pore indha kaaliyoda aattaththa,0,Not_offensive,2,Offensive_Targeted_Individual,1,Offensive_Untargeted,1,Offensive_Untargeted,False
+நம் வீட்டு பெண்களிடம் நாடக காதல் எவனும் நடத்தினால் தயங்காமல் அவன் தலையை வெட்டுங்கள் ஏல மக்கா அவனுங்களுக்கு வந்தா இரத்தமாம் நம்மளுக்கு தக்காளி சட்னி யா இனி நாடக காதல் பன்ரவன் வெட்ட படுவான் திருநெல்வேலி காரன் ல,0,Not_offensive,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,False
+ean nu theriyala thalaya paakkum podhu kannu kalangadhu,0,Not_offensive,0,Not_offensive,1,Offensive_Untargeted,1,Offensive_Untargeted,False
+enakenamo bgm konjam local ah irundhurundhaa nala irundhirukum nu thonudhu anyone,4,Offensive_Targeted_Other,1,Offensive_Untargeted,1,Offensive_Untargeted,1,Offensive_Untargeted,False
+5ரூபா பேனா வாங்குறது முன்னால எழதி பாத்துவாங்கற மக்கள் தலைவனை தேர்ந்தெடுக்கும்போது5 க்கும் 10க்கும் ஆசைப்பட்டு யார் என்றும் எப்படிபட்டவர் என்றும் தெரிந்தும் கூட தேர்ந்தெடுத்து விட்டு வரம் கொடுத்த சிவன் ஓடுவது போல கேள்வி கேட்க அஞ்சி ஓடி விடுகிறார்கள் அறிவுடையார் எல்லாம் உடையார்,0,Not_offensive,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,False
+waiting ne va thala sila nayigal kuraikkathan seiyum,1,Offensive_Untargeted,0,Not_offensive,0,Not_offensive,0,Not_offensive,False
+inda police nalla aduvar pola,0,Not_offensive,0,Not_offensive,1,Offensive_Untargeted,1,Offensive_Untargeted,False
+arya will you marry me sayeesha mind voice டேய் லூசு நமக்கு எப்பவோ கல்யானம் ஆயிடுச்சி டா,2,Offensive_Targeted_Individual,3,Offensive_Targeted_Group,2,Offensive_Targeted_Individual,3,Offensive_Targeted_Group,False
+super star a ithuku mela kalaika varthaiye illa,2,Offensive_Targeted_Individual,0,Not_offensive,2,Offensive_Targeted_Individual,0,Not_offensive,False
+rch ayachu da thalapathy rocks enga pa antha s3 address ey kaanom,0,Not_offensive,1,Offensive_Untargeted,1,Offensive_Untargeted,3,Offensive_Targeted_Group,False
+just looks like cartoon so bad,1,Offensive_Untargeted,3,Offensive_Targeted_Group,1,Offensive_Untargeted,3,Offensive_Targeted_Group,False
+velaiya poyi paarungada intha movie confirm flap,3,Offensive_Targeted_Group,2,Offensive_Targeted_Individual,1,Offensive_Untargeted,4,Offensive_Targeted_Other,False
+what is this rubbish ayoooo ayo,1,Offensive_Untargeted,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,0,Not_offensive,False
+2014 ஆண்டு சென்னை இராயபுரம் பகுதியில் நடந்த நாடக காதல் சம்பவங்களை யாரும் மறந்து இருக்க முடியாது பெண்களே ரிஜிஸ்டர் அலுவலகத்திற்கு வரமால் தருதலை வழக்கறிஞர் கூட்டம் பதிவு திருமணம் 3500 திருமணங்கள் செய்து பல அப்பாவி பெண்கள் வாழ்க்கையில் விளையாடி பணம் பறித்து வந்ததை யாரும் மறந்து விட முடியாது,0,Not_offensive,0,Not_offensive,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,False
+yendaa sarkarrr vishwasathala beat pannamudiyathadaaa soo purunchukangaa surya nalla herothaaa by don t compare ajith vs vijay,3,Offensive_Targeted_Group,1,Offensive_Untargeted,2,Offensive_Targeted_Individual,2,Offensive_Targeted_Individual,False
+padippu irutntha evanalyum onnum pudunga mudiyathu mass,0,Not_offensive,0,Not_offensive,0,Not_offensive,1,Offensive_Untargeted,False
+ஆஹா குட்டிபுலி முத்தையா மாதிறி இன்னொரு டைரக்டர் கிடைச்சுட்டாப்புல வாங்க உங்க படத்த ஓட வைக்குறது எங்க பொறுப்பு,0,Not_offensive,0,Not_offensive,2,Offensive_Targeted_Individual,2,Offensive_Targeted_Individual,False
+நாடகக்காதல் கும்பலுக்கு இந்தப்படம் மாதிரி பொள்ளாச்சி செக்ஸ் பட பாய்ஸ்க்கும் ஒரு படம் எடுங்க மோகன்ஜி,0,Not_offensive,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,False
+இங்கோத்தா உங்களால இந்த ஊர்லயே இருக்க முடியாது போலியேடா நா பஞ்சம் பொழைக்க forgien போறன்டா நாசமா போறவைங்களா சாதி படமா எடுத்து சாவுங்கடா,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,4,Offensive_Targeted_Other,False
+otha thalaiva selvaraghavan pinni pedal edthurkiye vera level,0,Not_offensive,1,Offensive_Untargeted,1,Offensive_Untargeted,1,Offensive_Untargeted,False
+vijay sethu pathi annai ninakk commercial settavaly,4,Offensive_Targeted_Other,0,Not_offensive,0,Not_offensive,0,Not_offensive,False
+250 screens nu mela kedaichi irundha kaithi dhan mass pani irukum,0,Not_offensive,1,Offensive_Untargeted,1,Offensive_Untargeted,1,Offensive_Untargeted,False
+superuuuuuuuu mannu and ponnu kai vecha vettuvom,0,Not_offensive,3,Offensive_Targeted_Group,1,Offensive_Untargeted,2,Offensive_Targeted_Individual,False
+ada ponga da dai nanga 90 kids da,0,Not_offensive,2,Offensive_Targeted_Individual,1,Offensive_Untargeted,1,Offensive_Untargeted,False
+karthi key verithanamana thalapathy oda entry euppudi erukoma aandavaaaaaaa,2,Offensive_Targeted_Individual,1,Offensive_Untargeted,1,Offensive_Untargeted,1,Offensive_Untargeted,False
+rajni is rajni no one can take place of him,0,Not_offensive,3,Offensive_Targeted_Group,2,Offensive_Targeted_Individual,2,Offensive_Targeted_Individual,False
+போராடுவதே தப்புனா போராடுர சூழ்நிலை உருவாக்குவதே தப்பு தானே காப்பான்,0,Not_offensive,0,Not_offensive,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,False
+rajini per sonnatha padame odum pola,0,Not_offensive,2,Offensive_Targeted_Individual,2,Offensive_Targeted_Individual,2,Offensive_Targeted_Individual,False
+appapo vanthu thalaya paathutu comment panravanga like pannunga,3,Offensive_Targeted_Group,0,Not_offensive,0,Not_offensive,0,Not_offensive,False
+ennaiku inda theva illadha song dance logic illadha fight ah lam vida poreenga,0,Not_offensive,2,Offensive_Targeted_Individual,1,Offensive_Untargeted,1,Offensive_Untargeted,False
+vetrimaran dhanush combo polladhavan aadukalam vada chennai asuran loading,0,Not_offensive,1,Offensive_Untargeted,0,Not_offensive,1,Offensive_Untargeted,False
+viswasam reach aitunu petta kevalamaa pesathingu thala solrar pola,0,Not_offensive,1,Offensive_Untargeted,2,Offensive_Targeted_Individual,2,Offensive_Targeted_Individual,False
+kaali attam arambam allu silra ela odidu,1,Offensive_Untargeted,1,Offensive_Untargeted,1,Offensive_Untargeted,5,not-Tamil,False
+paga paga paga uthama villain theme music madre irukku,3,Offensive_Targeted_Group,1,Offensive_Untargeted,1,Offensive_Untargeted,0,Not_offensive,False
+adiii thoooollll kolu mass we are waiting yaarulam wait panringa movie ku,1,Offensive_Untargeted,0,Not_offensive,0,Not_offensive,0,Not_offensive,False
+intha moviea walentinesdaykku 14 02 2020 relese pandrathukku bathilaa 15 02 2020 morattu singles daykku relese pannalam,0,Not_offensive,0,Not_offensive,1,Offensive_Untargeted,3,Offensive_Targeted_Group,False
+auto likes views 20k likes 64k,0,Not_offensive,2,Offensive_Targeted_Individual,1,Offensive_Untargeted,1,Offensive_Untargeted,False
+dai kadaisi varaikum vidhya balan na kaatave illaye y ajith sir ku jodi vidhya balan but avangala trailer la kaamikave illaye,1,Offensive_Untargeted,3,Offensive_Targeted_Group,2,Offensive_Targeted_Individual,2,Offensive_Targeted_Individual,False
+gv prakash pei aatam potrukaru indha gv ya than ya nanga edhirpakurom use earphones,1,Offensive_Untargeted,1,Offensive_Untargeted,2,Offensive_Targeted_Individual,0,Not_offensive,False
+ok flashback le gramathula etho thee pudichu erituthu athula baathika padra hero appa surya vodaya paiyan surya padichu nsg le sernthu pm manasaya mathuraru,0,Not_offensive,3,Offensive_Targeted_Group,2,Offensive_Targeted_Individual,2,Offensive_Targeted_Individual,False
+சினிமாவில் மட்டுமே இந்த மாதிரி வசனங்கள் பேச முடியுமே தவிர நிஜ வாழ்க்கையில் சீமானை தவிர யாராலும் பேச முடியாது,0,Not_offensive,0,Not_offensive,2,Offensive_Targeted_Individual,3,Offensive_Targeted_Group,False
+போராடுவதே தப்பு என்றால் போராடுவதற்கான சூழ்நிலையை உருவாக்கியதும் தப்பு,0,Not_offensive,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,False
+coma li itha vida better title kidaikathu,0,Not_offensive,1,Offensive_Untargeted,1,Offensive_Untargeted,5,not-Tamil,False
+heh vedalam teasar ahh break pannitom,3,Offensive_Targeted_Group,1,Offensive_Untargeted,0,Not_offensive,0,Not_offensive,False
+வெகு நாட்களாக இப்படி உண்மையை போட்டு உடைக்கும் சமூக அக்கறையுள்ள திரைப்படத்தை தான் எதிர்ப்பார்த்து காத்துக்கொண்டிருந்தேன் அடுத்தவர் வீட்டு பெண்களின் மீது கை வைக்கும் நாய்களுக்கான படமாக இருக்கிறது கபாலி காலா பரியேறும் பெருமாள் போன்ற படங்களை போன்று இப்படத்தையும் ஒரு திரைப்படமாக பார்க்கவும் வீணாக இப்படத்தின் மீது தவறான ஜாதி சாயத்தை பூசாதீர் திரௌபதி துகிலுரிந்த காலம் சென்று அவளின் மானம் காக்கப்படட்டும் இப்படம் மாபெரும் சமூக மாற்றத்தோடு வெற்றியடைய மனமார்ந்த வாழ்த்துக்கள் இப்படிக்கு சாதாரண மனிதனில் ஒருவன்,0,Not_offensive,0,Not_offensive,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,False
+2 14 engalukku mannu ponnu rendumey mukkiyam,0,Not_offensive,0,Not_offensive,3,Offensive_Targeted_Group,1,Offensive_Untargeted,False
+iwanellam oru hero welanginamaditan tamil cinema,2,Offensive_Targeted_Individual,0,Not_offensive,2,Offensive_Targeted_Individual,0,Not_offensive,False
+etho onnu miss aguthu pa etho onnu,1,Offensive_Untargeted,0,Not_offensive,1,Offensive_Untargeted,3,Offensive_Targeted_Group,False
+vj pans r reaaly anils kvlama ila thu intha trailar kuda dislike panranuga childra naainga thala da than rasiganukaga uyirai kuduthu doop podama ella scenenum nadikra orae actor the ultimate kingmaker thala ajith kumar da,0,Not_offensive,3,Offensive_Targeted_Group,1,Offensive_Untargeted,3,Offensive_Targeted_Group,False
+உன் கூட இருக்கறதுதான் சந்தோஷம்கிறது விட நீதான் என் சந்தோஷம்னு சொல்லுவ,0,Not_offensive,0,Not_offensive,0,Not_offensive,3,Offensive_Targeted_Group,False
+இந்த நாட்டுல ஒவ்வொன்னும் ஒரு விதமான பைத்தியம் அவனுக்கு நாட்டுமேலயே பைத்தியம்,0,Not_offensive,0,Not_offensive,0,Not_offensive,3,Offensive_Targeted_Group,False
+thalaiva unna adichukka inimelum poranthu yarum vara porathu illa,0,Not_offensive,2,Offensive_Targeted_Individual,1,Offensive_Untargeted,1,Offensive_Untargeted,False
+yepudi dislike poduranga thalaivar ah ipadi pathum vera yepudi dan ungaluku pudikum mass marana mass ah vara pogudhu petta,0,Not_offensive,1,Offensive_Untargeted,1,Offensive_Untargeted,1,Offensive_Untargeted,False
+நம்ம சதிகாரன் மட்டுமே பயிர்செய்து நூல் நெய்து ஆடை செய்தால் மட்டுமே நான் ஆடை அணிவேன் என்றால் எல்லோரும் அம்மணமாகத்தான் திரியணும் இதற்கு நமக்கு சம்மதமா தலித்களை எதிர்க்கும் போது இருக்கும் ஒற்றுமை மற்ற விஷயங்களுக்கு நாம் செய்தால் நாடு நல்லா இருக்கும்டா நாடக காதல் என்று சொல்லி நம்ம பொண்ணுங்களை நாமே அசிங்கப்படுத்த வேண்டாம்,0,Not_offensive,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,False
+அய்யா சத்திரிய குஞ்சுகலா உங்ககிட்ட உள்ள சொத்தே ஒரு மட்ட கம்பு கொத்தனார் கரண்டி இதை நாங்க வேற அபகரிக்க போரமா காமெடி பன்னாதிங்கடா,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,4,Offensive_Targeted_Other,False
+ஆளபோறான் தமிழன் 50m touch பண்ணிருச்சு இவனுங்க இன்னும் 15m தாண்டாமா முக்கிட்டு இருக்கானுங்க,1,Offensive_Untargeted,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,False
+heyyyyyyy indhu 96 yaara emaatha paakuringa,1,Offensive_Untargeted,1,Offensive_Untargeted,1,Offensive_Untargeted,3,Offensive_Targeted_Group,False
+யார்ரா யார்ரா இவன் ஊர கேட்டா தெரியும் ஊர காப்பான் இவன் உயிர காக்கும் பைரவா மோதி மோதி பாரு இவன் கெத்தும் உனக்கு புரியும் இவன் பத்து விரலும் பத்து கத சொல்லும் இவன் கண்ண பாத்து முன்ன நிற்பதாறுடா விண்ண பிளக்கும் வசூல் மன்னன் பாருடா புயலும் கூட இவன் கண்ண பத்து விலகும் எமனும் கூட இவன எட்டி நின்னு பாப்பான் சுத்தி முத்தி பாரு எங்கும் இவன் கூட்டம் முன்ன நின்னு பாரு நின்னு போகும் உன் ஆட்டம் எந்த ஊரு இவன் சோறு போடும் ஊரு ஊர கேளு நெல்லையினு பேரு தண்ணி கேட்டா தண்டிப்பவன் யாருடா தட்டி கேப்பான் பைரவா பாருடா வர்லாம் வர்லாம் வா வர்லாம் வா பைரவா,0,Not_offensive,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,False
+vadachennai ku award miss aairchu aana asuran ku national award miss aagama dhanush and vettrimaran paarthukuvanga,0,Not_offensive,0,Not_offensive,1,Offensive_Untargeted,3,Offensive_Targeted_Group,False
+costumes and dance no words to say thalaiva ungaluku inum vayasu aagala,0,Not_offensive,0,Not_offensive,1,Offensive_Untargeted,1,Offensive_Untargeted,False
+0 48 mansushan intha vayasulaium odamaba eppdii vachrukarar,0,Not_offensive,1,Offensive_Untargeted,2,Offensive_Targeted_Individual,1,Offensive_Untargeted,False
+idhu ennada irumbu thirai part 2 ba illey idhu hero,2,Offensive_Targeted_Individual,3,Offensive_Targeted_Group,2,Offensive_Targeted_Individual,1,Offensive_Untargeted,False
+அடப்பாவிங்களா இந்த ட்ரைலெர்யுமா டா dislike பண்ணுவீங்க,1,Offensive_Untargeted,2,Offensive_Targeted_Individual,1,Offensive_Untargeted,4,Offensive_Targeted_Other,False
+indha trailer pudikalana avan tamil cinema rasigan illa wokka makka therikkudhu,2,Offensive_Targeted_Individual,1,Offensive_Untargeted,1,Offensive_Untargeted,1,Offensive_Untargeted,False
+ஜெயம் ரவி மாதிாி வ௫வனு பாத்தா நிழல்கள் ரவி மாதிாி வர entertainment guarantee,2,Offensive_Targeted_Individual,0,Not_offensive,2,Offensive_Targeted_Individual,0,Not_offensive,False
+bigil ivanum equalava maintain pannrana,1,Offensive_Untargeted,1,Offensive_Untargeted,2,Offensive_Targeted_Individual,2,Offensive_Targeted_Individual,False
+intha kazhuluga kfc chicken maathiri panni kuduthaangalam 1st vfx company,2,Offensive_Targeted_Individual,2,Offensive_Targeted_Individual,3,Offensive_Targeted_Group,1,Offensive_Untargeted,False
+seems to be similar to malayalam movie chinthaamani kolakkese,0,Not_offensive,0,Not_offensive,5,not-Tamil,1,Offensive_Untargeted,False
+anil kunjinga 38 per unlike panni irukkunga potta payalunga l,3,Offensive_Targeted_Group,1,Offensive_Untargeted,1,Offensive_Untargeted,1,Offensive_Untargeted,False
+ipa 4peru varuvanga like bigil comments jadanu eppa dai mudiyala ovvoru teaser layum unga attuliyam,3,Offensive_Targeted_Group,2,Offensive_Targeted_Individual,2,Offensive_Targeted_Individual,1,Offensive_Untargeted,False
+semaa mokkai da thala fan s ku treat guarantee,3,Offensive_Targeted_Group,0,Not_offensive,1,Offensive_Untargeted,2,Offensive_Targeted_Individual,False
+ppa vera level veri yerutu idhu than marana mass,1,Offensive_Untargeted,0,Not_offensive,0,Not_offensive,0,Not_offensive,False
+bgm nice but onum solra maari illa,1,Offensive_Untargeted,1,Offensive_Untargeted,1,Offensive_Untargeted,0,Not_offensive,False
+indha trailer ku en da unlike panirkinga,1,Offensive_Untargeted,1,Offensive_Untargeted,1,Offensive_Untargeted,4,Offensive_Targeted_Other,False
+என்னடா பண்ணி வச்சிருக்கீங்க அந்த அம்மாவ,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,4,Offensive_Targeted_Other,False
+2 11 vayasana kalathule ethukku thalaiva theva ilata velai,2,Offensive_Targeted_Individual,1,Offensive_Untargeted,0,Not_offensive,1,Offensive_Untargeted,False
+இந்தப் படத்தை விரும்பாதவர்கள் பொறாமை பிடித்தவர்கள்,3,Offensive_Targeted_Group,0,Not_offensive,0,Not_offensive,0,Not_offensive,False
+தமிழ்நாட்டுல சத்ரியனுங்க எல்லாரும் ஒன்னு ஆகணும் அப்போ தான் மாமாவளவன் குரூப்பு அடங்கும் என்ன ஆட்டம் போட்டிங்க டா டேய் r r சத்ரியனுங்க ஒன்னு கூடின நீங்கே காலி டா கவுண்டன் தேவர் நாடார் எல்லாரும் ஹிந்து மதத்தை காக்கும் தெய்வங்கள் டா,0,Not_offensive,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,False
+ithu sambhavam nalla pratheesha oke koduth last valipp aakkumennu ethra perku thonunundu,4,Offensive_Targeted_Other,5,not-Tamil,5,not-Tamil,1,Offensive_Untargeted,False
+otha kola mass ya vijaysethupathi simbu,0,Not_offensive,1,Offensive_Untargeted,2,Offensive_Targeted_Individual,1,Offensive_Untargeted,False
+vera maari irukkum parunga da deii,0,Not_offensive,3,Offensive_Targeted_Group,1,Offensive_Untargeted,4,Offensive_Targeted_Other,False
+prabudeva nadandhu varradhe dance mathiri daan iruku,0,Not_offensive,3,Offensive_Targeted_Group,0,Not_offensive,2,Offensive_Targeted_Individual,False
+r u verjin semma mass question,1,Offensive_Untargeted,0,Not_offensive,0,Not_offensive,0,Not_offensive,False
+movie super but manju varrior verry boring manju,1,Offensive_Untargeted,3,Offensive_Targeted_Group,2,Offensive_Targeted_Individual,5,not-Tamil,False
+வேற லெவல் சூப்பர் ஹீரோ படம் போல வாழ்த்துக்கள் ரவி கோமாளி,0,Not_offensive,0,Not_offensive,0,Not_offensive,2,Offensive_Targeted_Individual,False
+enna ma irukkanga vani bhojan appapa,0,Not_offensive,0,Not_offensive,2,Offensive_Targeted_Individual,1,Offensive_Untargeted,False
+gandhi kku adhu disease u athu engalukku habbit u like those who agree,2,Offensive_Targeted_Individual,0,Not_offensive,3,Offensive_Targeted_Group,0,Not_offensive,False
+சுயஜாதி பெருமை பேசுவதால் நமக்கு ஒரு காசுக்கு பிரேஜனம் இல்லை எந்த ஜாதி தலைவரும் இனி வரும் காலத்தில் நாம் எப்படி பொருளாதாரத்தில் முன்னரே வேண்டும் என்பதை பற்றி பேசமாட்டார்கள் எல்லா மதத்திலும் ஜாதியிலும் நல்லவனும் கெட்டவனும் இருக்கிறான் நம் வீட்டில் இருக்கும் பெண் பிள்ளைக்களை பாசத்துடனும் தன்னம்பிக்கையுடனும் வளர்த்தால் அவர்களுக்கு எது நாடக காதல் என்று புரியும் என்னுடைய பதிவை பார்த்து என்னை ஏசுவதால் என்னக்கு ஒரு மயிர் கூட பிரயோஜனம் இல்லை,3,Offensive_Targeted_Group,0,Not_offensive,3,Offensive_Targeted_Group,0,Not_offensive,False
+avanugaluku ellathukum free seat caste base panni venum ana caste nadaimurai la irukka koodadhu padhi dash pasanga caste aa vechi dhan da vela mariyru vangunanunga echa pasanga,0,Not_offensive,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,False
+idha idly nu sonna chutney kooda nambadhu da,3,Offensive_Targeted_Group,2,Offensive_Targeted_Individual,1,Offensive_Untargeted,1,Offensive_Untargeted,False
+suyamava aprm enna mayruku krish mask copy adichu vachuruka,3,Offensive_Targeted_Group,1,Offensive_Untargeted,2,Offensive_Targeted_Individual,1,Offensive_Untargeted,False
+teaser is on fire lalettan and suriya vera level kaappaan and saaho same day release aug 15 anjaan kapram release aagumaaaa,3,Offensive_Targeted_Group,0,Not_offensive,0,Not_offensive,0,Not_offensive,False
+taana tube light and naan sirithal maritha irukum pola,2,Offensive_Targeted_Individual,0,Not_offensive,0,Not_offensive,0,Not_offensive,False
+this movie plot look like a conair,0,Not_offensive,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,False
+இளையதளபதி புரட்சிதளபதி இளைய சூப்பர்ஸ்டார் இன்னும் எத்தனை எழுத்துக்கள் வந்தாலும் நின்னு அடிக்கும் இரண்டே எழுத்து தல,2,Offensive_Targeted_Individual,0,Not_offensive,0,Not_offensive,0,Not_offensive,False
+அவன் வீட்டு பொண்ண விட அடுத்த வீட்டுப் பொண்ணுங்க மேல அப்புடி என்னடா உங்களுக்கு ஆசை அனைத்து செட்டியார் இன மக்கள் சாரபாக படம் வெற்றி பெற வாழ்த்துக்கள்,0,Not_offensive,0,Not_offensive,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,False
+vj aj fans kita prachana vara kudathunu rendu peroda movie scene vechu irukan,0,Not_offensive,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,False
+rajini நா கண்டிப்பா அரசியலுக்கு வருவேன் jayam ravi ஹேய் இது 1996 புரிஞ்சவங்க மட்டும் லைக் பன்னுங்க,0,Not_offensive,0,Not_offensive,0,Not_offensive,2,Offensive_Targeted_Individual,False
+ஒரு தவறு செய்தால் அதை தெரிந்து செய்தால் அவன் தேவன் என்றாலும் விடமாட்டேன்,1,Offensive_Untargeted,0,Not_offensive,0,Not_offensive,4,Offensive_Targeted_Other,False
+nee konjam koottathode vandha nere ulle viduvanne nenecha,0,Not_offensive,1,Offensive_Untargeted,1,Offensive_Untargeted,1,Offensive_Untargeted,False
+enga aandavar big boss 2 seasonla sambadhichadha apdiye padathula potutabla,1,Offensive_Untargeted,1,Offensive_Untargeted,1,Offensive_Untargeted,0,Not_offensive,False
+vetri ne dhanusha pudiche thongitu iru,2,Offensive_Targeted_Individual,0,Not_offensive,2,Offensive_Targeted_Individual,0,Not_offensive,False
+jathi matham illanu umbarakka chast vachu padam edukkuringka loosu pundaikala,1,Offensive_Untargeted,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,False
+thirumamavalavan una mari aluku da ithu,2,Offensive_Targeted_Individual,2,Offensive_Targeted_Individual,1,Offensive_Untargeted,1,Offensive_Untargeted,False
+rajini sir plssss actor ah ve irundhudunga plsssss,0,Not_offensive,0,Not_offensive,0,Not_offensive,2,Offensive_Targeted_Individual,False
+thumbnail la vjs vaikama vitutinga so views kammi ah thaan varum,0,Not_offensive,1,Offensive_Untargeted,1,Offensive_Untargeted,1,Offensive_Untargeted,False
+சர்ச்சைகள் குறித்த கவலையே வேண்டாம் கவர்மெண்ட்டே கவுண்டன் கைலதான் இருக்கு,0,Not_offensive,0,Not_offensive,0,Not_offensive,3,Offensive_Targeted_Group,False
+all the best south superstar karnataka stylish superstar badhshaa kichcha sudeep anna biggest fans,0,Not_offensive,0,Not_offensive,5,not-Tamil,5,not-Tamil,False
+சாதி வெறியர்களுக்கு சாட்டையடி கொடுக்க வருகிறது நாடோடிகள் 2,3,Offensive_Targeted_Group,0,Not_offensive,3,Offensive_Targeted_Group,0,Not_offensive,False
+aga chirantha bothai pechu bothai,0,Not_offensive,3,Offensive_Targeted_Group,2,Offensive_Targeted_Individual,3,Offensive_Targeted_Group,False
+kaithi padam pathutu vandhu trailer paka vandhathu yaaru,0,Not_offensive,2,Offensive_Targeted_Individual,3,Offensive_Targeted_Group,1,Offensive_Untargeted,False
+aday telugu paiyangala unga bahubali record ah thookitu odunga 2 o comming,1,Offensive_Untargeted,1,Offensive_Untargeted,5,not-Tamil,3,Offensive_Targeted_Group,False
+pullingo gethi ayya saami bigiloda pls kaithiya vidatheenga,2,Offensive_Targeted_Individual,3,Offensive_Targeted_Group,2,Offensive_Targeted_Individual,3,Offensive_Targeted_Group,False
+haiyooo hero roll ku indhe munji sariye waradhu,1,Offensive_Untargeted,1,Offensive_Untargeted,5,not-Tamil,5,not-Tamil,False
+intha kizhatu kosu thollai thanga mudiyala,2,Offensive_Targeted_Individual,2,Offensive_Targeted_Individual,3,Offensive_Targeted_Group,1,Offensive_Untargeted,False
+watha sunningala sutha mooditu summa irunga da like kettu picha eduthutu irukkinga idhukku badhila yaaru poolayachum poi oombunga da,4,Offensive_Targeted_Other,1,Offensive_Untargeted,1,Offensive_Untargeted,1,Offensive_Untargeted,False
+முக்குலோத்தோரின் சார்பாக ப பா டம் வெற்றியடைய வாழ்த்துக்கள் பா ரஞ்சித் இப்ப எப்படி இருக்கு சூத்துல சுன்னாம்பு தடவுன மாதிரி இருக்கா,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,2,Offensive_Targeted_Individual,2,Offensive_Targeted_Individual,False
+manju chechi fans undo like adich pottikk,0,Not_offensive,5,not-Tamil,5,not-Tamil,5,not-Tamil,False
+i sense amy jackson as a villain,1,Offensive_Untargeted,1,Offensive_Untargeted,2,Offensive_Targeted_Individual,2,Offensive_Targeted_Individual,False
+adhu ngk illa da ntk eeman,0,Not_offensive,1,Offensive_Untargeted,1,Offensive_Untargeted,2,Offensive_Targeted_Individual,False
+hay ithu 96 yara yamathureenga,0,Not_offensive,1,Offensive_Untargeted,3,Offensive_Targeted_Group,1,Offensive_Untargeted,False
+potta teaser eee myru padam moonchipovum,3,Offensive_Targeted_Group,1,Offensive_Untargeted,1,Offensive_Untargeted,0,Not_offensive,False
+naatula avan avan padam edukka mudiyama eduthutum release panna mudiyama finance prachanai la irukkan nee mattum epdiya correct aana interval la padam release pannite irukka athum release aagurathellam sariya collection aaguthaanne therla,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,0,Not_offensive,False
+yogi babu hair cut climax scene la,0,Not_offensive,3,Offensive_Targeted_Group,2,Offensive_Targeted_Individual,2,Offensive_Targeted_Individual,False
+kola maass ithu padam from vijay fans aanal kandippa ngk flop,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,1,Offensive_Untargeted,False
+என்னடா கையாலயே சுடுரான் நா அப்படியே ஷாக் ஆய்ட்டேன்,2,Offensive_Targeted_Individual,3,Offensive_Targeted_Group,2,Offensive_Targeted_Individual,3,Offensive_Targeted_Group,False
+dei ennada panni vechu rukinga pink padam pochada,1,Offensive_Untargeted,3,Offensive_Targeted_Group,1,Offensive_Untargeted,2,Offensive_Targeted_Individual,False
+seems like thunga vanam malaysian version,5,not-Tamil,2,Offensive_Targeted_Individual,0,Not_offensive,4,Offensive_Targeted_Other,False
+செருப்பை சனில முக்கி அடிச்ச மாருதி ஒரு படம் வெற்றிபெற வாழ்த்துகள் வல்லம்பர் பேரவை காரைக்குடி tn 63 boys,0,Not_offensive,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,2,Offensive_Targeted_Individual,False
+katta waiting 2 0 shankar magic,0,Not_offensive,5,not-Tamil,5,not-Tamil,5,not-Tamil,False
+pora pokku la rajini ooti vittu teengalae,0,Not_offensive,1,Offensive_Untargeted,2,Offensive_Targeted_Individual,2,Offensive_Targeted_Individual,False
+unlike basters all,1,Offensive_Untargeted,3,Offensive_Targeted_Group,1,Offensive_Untargeted,4,Offensive_Targeted_Other,False
+friends 1 07 la vara scene movie la epa varum padam pathavanga sollunga yaravadhu,1,Offensive_Untargeted,0,Not_offensive,0,Not_offensive,0,Not_offensive,False
+nada mokkaya iruk kaala kabali mathiri oruk,1,Offensive_Untargeted,3,Offensive_Targeted_Group,2,Offensive_Targeted_Individual,3,Offensive_Targeted_Group,False
+அந்த 11k unlike பன்னவன பாத்து கேக்குரேன் இதுக்கு மேல என்னடா வேனும் பைத்தியம் புடிச்ச பங்கார நாய்ங்களா,1,Offensive_Untargeted,3,Offensive_Targeted_Group,4,Offensive_Targeted_Other,4,Offensive_Targeted_Other,False
+eppa pah film a release pannuwiga,0,Not_offensive,0,Not_offensive,0,Not_offensive,1,Offensive_Untargeted,False
+1ndian பாதுகாப்பு அமைப்பை மிகவும் மோசமாக சித்தரித்த இந்த படத்திற்கான பாதை மிகவும் மோசமானது எங்கள் அமைப்பு ஒரு சில காட்சிகள் உங்களுக்கு அதிர்ஷ்டம் இல்லை என்று நினைக்கிறேன் திரு மோகன்லால் அவர் மிகவும் புத்திசாலித்தனமான நடிகர் ஆனால் சில,3,Offensive_Targeted_Group,0,Not_offensive,2,Offensive_Targeted_Individual,0,Not_offensive,False
+yuthamthan mudivu pannittengalla what a dialogue dialogue writer yaaru,0,Not_offensive,2,Offensive_Targeted_Individual,2,Offensive_Targeted_Individual,1,Offensive_Untargeted,False
+அடேங்கப்பா thala speech ketukitte erukkanum pola erukku,0,Not_offensive,0,Not_offensive,0,Not_offensive,1,Offensive_Untargeted,False
+பொள்ளாச்சி விசயத்துல எல்லா சாதி காரங்களும் என்னப்பா செஞ்சீங்க அப்ப தெரியலையா யாரு நாடக காதல் கும்பல்னு,0,Not_offensive,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,False
+ennada viswasam mersal sarkar madhri time la likes and views create pannalayae,3,Offensive_Targeted_Group,1,Offensive_Untargeted,2,Offensive_Targeted_Individual,1,Offensive_Untargeted,False
+siva sir viswasatha next pongal 2020 la release pannunga thalaivar sema gandla irrukaru,1,Offensive_Untargeted,1,Offensive_Untargeted,0,Not_offensive,2,Offensive_Targeted_Individual,False
+no of dislikes la theriyudhu idha yaru dislike panni irrupanga nu,0,Not_offensive,1,Offensive_Untargeted,1,Offensive_Untargeted,1,Offensive_Untargeted,False
+sir manasula perriya hero nu nennapo straight ah thala thalapathi ku poitaru orrey mari songs orru friendship story vera edvadhu think pannunga please evalo naal dhan engineering vechi ottuveenga,3,Offensive_Targeted_Group,0,Not_offensive,2,Offensive_Targeted_Individual,1,Offensive_Untargeted,False
+bigil trailer dei yapa dream warrior bayam varanum,1,Offensive_Untargeted,2,Offensive_Targeted_Individual,2,Offensive_Targeted_Individual,2,Offensive_Targeted_Individual,False
+evla periya tesar padathe relish panirukkalam,3,Offensive_Targeted_Group,1,Offensive_Untargeted,0,Not_offensive,0,Not_offensive,False
+dei ennada conair padatha kavuthi pota madiri iruku unga kaithi r thiruttu payale lokesuh,2,Offensive_Targeted_Individual,1,Offensive_Untargeted,1,Offensive_Untargeted,4,Offensive_Targeted_Other,False
+thalapathi fan but vijaysethupathi romba pudikkum,0,Not_offensive,0,Not_offensive,0,Not_offensive,2,Offensive_Targeted_Individual,False
+karthi vere lvl evan anu serikum suryade chettan,5,not-Tamil,0,Not_offensive,5,not-Tamil,0,Not_offensive,False
+indha dalit attooliyatha kekka aal illa ithana naala yeppavum dalit odukkappattavargal mathvanga ellarum kettavanga aana ivanga latchanam ennanu namma ellarkum theriyum thiruma pa ranjith ku pinnala pora kottathoda pecha paathe therinjikkanga ivangellam yaaru nu,2,Offensive_Targeted_Individual,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,False
+raja da nu solra matthiri erukuthu,0,Not_offensive,2,Offensive_Targeted_Individual,2,Offensive_Targeted_Individual,2,Offensive_Targeted_Individual,False
+இந்த படம் வருவதற்கு இன்னும் 11நாள் ஆனா ஒரு அவர் வருவதற்கு இன்னும் எதனை வருஷம் இருக்கு,2,Offensive_Targeted_Individual,0,Not_offensive,0,Not_offensive,0,Not_offensive,False
+இப்பட ஒரு வழியா மதுரைய விட்டு வந்துதிங்கட தாங்க முடியல்ல டா அளபரை,0,Not_offensive,2,Offensive_Targeted_Individual,0,Not_offensive,3,Offensive_Targeted_Group,False
+nambakita kadu iruntha vangikuvanunga kasu iruntha puduingikuvanunga padipa mattum pudungavey mudiyathu chidambaram,0,Not_offensive,0,Not_offensive,1,Offensive_Untargeted,1,Offensive_Untargeted,False
+81k watch 94 k like epdi bro,1,Offensive_Untargeted,0,Not_offensive,0,Not_offensive,0,Not_offensive,False
+இது 96 யார ஏமாத்த பாக்குற பங்கம் டா நைஸ் script jayam ravi sir,2,Offensive_Targeted_Individual,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,0,Not_offensive,False
+ennada ethu indha karumatha than randu varusama eduthutu erunthayada siva,2,Offensive_Targeted_Individual,1,Offensive_Untargeted,2,Offensive_Targeted_Individual,1,Offensive_Untargeted,False
+இன்னுமாடா ரஜினி அரசியலுக்கு வரல அட கோமாளிங்களா,1,Offensive_Untargeted,2,Offensive_Targeted_Individual,2,Offensive_Targeted_Individual,4,Offensive_Targeted_Other,False
+thala next sivaji da thuiya tamil pessi nadikkiradhula thala da king of tamil cenima,0,Not_offensive,0,Not_offensive,2,Offensive_Targeted_Individual,2,Offensive_Targeted_Individual,False
+இதுக்கு பேருதா தற்புகழ்ச்சிஅணி எல்லா படத்துலயும் தொடருது,4,Offensive_Targeted_Other,0,Not_offensive,0,Not_offensive,0,Not_offensive,False
+die hard dhanush fans kill the like button,0,Not_offensive,0,Not_offensive,0,Not_offensive,1,Offensive_Untargeted,False
+அண்ணன் அரவிந்தசாமி தம்பி அருண்விஜய் கடைகுட்டி சிம்பு அரவிந்த சாமியின் நண்பன் விஜய் சேதுபதி இதற்கு மேல் கதை நான் சொல்ல மாட்டேன் நீங்களே பாருங்க தெரிக்க விட்டிருக்காங்க,0,Not_offensive,3,Offensive_Targeted_Group,0,Not_offensive,3,Offensive_Targeted_Group,False
+pondichéry la saraku kammiya kidacha ella jadhi karanum vandhu nalla kudichitu povom paappa,0,Not_offensive,3,Offensive_Targeted_Group,2,Offensive_Targeted_Individual,3,Offensive_Targeted_Group,False
+ye to kuch aur hi lag rahi hai,0,Not_offensive,5,not-Tamil,5,not-Tamil,5,not-Tamil,False
+voice seekrama varuthu aprama thaan lips movement varuthu,1,Offensive_Untargeted,0,Not_offensive,1,Offensive_Untargeted,0,Not_offensive,False
+கடைசியா எங்க வீட்டு பெண் சிங்கம் வருது,0,Not_offensive,0,Not_offensive,2,Offensive_Targeted_Individual,3,Offensive_Targeted_Group,False
+apa idhulla sk van yarum illayada,1,Offensive_Untargeted,1,Offensive_Untargeted,1,Offensive_Untargeted,3,Offensive_Targeted_Group,False
+yara athu padam pudikalana pudikala sariyillai nu sollittu pongada avlo than enna ma kku da fans comper panringa,1,Offensive_Untargeted,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,False
+ѕєmmα thαlα chαncє íllα αwєѕσmє trαílαr,0,Not_offensive,5,not-Tamil,5,not-Tamil,5,not-Tamil,False
+no one can kill once idea nikola tesla,1,Offensive_Untargeted,0,Not_offensive,1,Offensive_Untargeted,4,Offensive_Targeted_Other,False
+because avaruthana yoschu eluthunaaru i mean kathaiya,4,Offensive_Targeted_Other,1,Offensive_Untargeted,1,Offensive_Untargeted,1,Offensive_Untargeted,False
+dislike pannavan oru appanukku poranthavan ellada9,4,Offensive_Targeted_Other,1,Offensive_Untargeted,1,Offensive_Untargeted,1,Offensive_Untargeted,False
+1m likes innum vijay anna va thavira vera evanum thottathu illa,0,Not_offensive,0,Not_offensive,0,Not_offensive,2,Offensive_Targeted_Individual,False
+sathyaraj ku apro vijay ku tha wig nalla set aaguthu,0,Not_offensive,2,Offensive_Targeted_Individual,2,Offensive_Targeted_Individual,2,Offensive_Targeted_Individual,False
+teaser la ye mukka padatha mudichitinga innum enna balance,0,Not_offensive,1,Offensive_Untargeted,1,Offensive_Untargeted,1,Offensive_Untargeted,False
+introduction moonja paartha udaney unlike potutan,2,Offensive_Targeted_Individual,1,Offensive_Untargeted,2,Offensive_Targeted_Individual,1,Offensive_Untargeted,False
+october release aa november aachu daaa,4,Offensive_Targeted_Other,2,Offensive_Targeted_Individual,0,Not_offensive,0,Not_offensive,False
+not at all nice kandipa flop u than siripa varuthu,3,Offensive_Targeted_Group,2,Offensive_Targeted_Individual,2,Offensive_Targeted_Individual,4,Offensive_Targeted_Other,False
+நான் அரசியலுக்கு வருவது உறுதி kubeer ra deii fdfs பாத்தே ஆகணும்,0,Not_offensive,0,Not_offensive,0,Not_offensive,2,Offensive_Targeted_Individual,False
+nice teaser keep it up but anjaan movie mathiri paniraathinga,3,Offensive_Targeted_Group,0,Not_offensive,0,Not_offensive,0,Not_offensive,False
+super trailer baa sbkt thaan mokkaiya pochu,3,Offensive_Targeted_Group,1,Offensive_Untargeted,2,Offensive_Targeted_Individual,2,Offensive_Targeted_Individual,False
+oru thar mela viswasam katta en mathavangala kettavangala akuringa mass,0,Not_offensive,0,Not_offensive,1,Offensive_Untargeted,1,Offensive_Untargeted,False
+dai ennada ithu sasikumar summa kattaiya vachi car kannadiya odachathukku car parakkuthu,2,Offensive_Targeted_Individual,3,Offensive_Targeted_Group,2,Offensive_Targeted_Individual,1,Offensive_Untargeted,False
+இஅனங தநழ ததமவ நயலன பபவ மமக மனன ணட ளஏஏ,5,not-Tamil,0,Not_offensive,2,Offensive_Targeted_Individual,0,Not_offensive,False
+teaser nalla thaan da irukku loosu pasangala,1,Offensive_Untargeted,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,False
+பங்காளிகளா நீங்கள் இங்க உங்க சாதிதான் பெரியாதுனு சொல்லுறிங்களே பிராமணன் நம்ம எல்லோரையும் சூத்திரன் தேவடியமகன் சொல்லும்போது நம்ம மீசைகள் துடிப்பதில்லையே எப்படியோ நமக்கு கீழ ஒருத்தன் இருந்தா போதும் இதில் நிறைய அமைப்புகள் வாழ்த்துக்கள் சொல்லி இருக்கோம் நம்மில் யார் பெரியவன் தெரியுமா,0,Not_offensive,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,False
+amitabh bachan dei ennada panni vechi irukkinga en padatha,1,Offensive_Untargeted,1,Offensive_Untargeted,2,Offensive_Targeted_Individual,2,Offensive_Targeted_Individual,False
+முதல் சீனே குருமா வ கழுத்த அறுக்குறானுங்க,0,Not_offensive,3,Offensive_Targeted_Group,2,Offensive_Targeted_Individual,2,Offensive_Targeted_Individual,False
+viswasam trailer inaiku varuthu athu varaikum vivegam trailer ah paathu veri yethikuvom,0,Not_offensive,3,Offensive_Targeted_Group,2,Offensive_Targeted_Individual,2,Offensive_Targeted_Individual,False
+padam release panathinga bayangara loss aavinga thalapathy vararu,2,Offensive_Targeted_Individual,2,Offensive_Targeted_Individual,1,Offensive_Untargeted,3,Offensive_Targeted_Group,False
+sathyanext lady luv u lotvaani,0,Not_offensive,0,Not_offensive,0,Not_offensive,2,Offensive_Targeted_Individual,False
+har role me kangana best,0,Not_offensive,5,not-Tamil,5,not-Tamil,5,not-Tamil,False
+1 24 thalapathy fans kola kaandula irukkanga,3,Offensive_Targeted_Group,2,Offensive_Targeted_Individual,1,Offensive_Untargeted,1,Offensive_Untargeted,False
+nainika is just like meena next kannazagi found,0,Not_offensive,0,Not_offensive,2,Offensive_Targeted_Individual,1,Offensive_Untargeted,False
+ada நம்ம பஞ்சாயத்து கருணாஸு நல்லா இருக்கியா கூவத்தூர் மாமா கருணாஸு,2,Offensive_Targeted_Individual,3,Offensive_Targeted_Group,0,Not_offensive,0,Not_offensive,False
+இது தமிழ் படமா இல்ல ஹாலிவுட் படமா,0,Not_offensive,0,Not_offensive,0,Not_offensive,3,Offensive_Targeted_Group,False
+aiooo samy mudilada yenda 2d ku inoru flop conform,3,Offensive_Targeted_Group,1,Offensive_Untargeted,2,Offensive_Targeted_Individual,1,Offensive_Untargeted,False
+oruthar mela viswasam kaata innoruthara enn asingapaduthuringa true,0,Not_offensive,1,Offensive_Untargeted,0,Not_offensive,1,Offensive_Untargeted,False
+பொளாளாச்சி சம்பவத்துக்காக யாரும் ஒன்னும் சொல்லவில்லையே யாரும் யாரையும் போய் வெட்டவில்லையே ஏன் அவர்கள் பெண்கள் இல்லையா,0,Not_offensive,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,False
+திராவிட ஓநாய்கள் வாய் திறந்தால் வாயிலே விடுவோம்,0,Not_offensive,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,False
+inga vanthu yellam unga saathi pera sollringa vekkama illa tamil nattala irukarathukey asingma iruku yellam saathi veri piditha mirugangal padicha yellam maaridunum sonnaga onnum maaraley kalvium pagatharium thotru vittathu inga yevanum manusana manusana paakala saathiyathan paakuran,0,Not_offensive,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,False
+semma mass karthi sri super thalapathy veriyan madurai,2,Offensive_Targeted_Individual,0,Not_offensive,0,Not_offensive,0,Not_offensive,False
+comment la en da picha edukuringa pichakara pasangala,3,Offensive_Targeted_Group,1,Offensive_Untargeted,1,Offensive_Untargeted,4,Offensive_Targeted_Other,False
+pooran da avan avan pogavumatan avan sagavumatan phoenix paravai mare erikka erikka ezunduvare thala,0,Not_offensive,0,Not_offensive,1,Offensive_Untargeted,1,Offensive_Untargeted,False
+kola masses trailer thalaiva nee varusam valanum thalaiva,0,Not_offensive,1,Offensive_Untargeted,0,Not_offensive,1,Offensive_Untargeted,False
+niraye perkkitte ellatha ketta pazhakkom enkitte erukkeeeeeee,0,Not_offensive,1,Offensive_Untargeted,1,Offensive_Untargeted,1,Offensive_Untargeted,False
+movie pathutu trailer paka vanthavanga like podunga,4,Offensive_Targeted_Other,0,Not_offensive,0,Not_offensive,0,Not_offensive,False
+ithu kandu happy aayath vijay annante piller aaanu,0,Not_offensive,0,Not_offensive,0,Not_offensive,5,not-Tamil,False
+enuma da evaru china paiyana irukaru,0,Not_offensive,1,Offensive_Untargeted,1,Offensive_Untargeted,1,Offensive_Untargeted,False
+அட்டகத்தி மச்சி லவ் பன்னவுடனே போட்டுடனும் அப்ப தான் அவ நம்பகூடவே இருப்பா திரௌபதி அம்மனமா இருக்குறது பொண்னுங்களுக்கு மட்டும் தா அவமானமா உனக்கில்ல்ல பொதுவுடைமை தோழர்களுக்கு செருப்படி வசனம் திரெளபதி தீ,0,Not_offensive,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,False
+trailer ae ivlo mokkaya iruku padam endha letchanathula iruko,3,Offensive_Targeted_Group,1,Offensive_Untargeted,1,Offensive_Untargeted,1,Offensive_Untargeted,False
+தோழர் ஒரு வன்னியன் செட்டியாரையோ அல்லது மற்ற உயர்ந்த சாதியினர் ேவரு சாதி பெண்களை ஏமாற்றவே இல்லையா அது எல்லாம் உங்களுக்கு நாடக காதல் இல்லையா அது என்ன காதல்,0,Not_offensive,0,Not_offensive,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,False
+kammattipadam malayalam movie para para song music,3,Offensive_Targeted_Group,0,Not_offensive,0,Not_offensive,5,not-Tamil,False
+ethu oru short film na pathurukan kakabuka nu semaiya erukum atha yen film ah eduthurukanga,3,Offensive_Targeted_Group,0,Not_offensive,0,Not_offensive,0,Not_offensive,False
+idha like appadiyea innu two week vara trailer la dislike irukanu yenna frnds appa idha 61k summa therikavedanuuu,0,Not_offensive,1,Offensive_Untargeted,1,Offensive_Untargeted,1,Offensive_Untargeted,False
+inaiku periyar ambethkar irundha indha mathri padam varuma,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,0,Not_offensive,False
+looks like the chaser movie ye jadai pinni poo vecha maaduri irukku,2,Offensive_Targeted_Individual,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,False
+manju looks like kanmadham character,0,Not_offensive,0,Not_offensive,2,Offensive_Targeted_Individual,2,Offensive_Targeted_Individual,False
+dissapointed saamy 2 trailer is better vikram mass,0,Not_offensive,1,Offensive_Untargeted,0,Not_offensive,1,Offensive_Untargeted,False
+suriya ku pair illa ahhh adapavingala pavam pannitigaley da,4,Offensive_Targeted_Other,1,Offensive_Untargeted,1,Offensive_Untargeted,3,Offensive_Targeted_Group,False
+இன்னும் ஏன்டா ஜாதி படமா எடுக்குறீங்க,0,Not_offensive,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,1,Offensive_Untargeted,False
+evlo tha asinga pattalum great da neenga,1,Offensive_Untargeted,0,Not_offensive,0,Not_offensive,0,Not_offensive,False
+நாங்க இருக்கோம் மோகன் அண்ணா கவலை படாதீங்க,0,Not_offensive,0,Not_offensive,0,Not_offensive,3,Offensive_Targeted_Group,False
+thalaivara vachu senjutanga theater la poi pakkanum nu yosikka vacha trailer,0,Not_offensive,1,Offensive_Untargeted,1,Offensive_Untargeted,1,Offensive_Untargeted,False
+oru seen la kuda thala kan imaikave illa idha yarellam note panninga hit like,0,Not_offensive,0,Not_offensive,0,Not_offensive,1,Offensive_Untargeted,False
+heyyy ithu 96 yaara ematharainga,0,Not_offensive,1,Offensive_Untargeted,0,Not_offensive,1,Offensive_Untargeted,False
+evvalavu periyaa aala aanalum indha madiri character roll ungala than mudiyum thala,0,Not_offensive,0,Not_offensive,0,Not_offensive,1,Offensive_Untargeted,False
+seems like mission impossible tom cruise,1,Offensive_Untargeted,2,Offensive_Targeted_Individual,1,Offensive_Untargeted,4,Offensive_Targeted_Other,False
+par mulusa batman agiya sivakarthikeyan ah par,0,Not_offensive,2,Offensive_Targeted_Individual,2,Offensive_Targeted_Individual,2,Offensive_Targeted_Individual,False
+இத எல்லாம் சிங்கம் பண்ணிடாரு பா,0,Not_offensive,3,Offensive_Targeted_Group,4,Offensive_Targeted_Other,4,Offensive_Targeted_Other,False
+it s trailer is most dangerous trailer,0,Not_offensive,2,Offensive_Targeted_Individual,3,Offensive_Targeted_Group,4,Offensive_Targeted_Other,False
+அஜித் பிடிக்காதுன்லாம் கிடையாது ஆனா சத்தியமா ரசிக்குபடி இல்ல worst bgm இரைச்சலான எடிட்டிங் பிராய்லர் கோழி மாதிரி ஹீரோ மனதிற்கு நெருக்கமான screenplay மாதிரி தெரில hollywood ல அடிச்சு துவைச்ச scenes அரைத்த மாவு,0,Not_offensive,3,Offensive_Targeted_Group,2,Offensive_Targeted_Individual,2,Offensive_Targeted_Individual,False
+anyone came to see ajith fans vijay fans sandai ps namakku edhukku vambu,1,Offensive_Untargeted,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,False
+intha trailer aa dislike panravanlaam sirikka theriyatha van pola,0,Not_offensive,1,Offensive_Untargeted,1,Offensive_Untargeted,1,Offensive_Untargeted,False
+ellam avan seyal pada thaa pink nu edutha athaa tamil la remake panni nerkonda paarvai nu edukkurathu,1,Offensive_Untargeted,3,Offensive_Targeted_Group,1,Offensive_Untargeted,2,Offensive_Targeted_Individual,False
+ajith fans reaction kaithi movie director next thalapathy movie yoda director nalla irukunu sollalama ila mokkanu sollalama billa pandi hitunu soli otikalam,1,Offensive_Untargeted,3,Offensive_Targeted_Group,2,Offensive_Targeted_Individual,2,Offensive_Targeted_Individual,False
+who is dislikers bigil boys ah,1,Offensive_Untargeted,1,Offensive_Untargeted,2,Offensive_Targeted_Individual,2,Offensive_Targeted_Individual,False
+entha nai da thalaivarku vayasaaiduchu nu sonnathu singam da,1,Offensive_Untargeted,1,Offensive_Untargeted,1,Offensive_Untargeted,2,Offensive_Targeted_Individual,False
+theri ya pathi tapa pesina naaku azhigidum,3,Offensive_Targeted_Group,0,Not_offensive,2,Offensive_Targeted_Individual,2,Offensive_Targeted_Individual,False
+ithu panakara ponna pethavanga kathranum neenga ethuku boss peruma patutu irukeenga,3,Offensive_Targeted_Group,0,Not_offensive,1,Offensive_Untargeted,0,Not_offensive,False
+any one here to check likes after bigil 1 5 million likes,0,Not_offensive,0,Not_offensive,0,Not_offensive,1,Offensive_Untargeted,False
+sakthimaan sollidu thovaikira kallulanthu kila vilunthu adipattavanka like pannuga 5 thaiyal enaku,3,Offensive_Targeted_Group,1,Offensive_Untargeted,1,Offensive_Untargeted,0,Not_offensive,False
+visvasam laa song adichithuku song inthu laa same tune solli paaru ga song paaraka vidu paaraka vidu adichi paaraka vidu,0,Not_offensive,3,Offensive_Targeted_Group,2,Offensive_Targeted_Individual,2,Offensive_Targeted_Individual,False
+i think thala line maari poittu irukaaru paavam,2,Offensive_Targeted_Individual,0,Not_offensive,0,Not_offensive,0,Not_offensive,False
+என்றும் இசைஞானி இசை உயிர் துடிப்பு இல்லா மனிதனையும் உயிர் பெற செய்யும் இசைக்கு என கடவுள் உருவம் நம்ம இசைஞானி மட்டுமே,0,Not_offensive,0,Not_offensive,0,Not_offensive,3,Offensive_Targeted_Group,False
+veera thevar vamsam da kallar da daai,0,Not_offensive,3,Offensive_Targeted_Group,0,Not_offensive,1,Offensive_Untargeted,False
+edho oru நாய் ooola vituchu ngk ah teaser ah munnale vj fans bayanthu leak pantaga apdinu ipo indha oppan teaser crt aana time reales panaga idhuku ennada soldreega potaaigala ne 1000 get up podu hollywood leveluku kooda poogalam thalapathy oada kaal thoosiku varamudyathuda neegala surya kutakoothi sarkar teaser ah break panna porangalam ayyo,4,Offensive_Targeted_Other,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,False
+konjam kuda vetkamae illama verum inna polapukku dislike panra echa payaluka ajith fans not ajith,2,Offensive_Targeted_Individual,1,Offensive_Untargeted,1,Offensive_Untargeted,3,Offensive_Targeted_Group,False
+என்னாங்கடா இதுலயும் 6 பேக் இல்ல வச்சி செஞ்சிட்டான் அடேய் சிவா,0,Not_offensive,2,Offensive_Targeted_Individual,2,Offensive_Targeted_Individual,2,Offensive_Targeted_Individual,False
+inga manushana manushana pakura varaikum 100 drowpathi 200 asuran vandhute dhan irukkumm kaala koduma da,3,Offensive_Targeted_Group,1,Offensive_Untargeted,3,Offensive_Targeted_Group,1,Offensive_Untargeted,False
+etha idly nu sona chatiny kuda nambathu,0,Not_offensive,1,Offensive_Untargeted,2,Offensive_Targeted_Individual,2,Offensive_Targeted_Individual,False
+surya anne enthe varesho ningetha mass anne india maddo elle malaysia le engge urelle semme fans ungeleke anne i am big fan surya anne i really like u engelodde support epevo ungeleke ereko qnne all the best and god bless u anne,0,Not_offensive,5,not-Tamil,5,not-Tamil,5,not-Tamil,False
+p e t t a paraaaaaaaaaaak trailer kola massssa irukku,0,Not_offensive,1,Offensive_Untargeted,1,Offensive_Untargeted,1,Offensive_Untargeted,False
+endha trailer time sollamatte 200 time melle pathavange mattum like podunge,0,Not_offensive,0,Not_offensive,0,Not_offensive,1,Offensive_Untargeted,False
+vijay sethupathi is back nu soldravanga vandhu kila kuthunga likela,1,Offensive_Untargeted,2,Offensive_Targeted_Individual,0,Not_offensive,0,Not_offensive,False
+joker u ku equala vandhutaru namma hip hop thamizha aadhi,2,Offensive_Targeted_Individual,0,Not_offensive,2,Offensive_Targeted_Individual,0,Not_offensive,False
+ennada panni vachu irukinga siva va avaruku ethuku intha pomma dressla pottu comedy pandringa,3,Offensive_Targeted_Group,1,Offensive_Untargeted,2,Offensive_Targeted_Individual,2,Offensive_Targeted_Individual,False
+thank you vinoth sema sema mokka,0,Not_offensive,0,Not_offensive,0,Not_offensive,1,Offensive_Untargeted,False
+hero attitude pirates of carebian mari erukku,0,Not_offensive,2,Offensive_Targeted_Individual,3,Offensive_Targeted_Group,4,Offensive_Targeted_Other,False
+dei thumbnail la maathura bihar kaaran maari ye iruku,3,Offensive_Targeted_Group,2,Offensive_Targeted_Individual,2,Offensive_Targeted_Individual,2,Offensive_Targeted_Individual,False
+mr mani ratman padam odalana setha nee,0,Not_offensive,2,Offensive_Targeted_Individual,2,Offensive_Targeted_Individual,2,Offensive_Targeted_Individual,False
+sir u r a mass actor,1,Offensive_Untargeted,0,Not_offensive,0,Not_offensive,0,Not_offensive,False
+9 5k dislikes 9 5k politicians,0,Not_offensive,2,Offensive_Targeted_Individual,3,Offensive_Targeted_Group,4,Offensive_Targeted_Other,False
+rajini tha mass vj ajith lam tusu,2,Offensive_Targeted_Individual,2,Offensive_Targeted_Individual,2,Offensive_Targeted_Individual,0,Not_offensive,False
+30k dai next unga teaser varum sethinga da,0,Not_offensive,2,Offensive_Targeted_Individual,1,Offensive_Untargeted,1,Offensive_Untargeted,False
+pa ra director engapa ithu oru kuripita samukathin thaakuthal athana sola pora naadaga kaathal group,0,Not_offensive,3,Offensive_Targeted_Group,0,Not_offensive,2,Offensive_Targeted_Individual,False
+மிஷ்கின் சினிமாவின் சலித்து போன வட்டத்திற்குள் சுருங்கா மிருகம் இந்திய_சினிமாவின்_வரம்,0,Not_offensive,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,False
+ee myran enthoru fans power aadey,1,Offensive_Untargeted,0,Not_offensive,5,not-Tamil,5,not-Tamil,False
+v v nice trailer marana kaattu,1,Offensive_Untargeted,0,Not_offensive,0,Not_offensive,0,Not_offensive,False
+ஆகா அனைத்து உயர் சாதி நன்பர்களும் ஒன்று கூடி கமெண்ட் ல் வாழ்துவதை காண மகிழ்ச்சியாக உள்ளது எல்லாரும் ஒன்றாகத்தான இருக்கிங்க அப்ப வந்து ஒரு ஊம்பு ஊமபிட்டு போங்கடா தாயோலிகளா ஆண்ட பேண்ட னு கிட்டு,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,4,Offensive_Targeted_Other,False
+ayyo comedy panni vechringakale yaendaaa ippidi,0,Not_offensive,2,Offensive_Targeted_Individual,1,Offensive_Untargeted,2,Offensive_Targeted_Individual,False
+rajiniya villana pottutdu sethu va hero va pottu eentha semaya eenthu eekum,0,Not_offensive,1,Offensive_Untargeted,2,Offensive_Targeted_Individual,2,Offensive_Targeted_Individual,False
+nariya comment bigil ah illa kaidhiyanu varuthu ana ella commentlayum like entha padam vaikurangalo athu tha majority ah iruku,2,Offensive_Targeted_Individual,3,Offensive_Targeted_Group,2,Offensive_Targeted_Individual,3,Offensive_Targeted_Group,False
+seems to be hindi film ek tha tiger remake,3,Offensive_Targeted_Group,5,not-Tamil,5,not-Tamil,1,Offensive_Untargeted,False
+for 39k views 36k likes ah eppaaaa,4,Offensive_Targeted_Other,2,Offensive_Targeted_Individual,0,Not_offensive,1,Offensive_Untargeted,False
+pa ranjith unoda kaviya kathal padamana atakathi solum nee evalvu peri keeztharamanavan endru nee mel jathi elorum ketavargal pondru pimbam erpadithi kabali kala edutha paraerum perumal movieku mutu koduthu samuga sinthanai ula movie nu sona ipo unga group pathium neengal kasukaga seyum nadaga kathal katapanchayathu keeztharamana arasyil patriyum oru movie ithuvum samuga sinthanai ula movie dhan epothum un appanaku appan oruthan irupan da,0,Not_offensive,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,False
+thalaivaaaaaaa edhu edhu edhudha vayasanalum unga style ungala vittu pogala,0,Not_offensive,1,Offensive_Untargeted,0,Not_offensive,1,Offensive_Untargeted,False
+நான் முதல் தடவ பார்க்கும் போதும் 32k இப்போ 101k பட்டைய்ய கிளப்புங்க,0,Not_offensive,0,Not_offensive,3,Offensive_Targeted_Group,1,Offensive_Untargeted,False
+குடிக்க கஞ்சி இல்லாம இருந்தாலும் நாம் எல்லாரும் சத்திரியன் டா,0,Not_offensive,0,Not_offensive,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,False
+நீ வசூல் மன்னனாமே ஹ்ம் ஊரில அப்படித் தான் சொல்லிக்கிறாங்க உண்மையை நிதானமா சொல்லியிருக்கார் தளபதி,0,Not_offensive,0,Not_offensive,2,Offensive_Targeted_Individual,2,Offensive_Targeted_Individual,False
+vijay fans varuvanga ithu remakenu yaarkum theriyatha unmaiya solluvanga,0,Not_offensive,0,Not_offensive,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,False
+dai ennada ithu ivlo bayangarama irukkku night show book panida vendiyathu thaan,0,Not_offensive,1,Offensive_Untargeted,1,Offensive_Untargeted,1,Offensive_Untargeted,False
+unkooda irukaradhu sandhosamngaradha vida nee thaan ennoda sandhosamaave irukka,0,Not_offensive,1,Offensive_Untargeted,1,Offensive_Untargeted,1,Offensive_Untargeted,False
+therikavidalama nu solarathu perusu ila therika vidanum antha capacity enga thalaivar vijay ku matum than da iruku,0,Not_offensive,1,Offensive_Untargeted,2,Offensive_Targeted_Individual,2,Offensive_Targeted_Individual,False
+kilavanukku verum guest role lots of court dialogue scenes ivanukku tamil tadumarrum distributors mulichu kitta seri,2,Offensive_Targeted_Individual,1,Offensive_Untargeted,2,Offensive_Targeted_Individual,1,Offensive_Untargeted,False
+trailer e eppidinna movie appidi therikkuthunnu parunkavan,4,Offensive_Targeted_Other,0,Not_offensive,1,Offensive_Untargeted,1,Offensive_Untargeted,False
+viswasam petta mersal sarkar ipadi ella movies record eh kandippa break pannum agree,0,Not_offensive,2,Offensive_Targeted_Individual,2,Offensive_Targeted_Individual,2,Offensive_Targeted_Individual,False
+dislike pannura naai ella echa family la thaan piranthuruppaan entha jaathi matham a irundhalum seri padam vettri pera vaazhtthukal,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,0,Not_offensive,4,Offensive_Targeted_Other,False
+oonaku koovamea varadha this question my friends yeankitta many times keaturukanga,0,Not_offensive,1,Offensive_Untargeted,1,Offensive_Untargeted,1,Offensive_Untargeted,False
+1 20 vijay refer pandra maathiri iruke,0,Not_offensive,0,Not_offensive,2,Offensive_Targeted_Individual,2,Offensive_Targeted_Individual,False
+oviyam varaiyiravan avan pullaiku oviyam varaya solli kodupan yengapa military da odi velayadava solli kuduthurupan,2,Offensive_Targeted_Individual,3,Offensive_Targeted_Group,2,Offensive_Targeted_Individual,3,Offensive_Targeted_Group,False
+she just looks so awful,0,Not_offensive,2,Offensive_Targeted_Individual,2,Offensive_Targeted_Individual,2,Offensive_Targeted_Individual,False
+thalaiva therika vidudinga ah ipove mov ah pakkanum pola iruke,0,Not_offensive,0,Not_offensive,1,Offensive_Untargeted,1,Offensive_Untargeted,False
+endha padam vanthalum yeri mithuchutu poite irupen singam da,0,Not_offensive,1,Offensive_Untargeted,1,Offensive_Untargeted,2,Offensive_Targeted_Individual,False
+namaku yadhuku indha tava illadha vala mr ram,4,Offensive_Targeted_Other,1,Offensive_Untargeted,2,Offensive_Targeted_Individual,1,Offensive_Untargeted,False
+0 19 enagada sundar c padam maare car parakkudhu oru neyayam veanamada,2,Offensive_Targeted_Individual,1,Offensive_Untargeted,1,Offensive_Untargeted,3,Offensive_Targeted_Group,False
+oru oru shot oru diamond maadhiri irukuthu,0,Not_offensive,2,Offensive_Targeted_Individual,1,Offensive_Untargeted,1,Offensive_Untargeted,False
+ஆண்ணா மீதி காசு கொடுங்க கொய்யால நீ கொடுத்ததே மீதி தான் டா,4,Offensive_Targeted_Other,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,False
+சும்மா சொல்ல கூடாது திரௌபதி நமக்கான படம் தான் என்று நினைத்தோம் ஆனால் அது தவறு என்று தற்போது தான் தெரிந்து கொண்டேன் ஒட்டு மொத்த தமிழ்சமூகமும் ஆதரவு தருதுன்னா இது கூட ஒரு வகையான மண்_காக்கும்_புரட்சி தான் ஒரு குறிப்பிட்ட நாய்ங்க கதறல் சத்தம் அதிகமாவே கேட்குது வேற லெவல்,0,Not_offensive,0,Not_offensive,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,False
+0 19 enna pa scene idhu engala paatha kena paya mari iruka car uh sixer ku podhu,3,Offensive_Targeted_Group,1,Offensive_Untargeted,1,Offensive_Untargeted,1,Offensive_Untargeted,False
+enakum same prblm entha idamnu paakamatten sirippu vanthruum enna ariyaama,0,Not_offensive,1,Offensive_Untargeted,1,Offensive_Untargeted,1,Offensive_Untargeted,False
+pongada neengalum unga jathi um,0,Not_offensive,3,Offensive_Targeted_Group,2,Offensive_Targeted_Individual,4,Offensive_Targeted_Other,False
+dislike panna 400 payulum poramaila dislike pannirukka y not logesh next flim is vijay,4,Offensive_Targeted_Other,1,Offensive_Untargeted,1,Offensive_Untargeted,1,Offensive_Untargeted,False
+dei mutaa pasangala batman moviea copy panreengala,1,Offensive_Untargeted,1,Offensive_Untargeted,1,Offensive_Untargeted,4,Offensive_Targeted_Other,False
+ini nadaga kadhal velaiku ini nadaga kadhal pannalum nadakka kall irukkadhu unaku kurumaa,0,Not_offensive,3,Offensive_Targeted_Group,1,Offensive_Untargeted,4,Offensive_Targeted_Other,False
+naan sirithal nee sirithal oorey sirikum pozhapu sirippa sirikkum,3,Offensive_Targeted_Group,0,Not_offensive,0,Not_offensive,0,Not_offensive,False
+tha edhu dhan original thalaivar padam trailaruke kotti kudukalam thalaivar yeppavume maas dhan,0,Not_offensive,1,Offensive_Untargeted,0,Not_offensive,1,Offensive_Untargeted,False
+ithu maniratnam padama ippo thaan nyabagam varuthu,0,Not_offensive,3,Offensive_Targeted_Group,0,Not_offensive,3,Offensive_Targeted_Group,False
+ema idhellam oru teaser uh ma,1,Offensive_Untargeted,0,Not_offensive,0,Not_offensive,0,Not_offensive,False
+இங்கே ஜாதி பெயர் சொல்லும் அனைத்து வீரர்களும் சூத்திரன் என்பதை மறந்து விட வேண்டாம் சூத்திர பெரும boys,3,Offensive_Targeted_Group,0,Not_offensive,0,Not_offensive,0,Not_offensive,False
+ivlo masssaaa la trailer vanthuchuna haters la ayutha sethuduvangala,4,Offensive_Targeted_Other,1,Offensive_Untargeted,1,Offensive_Untargeted,1,Offensive_Untargeted,False
+trailer la evalo narration almost story reveal panni padathuku kupudura maari mani sir aala mattum dhan mudiyum,2,Offensive_Targeted_Individual,2,Offensive_Targeted_Individual,2,Offensive_Targeted_Individual,1,Offensive_Untargeted,False
+oiii enna da vijay movie ku sirikira nee enna periya ah,1,Offensive_Untargeted,2,Offensive_Targeted_Individual,2,Offensive_Targeted_Individual,2,Offensive_Targeted_Individual,False
+thalaivar troll bangam ya yov,0,Not_offensive,1,Offensive_Untargeted,2,Offensive_Targeted_Individual,2,Offensive_Targeted_Individual,False
+rdj vanthu sethupathi padathuku dubbing pananum endgame sabam ungala sumavidathu iron man voice,0,Not_offensive,2,Offensive_Targeted_Individual,2,Offensive_Targeted_Individual,2,Offensive_Targeted_Individual,False
+engayo kadasila ketta maathirikke music ending ohh sherlock holmes saaa,2,Offensive_Targeted_Individual,1,Offensive_Untargeted,2,Offensive_Targeted_Individual,1,Offensive_Untargeted,False
+0 44 to 1 30 villathanamana music ahh irrku j ithula nallavala ketavala,0,Not_offensive,1,Offensive_Untargeted,1,Offensive_Untargeted,1,Offensive_Untargeted,False
+no trending yet in srilanka,0,Not_offensive,0,Not_offensive,0,Not_offensive,1,Offensive_Untargeted,False
+ஹலோ இயக்குனர் சார் நல்ல யோசனை கோமாளி படம்,0,Not_offensive,0,Not_offensive,0,Not_offensive,2,Offensive_Targeted_Individual,False
+padam mokkaya than irukkum odave odathu,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,1,Offensive_Untargeted,4,Offensive_Targeted_Other,False
+mayiru maari irukku waiting for nithya menon version,3,Offensive_Targeted_Group,0,Not_offensive,0,Not_offensive,0,Not_offensive,False
+i hate v s iron man kill it v s,2,Offensive_Targeted_Individual,2,Offensive_Targeted_Individual,2,Offensive_Targeted_Individual,1,Offensive_Untargeted,False
+dislikes poetta avunga amma silukku da,1,Offensive_Untargeted,1,Offensive_Untargeted,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,False
+yenda krish maska copi adichi vachirukkinga puthusa ethavathu design pannirukkalam,4,Offensive_Targeted_Other,1,Offensive_Untargeted,2,Offensive_Targeted_Individual,3,Offensive_Targeted_Group,False
+dai enna da panni vechu irukinga,3,Offensive_Targeted_Group,1,Offensive_Untargeted,1,Offensive_Untargeted,1,Offensive_Untargeted,False
+ipa ethukku ellarum sathi vachu wish panringa usurukku poradurappa inthe jathi onnathukkum uthavathu namma ellarum manusangala irupom,0,Not_offensive,0,Not_offensive,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,False
+saguni padam madhiri theriudhu soori irukkuradha pardha romba bayama irukkudhu,2,Offensive_Targeted_Individual,3,Offensive_Targeted_Group,0,Not_offensive,1,Offensive_Untargeted,False
+padam pakanum pola iruku kasu keta amma serupala adipan soltranga,2,Offensive_Targeted_Individual,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,False
+ஏற்கனவே நாடே மத சண்டைல எரியுது இதுல சாதிய வெற கிளப்பி விடுங்கட உருபுட்ரும் 100k பெரியார் வந்தாலும் உங்கள்ளான் திருத்தவே முடியாது ஒழுங்கா போய் உருப்புட பாருங்க,0,Not_offensive,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,False
+deiii mve release pannuga ta marana waiting la irkn,1,Offensive_Untargeted,0,Not_offensive,0,Not_offensive,0,Not_offensive,False
+thala sollurthu nalla kelungge daaa oruthar mela neenga viswasam kaatratukaaga innorthara yen asinga paduthureenga,0,Not_offensive,1,Offensive_Untargeted,1,Offensive_Untargeted,1,Offensive_Untargeted,False
+as a vijay fan manasu vittu ajith sir ah paaraturen hats off sir difference between ajith and vijay fans vijay fans endha ajith teaser trailer la asingama thitti comment panna maatanga but neraiya ajith fans vijay sir movie teaser la purpose ah dislike pannitu vijay ah asingama thittitu povanga,0,Not_offensive,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,3,Offensive_Targeted_Group,False
+hey idhu 96 yaraa emathuringa sema bangam,0,Not_offensive,1,Offensive_Untargeted,3,Offensive_Targeted_Group,2,Offensive_Targeted_Individual,False
+who is best like deepika for chhapaak comment kangana for thailaivi,0,Not_offensive,5,not-Tamil,0,Not_offensive,2,Offensive_Targeted_Individual,False
+shankar innu pannirukalam nu sonnavanlam go bark where cgi sucks idhu namma sarkar shankar,0,Not_offensive,1,Offensive_Untargeted,2,Offensive_Targeted_Individual,1,Offensive_Untargeted,False
+0 30 dunkirk music copy adichirukkan gv prakash,0,Not_offensive,1,Offensive_Untargeted,2,Offensive_Targeted_Individual,1,Offensive_Untargeted,False
+dai enada oru announcement iladha vitinga,0,Not_offensive,1,Offensive_Untargeted,1,Offensive_Untargeted,1,Offensive_Untargeted,False
+nalla kalam kabali kala mathiri illa move ethu super star move,4,Offensive_Targeted_Other,3,Offensive_Targeted_Group,0,Not_offensive,3,Offensive_Targeted_Group,False
+thalaivar ah kalaikura pola iruku atha unlike pottu iruka,2,Offensive_Targeted_Individual,1,Offensive_Untargeted,2,Offensive_Targeted_Individual,1,Offensive_Untargeted,False
+இங்கு அனைத்து சாதியிலும் ஏழைகள் உள்ளனர் எவனாவது பொருளாதார அடிப்படையில் இட ஒதுக்கீடுகள் கொடுக்க சொல்லும் நடுநிலை வாதிகளே,4,Offensive_Targeted_Other,0,Not_offensive,0,Not_offensive,0,Not_offensive,False
+he he he unkitta irrruka antha ketta palakam jatti poda mata athana,0,Not_offensive,3,Offensive_Targeted_Group,1,Offensive_Untargeted,4,Offensive_Targeted_Other,False
+viswasam trailer got 738k in just 2 hrs,0,Not_offensive,0,Not_offensive,0,Not_offensive,2,Offensive_Targeted_Individual,False
+oru shotla kooda karu vizhi asayala,0,Not_offensive,1,Offensive_Untargeted,2,Offensive_Targeted_Individual,5,not-Tamil,False
+hope mani ratnam garu gives block buster,0,Not_offensive,0,Not_offensive,0,Not_offensive,5,not-Tamil,False
+rajinikanth naa arasiyaluku varathu uruthi toppie toppie இதெப்படிருக்கு,0,Not_offensive,3,Offensive_Targeted_Group,0,Not_offensive,2,Offensive_Targeted_Individual,False

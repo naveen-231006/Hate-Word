@@ -2,7 +2,7 @@
 Tamil Offensive Language Detector — Interactive Web Demo
 Uses fine-tuned MuRIL, XLM-RoBERTa, and mBERT with majority-voting ensemble.
 """
-import os, re, json, torch, numpy as np
+import os, re, torch, numpy as np
 from flask import Flask, request, jsonify, render_template_string
 from transformers import AutoTokenizer, AutoModelForSequenceClassification
 from scipy.stats import mode
@@ -30,43 +30,34 @@ def preprocess_text(text):
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 print(f"Device: {device}")
-models_loaded = {}
-tokenizers_loaded = {}
+mdls, toks = {}, {}
 for key, cfg in MODEL_CONFIGS.items():
     print(f"Loading {cfg['name']}...")
-    tokenizers_loaded[key] = AutoTokenizer.from_pretrained(cfg['path'])
-    models_loaded[key] = AutoModelForSequenceClassification.from_pretrained(cfg['path'])
-    models_loaded[key].to(device).eval()
+    toks[key] = AutoTokenizer.from_pretrained(cfg['path'])
+    mdls[key] = AutoModelForSequenceClassification.from_pretrained(cfg['path']).to(device).eval()
     print(f"  {cfg['name']} loaded.")
 print("All models loaded!")
 
 def predict(text):
     cleaned = preprocess_text(text)
-    if not cleaned: return {'error': 'Empty text after preprocessing'}
-    results = {}
-    all_preds = []
+    if not cleaned: return {'error': 'Empty text'}
+    results, all_preds = {}, []
     for key in MODEL_CONFIGS:
-        inputs = tokenizers_loaded[key](cleaned, return_tensors='pt', truncation=True, max_length=128, padding='max_length').to(device)
+        inputs = toks[key](cleaned, return_tensors='pt', truncation=True, max_length=128, padding='max_length').to(device)
         with torch.no_grad():
-            logits = models_loaded[key](**inputs).logits[0].cpu().numpy()
+            logits = mdls[key](**inputs).logits[0].cpu().numpy()
         probs = torch.softmax(torch.tensor(logits), dim=0).numpy()
-        pred_idx = int(np.argmax(probs))
-        all_preds.append(pred_idx)
-        results[key] = {
-            'model': MODEL_CONFIGS[key]['name'], 'prediction': LABEL_NAMES[pred_idx],
-            'confidence': float(probs[pred_idx]),
-            'probabilities': {LABEL_NAMES[i]: float(probs[i]) for i in range(len(LABEL_NAMES))}
-        }
-    ens_pred, _ = mode(all_preds, keepdims=False)
-    ens_idx = int(ens_pred)
-    avg_probs = np.mean([list(results[k]['probabilities'].values()) for k in results], axis=0)
-    results['ensemble'] = {
-        'model': 'Ensemble', 'prediction': LABEL_NAMES[ens_idx],
-        'confidence': float(avg_probs[ens_idx]),
-        'probabilities': {LABEL_NAMES[i]: float(avg_probs[i]) for i in range(len(LABEL_NAMES))}
-    }
+        idx = int(np.argmax(probs))
+        all_preds.append(idx)
+        results[key] = {'model': MODEL_CONFIGS[key]['name'], 'prediction': LABEL_NAMES[idx],
+            'confidence': float(probs[idx]),
+            'probabilities': {LABEL_NAMES[i]: float(probs[i]) for i in range(len(LABEL_NAMES))}}
+    ens_idx = int(mode(all_preds, keepdims=False)[0])
+    avg_p = np.mean([list(results[k]['probabilities'].values()) for k in results], axis=0)
+    results['ensemble'] = {'model': 'Ensemble', 'prediction': LABEL_NAMES[ens_idx],
+        'confidence': float(avg_p[ens_idx]),
+        'probabilities': {LABEL_NAMES[i]: float(avg_p[i]) for i in range(len(LABEL_NAMES))}}
     return {'original_text': text, 'cleaned_text': cleaned, 'results': results,
-            'agreement': len(set(all_preds)) == 1,
             'vote_count': sum(1 for p in all_preds if p == ens_idx)}
 
 app = Flask(__name__)
@@ -77,509 +68,347 @@ HTML = r"""<!DOCTYPE html>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Tamil Offensive Language Detector</title>
-<meta name="description" content="Real-time Tamil offensive language detection with ensemble transformers.">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-/* ====== Theme Variables ====== */
-:root, [data-theme="light"] {
-    --bg: #f8f9fc;
-    --bg-alt: #ffffff;
-    --bg-card: #ffffff;
-    --bg-input: #f1f3f8;
-    --bg-hover: #f5f6fa;
-    --border: #e2e5ef;
-    --border-hover: #c7cad9;
-    --text: #1a1d2e;
-    --text-secondary: #5a5f7a;
-    --text-muted: #8e93ac;
-    --shadow-sm: 0 1px 3px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.06);
-    --shadow-md: 0 4px 16px rgba(0,0,0,0.06), 0 2px 4px rgba(0,0,0,0.04);
-    --shadow-lg: 0 12px 48px rgba(0,0,0,0.08), 0 4px 12px rgba(0,0,0,0.04);
-    --shadow-xl: 0 20px 60px rgba(0,0,0,0.1);
-    --accent: #6366f1;
-    --accent-light: rgba(99,102,241,0.08);
-    --accent-border: rgba(99,102,241,0.2);
-    --accent-hover: #4f46e5;
-    --gradient: linear-gradient(135deg, #6366f1, #8b5cf6, #a855f7);
-    --dot-bg: rgba(99,102,241,0.06);
-    --mesh-1: rgba(99,102,241,0.04);
-    --mesh-2: rgba(168,85,247,0.03);
-    --mesh-3: rgba(236,72,153,0.02);
-    --toggle-bg: #e2e5ef;
-    --toggle-dot: #ffffff;
-    --safe: #059669; --safe-bg: #ecfdf5; --safe-border: #a7f3d0;
-    --warn: #d97706; --warn-bg: #fffbeb; --warn-border: #fde68a;
-    --danger: #dc2626; --danger-bg: #fef2f2; --danger-border: #fecaca;
-    --info: #4f46e5; --info-bg: #eef2ff; --info-border: #c7d2fe;
+/* ===== LIGHT THEME (default) ===== */
+:root,[data-theme="light"]{
+    --bg:#fafafa;
+    --surface:#ffffff;
+    --surface-2:#f5f5f5;
+    --border:#e5e5e5;
+    --border-focus:#3b82f6;
+    --text:#171717;
+    --text-2:#525252;
+    --text-3:#a3a3a3;
+    --blue:#2563eb;
+    --blue-bg:#eff6ff;
+    --blue-border:#bfdbfe;
+    --green:#16a34a;
+    --green-bg:#f0fdf4;
+    --green-border:#bbf7d0;
+    --amber:#d97706;
+    --amber-bg:#fffbeb;
+    --amber-border:#fde68a;
+    --red:#dc2626;
+    --red-bg:#fef2f2;
+    --red-border:#fecaca;
+    --shadow:0 1px 3px rgba(0,0,0,0.08);
+    --shadow-lg:0 8px 30px rgba(0,0,0,0.08);
+    --toggle-bg:#e5e5e5;
+    --toggle-knob:#fff;
 }
 
-[data-theme="dark"] {
-    --bg: #0a0a12;
-    --bg-alt: #0f0f1a;
-    --bg-card: rgba(16,16,28,0.8);
-    --bg-input: rgba(8,8,16,0.6);
-    --bg-hover: rgba(22,22,36,0.8);
-    --border: rgba(50,50,72,0.5);
-    --border-hover: rgba(99,102,241,0.35);
-    --text: #eeeef5;
-    --text-secondary: #9295ad;
-    --text-muted: #5a5d76;
-    --shadow-sm: 0 1px 3px rgba(0,0,0,0.3);
-    --shadow-md: 0 4px 16px rgba(0,0,0,0.4);
-    --shadow-lg: 0 12px 48px rgba(0,0,0,0.5);
-    --shadow-xl: 0 20px 60px rgba(0,0,0,0.6);
-    --accent: #818cf8;
-    --accent-light: rgba(99,102,241,0.12);
-    --accent-border: rgba(99,102,241,0.25);
-    --accent-hover: #a5b4fc;
-    --gradient: linear-gradient(135deg, #818cf8, #a78bfa, #c084fc);
-    --dot-bg: rgba(99,102,241,0.08);
-    --mesh-1: rgba(99,102,241,0.06);
-    --mesh-2: rgba(168,85,247,0.04);
-    --mesh-3: rgba(236,72,153,0.03);
-    --toggle-bg: #2a2a3e;
-    --toggle-dot: #818cf8;
-    --safe: #34d399; --safe-bg: rgba(16,185,129,0.1); --safe-border: rgba(16,185,129,0.25);
-    --warn: #fbbf24; --warn-bg: rgba(245,158,11,0.1); --warn-border: rgba(245,158,11,0.25);
-    --danger: #f87171; --danger-bg: rgba(239,68,68,0.1); --danger-border: rgba(239,68,68,0.25);
-    --info: #818cf8; --info-bg: rgba(99,102,241,0.1); --info-border: rgba(99,102,241,0.25);
+/* ===== DARK THEME ===== */
+[data-theme="dark"]{
+    --bg:#111111;
+    --surface:#1a1a1a;
+    --surface-2:#222222;
+    --border:#2e2e2e;
+    --border-focus:#3b82f6;
+    --text:#ededed;
+    --text-2:#a1a1a1;
+    --text-3:#5c5c5c;
+    --blue:#60a5fa;
+    --blue-bg:rgba(37,99,235,0.1);
+    --blue-border:rgba(59,130,246,0.25);
+    --green:#4ade80;
+    --green-bg:rgba(22,163,74,0.1);
+    --green-border:rgba(74,222,128,0.2);
+    --amber:#fbbf24;
+    --amber-bg:rgba(217,119,6,0.1);
+    --amber-border:rgba(251,191,35,0.2);
+    --red:#f87171;
+    --red-bg:rgba(220,38,38,0.1);
+    --red-border:rgba(248,113,113,0.2);
+    --shadow:0 1px 3px rgba(0,0,0,0.4);
+    --shadow-lg:0 8px 30px rgba(0,0,0,0.4);
+    --toggle-bg:#333;
+    --toggle-knob:#60a5fa;
 }
 
-* { margin:0; padding:0; box-sizing:border-box; }
+*{margin:0;padding:0;box-sizing:border-box;}
 
-body {
-    font-family: 'Inter', -apple-system, sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    min-height: 100vh;
-    transition: background 0.4s ease, color 0.4s ease;
-    -webkit-font-smoothing: antialiased;
+body{
+    font-family:'Inter',-apple-system,sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    min-height:100vh;
+    transition:background .3s,color .3s;
+    -webkit-font-smoothing:antialiased;
 }
 
-/* Background decorations */
-.bg-decor {
-    position: fixed; inset: 0; z-index: -1; pointer-events: none;
-    background:
-        radial-gradient(ellipse 80% 60% at 15% 25%, var(--mesh-1) 0%, transparent 55%),
-        radial-gradient(ellipse 60% 70% at 85% 75%, var(--mesh-2) 0%, transparent 55%),
-        radial-gradient(ellipse 50% 50% at 50% 10%, var(--mesh-3) 0%, transparent 55%);
+.wrap{max-width:900px;margin:0 auto;padding:48px 20px 32px;}
+
+/* Toggle */
+.toggle-wrap{position:fixed;top:18px;right:20px;z-index:50;}
+.toggle{
+    width:48px;height:26px;border-radius:13px;
+    background:var(--toggle-bg);border:1px solid var(--border);
+    cursor:pointer;position:relative;transition:all .3s;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:0 6px;font-size:11px;
 }
-
-.bg-dots {
-    position: fixed; inset: 0; z-index: -1; pointer-events: none;
-    background-image: radial-gradient(var(--dot-bg) 1px, transparent 1px);
-    background-size: 28px 28px;
-    mask-image: radial-gradient(ellipse at center, black 20%, transparent 65%);
-    transition: background 0.4s;
+.toggle::after{
+    content:'';position:absolute;width:18px;height:18px;border-radius:50%;
+    background:var(--toggle-knob);top:3px;left:3px;
+    transition:left .3s cubic-bezier(.4,0,.2,1);
+    box-shadow:0 1px 3px rgba(0,0,0,.15);
 }
+[data-theme="dark"] .toggle::after{left:25px;}
 
-.container { max-width: 980px; margin: 0 auto; padding: 40px 24px 24px; }
-
-/* ====== THEME TOGGLE ====== */
-.theme-toggle-wrap {
-    position: fixed; top: 20px; right: 24px; z-index: 100;
+/* Header */
+.hdr{text-align:center;margin-bottom:40px;}
+.hdr h1{font-size:1.75rem;font-weight:800;letter-spacing:-.5px;color:var(--text);margin-bottom:8px;}
+.hdr p{color:var(--text-2);font-size:.92rem;max-width:520px;margin:0 auto 16px;line-height:1.6;}
+.tags{display:flex;gap:6px;justify-content:center;flex-wrap:wrap;}
+.tag{
+    padding:4px 12px;border-radius:6px;font-size:.72rem;font-weight:600;
+    background:var(--surface-2);border:1px solid var(--border);color:var(--text-2);
 }
+.tag.ok{background:var(--green-bg);border-color:var(--green-border);color:var(--green);}
 
-.theme-toggle {
-    width: 56px; height: 30px;
-    background: var(--toggle-bg);
-    border-radius: 100px;
-    border: 1px solid var(--border);
-    cursor: pointer;
-    position: relative;
-    transition: all 0.35s ease;
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 0 7px;
-    font-size: 13px;
+/* Input */
+.icard{
+    background:var(--surface);border:1px solid var(--border);
+    border-radius:12px;padding:24px;box-shadow:var(--shadow);
+    margin-bottom:24px;transition:all .3s;
 }
-
-.theme-toggle::after {
-    content: '';
-    position: absolute;
-    width: 22px; height: 22px;
-    border-radius: 50%;
-    background: var(--toggle-dot);
-    top: 3px; left: 3px;
-    transition: all 0.35s cubic-bezier(0.68, -0.2, 0.27, 1.2);
-    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+.icard label{
+    display:block;font-size:.72rem;font-weight:600;color:var(--text-3);
+    text-transform:uppercase;letter-spacing:.8px;margin-bottom:10px;
 }
-
-[data-theme="dark"] .theme-toggle::after {
-    left: 29px;
-    background: var(--accent);
-    box-shadow: 0 2px 10px rgba(129,140,248,0.4);
+textarea{
+    width:100%;min-height:90px;background:var(--surface-2);
+    border:1.5px solid var(--border);border-radius:8px;
+    padding:14px 16px;color:var(--text);
+    font-family:'Inter',sans-serif;font-size:.95rem;line-height:1.6;
+    resize:vertical;transition:all .2s;
 }
+textarea:focus{outline:none;border-color:var(--border-focus);box-shadow:0 0 0 3px rgba(59,130,246,.12);}
+textarea::placeholder{color:var(--text-3);}
 
-/* ====== HEADER ====== */
-.header { text-align: center; margin-bottom: 48px; }
+.row{display:flex;align-items:center;gap:8px;margin-top:14px;flex-wrap:wrap;}
 
-.logo {
-    width: 60px; height: 60px; margin: 0 auto 18px;
-    background: var(--accent-light);
-    border: 1.5px solid var(--accent-border);
-    border-radius: 16px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 26px;
-    box-shadow: var(--shadow-md);
-    transition: all 0.4s;
+.btn{
+    padding:10px 22px;border-radius:8px;font-family:'Inter',sans-serif;
+    font-size:.85rem;font-weight:600;cursor:pointer;border:none;transition:all .2s;
 }
+.btn-p{background:var(--blue);color:#fff;}
+.btn-p:hover{opacity:.9;} .btn-p:disabled{opacity:.4;cursor:not-allowed;}
+.btn-s{background:transparent;color:var(--text-3);border:1.5px solid var(--border);padding:9px 18px;}
+.btn-s:hover{border-color:var(--border-focus);color:var(--text-2);}
 
-h1 { font-size: 2.4rem; font-weight: 900; letter-spacing: -1.5px; line-height: 1.15; margin-bottom: 12px; }
-h1 .g { background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.hint{font-size:.68rem;color:var(--text-3);margin-left:auto;}
+kbd{padding:1px 5px;background:var(--surface-2);border:1px solid var(--border);border-radius:3px;font-family:'IBM Plex Mono',monospace;font-size:.62rem;}
 
-.sub { color: var(--text-secondary); font-size: 1rem; font-weight: 400; max-width: 560px; margin: 0 auto 20px; line-height: 1.65; }
-
-.pills { display:flex; gap:8px; justify-content:center; flex-wrap:wrap; }
-
-.pill {
-    display:inline-flex; align-items:center; gap:5px;
-    padding: 5px 14px; border-radius: 100px;
-    font-size: 0.73rem; font-weight: 600;
-    background: var(--accent-light);
-    border: 1px solid var(--accent-border);
-    color: var(--accent);
-    transition: all 0.3s;
+.elbl{font-size:.68rem;font-weight:600;color:var(--text-3);text-transform:uppercase;letter-spacing:.6px;margin:16px 0 8px;}
+.chips{display:flex;gap:6px;flex-wrap:wrap;}
+.chip{
+    padding:5px 12px;border-radius:6px;font-size:.78rem;font-weight:500;
+    background:var(--surface-2);border:1px solid var(--border);
+    color:var(--text-2);cursor:pointer;transition:all .15s;
 }
+.chip:hover{border-color:var(--blue);color:var(--blue);background:var(--blue-bg);}
 
-.pill .d { width:5px; height:5px; border-radius:50%; background: currentColor; }
-.pill.em { color: var(--safe); background: var(--safe-bg); border-color: var(--safe-border); }
+/* Loading */
+#ld{display:none;text-align:center;padding:48px 20px;}
+#ld.on{display:block;}
+.spin{width:32px;height:32px;border:3px solid var(--border);border-top-color:var(--blue);border-radius:50%;animation:s .7s linear infinite;margin:0 auto 14px;}
+@keyframes s{to{transform:rotate(360deg)}}
+.spin-t{color:var(--text-2);font-size:.88rem;}
 
-/* ====== INPUT CARD ====== */
-.card {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: 22px;
-    padding: 32px;
-    box-shadow: var(--shadow-md);
-    margin-bottom: 24px;
-    position: relative;
-    transition: all 0.4s;
-}
-
-.card .top-line {
-    position: absolute; top: 0; left: 24px; right: 24px; height: 2px;
-    background: var(--gradient); border-radius: 0 0 2px 2px; opacity: 0.5;
-}
-
-.card label {
-    display: flex; align-items: center; gap: 7px;
-    font-size: 0.75rem; font-weight: 700; color: var(--text-muted);
-    text-transform: uppercase; letter-spacing: 1.2px; margin-bottom: 12px;
-}
-
-textarea {
-    width: 100%; min-height: 100px;
-    background: var(--bg-input);
-    border: 1.5px solid var(--border);
-    border-radius: 14px; padding: 16px 18px;
-    color: var(--text);
-    font-family: 'Inter', sans-serif; font-size: 1rem; line-height: 1.6;
-    resize: vertical; transition: all 0.3s;
-}
-
-textarea:focus {
-    outline: none;
-    border-color: var(--accent);
-    box-shadow: 0 0 0 4px var(--accent-light);
-    background: var(--bg-alt);
-}
-
-textarea::placeholder { color: var(--text-muted); }
-
-.ctrls { display:flex; align-items:center; gap:10px; margin-top:16px; flex-wrap:wrap; }
-
-.btn {
-    padding: 12px 28px; border-radius: 12px;
-    font-family: 'Inter', sans-serif; font-size: 0.88rem; font-weight: 700;
-    cursor: pointer; border: none; transition: all 0.25s;
-}
-
-.btn-go {
-    background: var(--gradient); color: #fff;
-    box-shadow: 0 4px 18px rgba(99,102,241,0.3), inset 0 1px 0 rgba(255,255,255,0.15);
-}
-.btn-go:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(99,102,241,0.4); }
-.btn-go:active { transform: translateY(0); }
-.btn-go:disabled { opacity:0.4; cursor:not-allowed; transform:none; }
-
-.btn-x {
-    background: transparent; color: var(--text-muted);
-    border: 1.5px solid var(--border); padding: 11px 22px;
-}
-.btn-x:hover { border-color: var(--border-hover); color: var(--text-secondary); background: var(--bg-hover); }
-
-.hint { font-size:0.7rem; color:var(--text-muted); margin-left:auto; display:flex; align-items:center; gap:4px; }
-kbd { padding:2px 6px; background:var(--bg-input); border:1px solid var(--border); border-radius:4px; font-family:'JetBrains Mono',monospace; font-size:0.65rem; color:var(--text-secondary); }
-
-.ex-label { font-size:0.7rem; font-weight:700; color:var(--text-muted); text-transform:uppercase; letter-spacing:1px; margin:18px 0 9px; }
-.chips { display:flex; gap:7px; flex-wrap:wrap; }
-
-.chip {
-    padding: 6px 14px; border-radius: 100px;
-    font-size: 0.78rem; font-weight: 500;
-    background: var(--bg-hover); border: 1px solid var(--border);
-    color: var(--text-secondary); cursor: pointer;
-    transition: all 0.2s;
-}
-
-.chip:hover {
-    background: var(--accent-light); border-color: var(--accent-border);
-    color: var(--accent); transform: translateY(-1px);
-}
-
-/* ====== LOADING ====== */
-#loading { display:none; text-align:center; padding:50px 20px; }
-#loading.on { display:block; }
-
-.ld { width:44px; height:44px; margin:0 auto 16px; position:relative; }
-.ld::before,.ld::after { content:''; position:absolute; inset:0; border-radius:50%; border:3px solid transparent; }
-.ld::before { border-top-color: var(--accent); animation: sp 0.85s linear infinite; }
-.ld::after { border-bottom-color: #a855f7; animation: sp 0.85s linear infinite reverse; inset:6px; }
-@keyframes sp { to { transform:rotate(360deg); } }
-
-.ld-t { color:var(--text-secondary); font-size:0.9rem; font-weight:500; }
-.ld-s { color:var(--text-muted); font-size:0.76rem; margin-top:4px; }
-
-/* ====== RESULTS ====== */
-#results { display:none; } #results.on { display:block; animation: fu 0.45s ease; }
-@keyframes fu { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
+/* Results */
+#res{display:none;}#res.on{display:block;animation:up .35s ease;}
+@keyframes up{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
 
 /* Hero */
-.hero {
-    background: var(--bg-card); border: 1.5px solid var(--border);
-    border-radius: 22px; padding: 36px 32px; text-align: center;
-    margin-bottom: 18px; position: relative; overflow: hidden;
-    box-shadow: var(--shadow-md); transition: all 0.4s;
+.hero{
+    background:var(--surface);border:1px solid var(--border);
+    border-radius:12px;padding:28px 24px;text-align:center;
+    margin-bottom:16px;box-shadow:var(--shadow);transition:all .3s;
+    position:relative;overflow:hidden;
 }
+.hero .stripe{position:absolute;top:0;left:0;right:0;height:3px;}
+.hero.safe .stripe{background:var(--green);}
+.hero.warn .stripe{background:var(--amber);}
+.hero.danger .stripe{background:var(--red);}
+.hero.info .stripe{background:var(--blue);}
 
-.hero .bar { position:absolute; top:0; left:0; right:0; height:3px; }
-.hero.safe .bar  { background: linear-gradient(90deg, transparent, var(--safe), transparent); }
-.hero.warn .bar  { background: linear-gradient(90deg, transparent, var(--warn), transparent); }
-.hero.danger .bar{ background: linear-gradient(90deg, transparent, var(--danger), transparent); }
-.hero.info .bar  { background: linear-gradient(90deg, transparent, var(--info), transparent); }
-
-.h-tag {
-    display:inline-flex; align-items:center; gap:5px;
-    padding:5px 14px; border-radius:100px;
-    font-size:0.7rem; font-weight:700;
-    text-transform:uppercase; letter-spacing:1.2px; margin-bottom:14px;
+.htag{
+    display:inline-block;padding:4px 12px;border-radius:6px;
+    font-size:.68rem;font-weight:700;text-transform:uppercase;
+    letter-spacing:.8px;margin-bottom:12px;
 }
-.h-tag.safe  { background:var(--safe-bg); color:var(--safe); border:1px solid var(--safe-border); }
-.h-tag.warn  { background:var(--warn-bg); color:var(--warn); border:1px solid var(--warn-border); }
-.h-tag.danger{ background:var(--danger-bg); color:var(--danger); border:1px solid var(--danger-border); }
-.h-tag.info  { background:var(--info-bg); color:var(--info); border:1px solid var(--info-border); }
+.htag.safe{background:var(--green-bg);color:var(--green);border:1px solid var(--green-border);}
+.htag.warn{background:var(--amber-bg);color:var(--amber);border:1px solid var(--amber-border);}
+.htag.danger{background:var(--red-bg);color:var(--red);border:1px solid var(--red-border);}
+.htag.info{background:var(--blue-bg);color:var(--blue);border:1px solid var(--blue-border);}
 
-.h-pred { font-size:1.9rem; font-weight:900; letter-spacing:-0.5px; margin-bottom:14px; }
+.hpred{font-size:1.5rem;font-weight:800;letter-spacing:-.3px;margin-bottom:12px;}
 
-.h-stats { display:flex; justify-content:center; gap:32px; flex-wrap:wrap; }
-.h-stat .v { font-size:1.4rem; font-weight:800; font-family:'JetBrains Mono',monospace; }
-.h-stat .l { font-size:0.68rem; color:var(--text-muted); text-transform:uppercase; letter-spacing:1px; margin-top:2px; }
+.hrow{display:flex;justify-content:center;gap:28px;}
+.hcol .hv{font-size:1.2rem;font-weight:700;font-family:'IBM Plex Mono',monospace;}
+.hcol .hl{font-size:.65rem;color:var(--text-3);text-transform:uppercase;letter-spacing:.5px;margin-top:2px;}
 
-.votes { display:flex; gap:7px; justify-content:center; margin-top:16px; }
-.vd {
-    width:11px; height:11px; border-radius:50%;
-    border:2px solid var(--border); transition:all 0.3s;
+.dots{display:flex;gap:6px;justify-content:center;margin-top:14px;}
+.dot{width:10px;height:10px;border-radius:50%;border:2px solid var(--border);}
+.dot.y{border-color:var(--green);background:var(--green);}
+.dot.n{border-color:var(--red);background:var(--red);}
+
+/* Grid */
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:16px;}
+@media(max-width:720px){.grid{grid-template-columns:1fr;}}
+
+.mc{
+    background:var(--surface);border:1px solid var(--border);
+    border-radius:10px;padding:20px;box-shadow:var(--shadow);
+    transition:all .2s;
 }
-.vd.y { border-color:var(--safe); background:var(--safe); box-shadow:0 0 8px rgba(5,150,105,0.3); }
-.vd.n { border-color:var(--danger); background:var(--danger); }
+.mc:hover{box-shadow:var(--shadow-lg);transform:translateY(-2px);}
 
-/* Model Grid */
-.mgrid { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-bottom:18px; }
-@media(max-width:780px) { .mgrid { grid-template-columns:1fr; } }
+.mc-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;}
+.mc-n{font-size:.68rem;font-weight:700;color:var(--text-3);text-transform:uppercase;letter-spacing:1px;}
+.mc-b{padding:2px 8px;border-radius:4px;font-size:.6rem;font-weight:700;}
 
-.mc {
-    background: var(--bg-card); border:1.5px solid var(--border);
-    border-radius: 18px; padding: 22px; transition: all 0.3s;
-    box-shadow: var(--shadow-sm);
+.mc-p{font-size:.95rem;font-weight:700;margin-bottom:2px;}
+.mc-c{font-size:.78rem;color:var(--text-2);margin-bottom:14px;font-family:'IBM Plex Mono',monospace;}
+
+.pb{display:flex;align-items:center;gap:6px;margin-bottom:6px;}
+.pb-n{font-size:.6rem;color:var(--text-3);width:70px;text-align:right;flex-shrink:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.pb-t{flex:1;height:4px;background:var(--surface-2);border-radius:2px;overflow:hidden;}
+.pb-f{height:100%;border-radius:2px;transition:width .6s ease;}
+.pb-v{font-size:.6rem;font-family:'IBM Plex Mono',monospace;color:var(--text-3);width:34px;text-align:right;}
+
+/* Preprocess */
+.pp{
+    background:var(--surface);border:1px solid var(--border);
+    border-radius:8px;padding:14px 18px;display:flex;gap:10px;
+    align-items:flex-start;box-shadow:var(--shadow);transition:all .3s;
 }
-.mc:hover { border-color:var(--border-hover); transform:translateY(-3px); box-shadow:var(--shadow-lg); }
-
-.mc-top { display:flex; align-items:center; justify-content:space-between; margin-bottom:12px; }
-.mc-n { font-size:0.7rem; font-weight:700; color:var(--text-muted); text-transform:uppercase; letter-spacing:1.2px; }
-.mc-b { padding:3px 9px; border-radius:100px; font-size:0.62rem; font-weight:700; }
-
-.mc-p { font-size:1.02rem; font-weight:800; margin-bottom:3px; }
-.mc-c { font-size:0.8rem; color:var(--text-secondary); margin-bottom:16px; font-family:'JetBrains Mono',monospace; font-weight:500; }
-
-.pr { display:flex; align-items:center; gap:7px; margin-bottom:7px; }
-.pr-n { font-size:0.63rem; color:var(--text-muted); width:75px; text-align:right; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; flex-shrink:0; }
-.pr-t { flex:1; height:5px; background:var(--bg-input); border-radius:3px; overflow:hidden; }
-.pr-f { height:100%; border-radius:3px; transition: width 0.7s cubic-bezier(0.16,1,0.3,1); }
-.pr-v { font-size:0.62rem; font-family:'JetBrains Mono',monospace; color:var(--text-muted); width:36px; text-align:right; }
-
-/* Preprocessed */
-.ppbox {
-    background:var(--bg-card); border:1px solid var(--border);
-    border-radius:14px; padding:16px 20px;
-    display:flex; align-items:flex-start; gap:10px;
-    box-shadow:var(--shadow-sm); transition:all 0.4s;
-}
-.ppbox .ic { font-size:15px; color:var(--text-muted); margin-top:2px; }
-.pp-l { font-size:0.65rem; font-weight:700; color:var(--text-muted); text-transform:uppercase; letter-spacing:1px; margin-bottom:3px; }
-.pp-t { font-size:0.85rem; color:var(--text-secondary); font-family:'JetBrains Mono',monospace; word-break:break-word; }
+.pp-l{font-size:.62rem;font-weight:700;color:var(--text-3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:2px;}
+.pp-t{font-size:.82rem;color:var(--text-2);font-family:'IBM Plex Mono',monospace;word-break:break-word;}
 
 /* Footer */
-footer { text-align:center; padding:40px 0 24px; color:var(--text-muted); font-size:0.76rem; }
-footer a { color:var(--accent); text-decoration:none; }
-footer a:hover { text-decoration:underline; }
-.fstats { display:flex; gap:20px; justify-content:center; margin-bottom:10px; flex-wrap:wrap; }
-.fstats strong { color:var(--text-secondary); font-weight:600; }
+footer{text-align:center;padding:36px 0 20px;color:var(--text-3);font-size:.74rem;}
+footer a{color:var(--blue);text-decoration:none;}
+footer a:hover{text-decoration:underline;}
+.fs{display:flex;gap:16px;justify-content:center;margin-bottom:8px;flex-wrap:wrap;font-size:.7rem;}
+.fs strong{color:var(--text-2);font-weight:600;}
 </style>
 </head>
 <body>
-<div class="bg-decor"></div>
-<div class="bg-dots"></div>
+<div class="toggle-wrap"><div class="toggle" onclick="tog()" title="Toggle theme"><span>☀️</span><span>🌙</span></div></div>
 
-<div class="theme-toggle-wrap">
-    <div class="theme-toggle" onclick="toggleTheme()" title="Toggle theme">
-        <span>☀️</span><span>🌙</span>
+<div class="wrap">
+<div class="hdr">
+    <h1>Tamil Offensive Language Detector</h1>
+    <p>Detect offensive content in Tamil, Tanglish &amp; code-mixed text using three multilingual transformer models with majority-voting ensemble.</p>
+    <div class="tags">
+        <span class="tag">MuRIL · 236M</span>
+        <span class="tag">XLM-RoBERTa · 278M</span>
+        <span class="tag">mBERT · 177M</span>
+        <span class="tag ok">Ensemble F1: 0.762</span>
     </div>
 </div>
 
-<div class="container">
-    <div class="header">
-        <div class="logo">🛡️</div>
-        <h1><span class="g">Tamil Offensive Language</span><br>Detector</h1>
-        <p class="sub">Real-time offensive language detection for Tamil, Tanglish & code-mixed text using an ensemble of three multilingual transformer models.</p>
-        <div class="pills">
-            <span class="pill"><span class="d"></span>MuRIL · 236M</span>
-            <span class="pill"><span class="d"></span>XLM-RoBERTa · 278M</span>
-            <span class="pill"><span class="d"></span>mBERT · 177M</span>
-            <span class="pill em"><span class="d"></span>Ensemble F1: 0.762</span>
-        </div>
+<div class="icard">
+    <label>Enter Tamil / Tanglish / Code-Mixed Text</label>
+    <textarea id="inp" placeholder="Type or paste text here..."></textarea>
+    <div class="row">
+        <button class="btn btn-p" id="go" onclick="run()">Analyze</button>
+        <button class="btn btn-s" onclick="clr()">Clear</button>
+        <span class="hint"><kbd>Enter</kbd> to analyze</span>
     </div>
-
-    <div class="card">
-        <div class="top-line"></div>
-        <label>✍️ Enter Tamil / Tanglish / Code-Mixed Text</label>
-        <textarea id="inp" placeholder="Type or paste text here... e.g., 'Padam vera level mass iruku'"></textarea>
-        <div class="ctrls">
-            <button class="btn btn-go" id="goBtn" onclick="analyze()">⚡ Analyze</button>
-            <button class="btn btn-x" onclick="clearAll()">Clear</button>
-            <span class="hint"><kbd>Enter</kbd> to analyze</span>
-        </div>
-        <div class="ex-label">Try these examples</div>
-        <div class="chips">
-            <span class="chip" onclick="setEx(this)">Padam vera level mass iruku</span>
-            <span class="chip" onclick="setEx(this)">ithellam oru padama da</span>
-            <span class="chip" onclick="setEx(this)">nalla iruku bro</span>
-            <span class="chip" onclick="setEx(this)">ivan oru waste fellow</span>
-            <span class="chip" onclick="setEx(this)">super acting in this movie</span>
-            <span class="chip" onclick="setEx(this)">dei romba mokka da</span>
-        </div>
+    <div class="elbl">Try an example</div>
+    <div class="chips">
+        <span class="chip" onclick="ex(this)">Padam vera level mass iruku</span>
+        <span class="chip" onclick="ex(this)">ithellam oru padama da</span>
+        <span class="chip" onclick="ex(this)">nalla iruku bro</span>
+        <span class="chip" onclick="ex(this)">ivan oru waste fellow</span>
+        <span class="chip" onclick="ex(this)">super acting in this movie</span>
+        <span class="chip" onclick="ex(this)">dei romba mokka da</span>
     </div>
+</div>
 
-    <div id="loading">
-        <div class="ld"></div>
-        <div class="ld-t">Analyzing with 3 models…</div>
-        <div class="ld-s">MuRIL · XLM-RoBERTa · mBERT</div>
-    </div>
+<div id="ld"><div class="spin"></div><div class="spin-t">Analyzing with 3 models...</div></div>
 
-    <div id="results">
-        <div class="hero" id="hero"></div>
-        <div class="mgrid" id="mgrid"></div>
-        <div class="ppbox" id="ppbox"></div>
-    </div>
+<div id="res">
+    <div class="hero" id="hero"></div>
+    <div class="grid" id="grid"></div>
+    <div class="pp" id="pp"></div>
+</div>
 
-    <footer>
-        <div class="fstats">
-            <span>Dataset: <strong>35,138 samples</strong></span>
-            <span>Classes: <strong>6</strong></span>
-            <span>Models: <strong>3 + ensemble</strong></span>
-        </div>
-        Built for research · <a href="https://github.com/naveen-231006/Hate-Word" target="_blank">View on GitHub ↗</a>
-    </footer>
+<footer>
+    <div class="fs"><span>Dataset: <strong>35,138</strong></span><span>Classes: <strong>6</strong></span><span>Models: <strong>3 + ensemble</strong></span></div>
+    Built for research · <a href="https://github.com/naveen-231006/Hate-Word" target="_blank">GitHub</a>
+</footer>
 </div>
 
 <script>
-const C={Not_offensive:'#059669',Offensive_Untargeted:'#d97706',Offensive_Targeted_Individual:'#dc2626',
-    Offensive_Targeted_Group:'#b91c1c',Offensive_Targeted_Other:'#7f1d1d','not-Tamil':'#4f46e5'};
-const CD={Not_offensive:'#34d399',Offensive_Untargeted:'#fbbf24',Offensive_Targeted_Individual:'#f87171',
-    Offensive_Targeted_Group:'#ef4444',Offensive_Targeted_Other:'#991b1b','not-Tamil':'#818cf8'};
-const E={Not_offensive:'✅',Offensive_Untargeted:'⚠️',Offensive_Targeted_Individual:'🎯',
-    Offensive_Targeted_Group:'👥',Offensive_Targeted_Other:'❗','not-Tamil':'🌐'};
-const S={Not_offensive:'safe',Offensive_Untargeted:'warn',Offensive_Targeted_Individual:'danger',
-    Offensive_Targeted_Group:'danger',Offensive_Targeted_Other:'danger','not-Tamil':'info'};
-const N={Not_offensive:'Not Offensive',Offensive_Untargeted:'Offensive (Untargeted)',
-    Offensive_Targeted_Individual:'Targeted: Individual',Offensive_Targeted_Group:'Targeted: Group',
-    Offensive_Targeted_Other:'Targeted: Other','not-Tamil':'Not Tamil'};
+const COL_L={Not_offensive:'#16a34a',Offensive_Untargeted:'#d97706',Offensive_Targeted_Individual:'#dc2626',Offensive_Targeted_Group:'#b91c1c',Offensive_Targeted_Other:'#7f1d1d','not-Tamil':'#2563eb'};
+const COL_D={Not_offensive:'#4ade80',Offensive_Untargeted:'#fbbf24',Offensive_Targeted_Individual:'#f87171',Offensive_Targeted_Group:'#ef4444',Offensive_Targeted_Other:'#fca5a5','not-Tamil':'#60a5fa'};
+const EM={Not_offensive:'✅',Offensive_Untargeted:'⚠️',Offensive_Targeted_Individual:'🎯',Offensive_Targeted_Group:'👥',Offensive_Targeted_Other:'❗','not-Tamil':'🌐'};
+const SEV={Not_offensive:'safe',Offensive_Untargeted:'warn',Offensive_Targeted_Individual:'danger',Offensive_Targeted_Group:'danger',Offensive_Targeted_Other:'danger','not-Tamil':'info'};
+const NM={Not_offensive:'Not Offensive',Offensive_Untargeted:'Offensive (Untargeted)',Offensive_Targeted_Individual:'Targeted · Individual',Offensive_Targeted_Group:'Targeted · Group',Offensive_Targeted_Other:'Targeted · Other','not-Tamil':'Not Tamil'};
 
-function isDark(){return document.documentElement.getAttribute('data-theme')==='dark'}
-function getColor(label){return isDark()?CD[label]:C[label]}
+function dk(){return document.documentElement.getAttribute('data-theme')==='dark'}
+function gc(l){return dk()?COL_D[l]:COL_L[l]}
+function tog(){const t=dk()?'light':'dark';document.documentElement.setAttribute('data-theme',t);localStorage.setItem('theme',t);}
+(function(){document.documentElement.setAttribute('data-theme',localStorage.getItem('theme')||'light');})();
 
-function toggleTheme(){
-    const t=isDark()?'light':'dark';
-    document.documentElement.setAttribute('data-theme',t);
-    localStorage.setItem('theme',t);
-}
-(function(){const t=localStorage.getItem('theme')||'light';document.documentElement.setAttribute('data-theme',t);})();
+function ex(e){document.getElementById('inp').value=e.textContent;document.getElementById('inp').focus();}
+function clr(){document.getElementById('inp').value='';document.getElementById('res').classList.remove('on');document.getElementById('inp').focus();}
 
-function setEx(el){document.getElementById('inp').value=el.textContent;document.getElementById('inp').focus();}
-function clearAll(){document.getElementById('inp').value='';document.getElementById('results').classList.remove('on');document.getElementById('inp').focus();}
-
-async function analyze(){
-    const text=document.getElementById('inp').value.trim();
-    if(!text)return;
-    const btn=document.getElementById('goBtn');
-    btn.disabled=true;btn.textContent='⏳ Analyzing…';
-    document.getElementById('loading').classList.add('on');
-    document.getElementById('results').classList.remove('on');
-    try{
-        const r=await fetch('/predict',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({text})});
-        const d=await r.json();
-        render(d);
-    }catch(e){alert('Error: '+e.message);}
-    finally{btn.disabled=false;btn.textContent='⚡ Analyze';document.getElementById('loading').classList.remove('on');}
+async function run(){
+    const t=document.getElementById('inp').value.trim();if(!t)return;
+    const b=document.getElementById('go');b.disabled=true;b.textContent='Analyzing...';
+    document.getElementById('ld').classList.add('on');document.getElementById('res').classList.remove('on');
+    try{const r=await fetch('/predict',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({text:t})});show(await r.json());}
+    catch(e){alert(e.message);}
+    finally{b.disabled=false;b.textContent='Analyze';document.getElementById('ld').classList.remove('on');}
 }
 
-function render(data){
-    const{results,cleaned_text,vote_count}=data;
-    const ens=results.ensemble;
-    const sev=S[ens.prediction];
-    const col=getColor(ens.prediction);
+function show(d){
+    const{results:R,cleaned_text:ct,vote_count:vc}=d;
+    const e=R.ensemble,s=SEV[e.prediction],c=gc(e.prediction);
 
-    document.getElementById('hero').className='hero '+sev;
-    document.getElementById('hero').innerHTML=`
-        <div class="bar"></div>
-        <span class="h-tag ${sev}">${E[ens.prediction]} Ensemble Prediction</span>
-        <div class="h-pred" style="color:${col}">${N[ens.prediction]}</div>
-        <div class="h-stats">
-            <div class="h-stat"><div class="v" style="color:${col}">${(ens.confidence*100).toFixed(1)}%</div><div class="l">Avg Confidence</div></div>
-            <div class="h-stat"><div class="v">${vote_count}/3</div><div class="l">Models Agree</div></div>
+    const h=document.getElementById('hero');h.className='hero '+s;
+    h.innerHTML=`<div class="stripe"></div>
+        <span class="htag ${s}">${EM[e.prediction]} Ensemble Result</span>
+        <div class="hpred" style="color:${c}">${NM[e.prediction]}</div>
+        <div class="hrow">
+            <div class="hcol"><div class="hv" style="color:${c}">${(e.confidence*100).toFixed(1)}%</div><div class="hl">Avg Confidence</div></div>
+            <div class="hcol"><div class="hv">${vc}/3</div><div class="hl">Models Agree</div></div>
         </div>
-        <div class="votes">
-            ${['mbert','muril','xlm-roberta'].map(k=>`<span class="vd ${results[k].prediction===ens.prediction?'y':'n'}" title="${results[k].model}: ${N[results[k].prediction]}"></span>`).join('')}
-        </div>`;
+        <div class="dots">${['mbert','muril','xlm-roberta'].map(k=>`<span class="dot ${R[k].prediction===e.prediction?'y':'n'}" title="${R[k].model}: ${NM[R[k].prediction]}"></span>`).join('')}</div>`;
 
-    const grid=document.getElementById('mgrid');grid.innerHTML='';
-    for(const key of['mbert','muril','xlm-roberta']){
-        const r=results[key];const c=getColor(r.prediction);const ag=r.prediction===ens.prediction;
+    const g=document.getElementById('grid');g.innerHTML='';
+    ['mbert','muril','xlm-roberta'].forEach(k=>{
+        const r=R[k],cl=gc(r.prediction),ag=r.prediction===e.prediction;
         let bars='';
         Object.entries(r.probabilities).sort((a,b)=>b[1]-a[1]).forEach(([l,p])=>{
             const pct=(p*100).toFixed(1);
-            bars+=`<div class="pr"><span class="pr-n">${N[l].split(':').pop().trim()}</span><div class="pr-t"><div class="pr-f" style="width:${pct}%;background:${getColor(l)}"></div></div><span class="pr-v">${pct}%</span></div>`;
+            bars+=`<div class="pb"><span class="pb-n">${NM[l].split('·').pop().trim()}</span><div class="pb-t"><div class="pb-f" style="width:${pct}%;background:${gc(l)}"></div></div><span class="pb-v">${pct}%</span></div>`;
         });
-        grid.innerHTML+=`<div class="mc"><div class="mc-top"><span class="mc-n">${r.model}</span><span class="mc-b" style="background:${ag?'var(--safe-bg)':'var(--danger-bg)'};color:${ag?'var(--safe)':'var(--danger)'};border:1px solid ${ag?'var(--safe-border)':'var(--danger-border)'}">${ag?'✓ Agree':'✗ Differ'}</span></div><div class="mc-p" style="color:${c}">${E[r.prediction]} ${N[r.prediction]}</div><div class="mc-c">${(r.confidence*100).toFixed(1)}% confidence</div>${bars}</div>`;
-    }
+        g.innerHTML+=`<div class="mc"><div class="mc-top"><span class="mc-n">${r.model}</span><span class="mc-b" style="background:${ag?'var(--green-bg)':'var(--red-bg)'};color:${ag?'var(--green)':'var(--red)'};border:1px solid ${ag?'var(--green-border)':'var(--red-border)'}">${ag?'Agree':'Differ'}</span></div><div class="mc-p" style="color:${cl}">${EM[r.prediction]} ${NM[r.prediction]}</div><div class="mc-c">${(r.confidence*100).toFixed(1)}%</div>${bars}</div>`;
+    });
 
-    document.getElementById('ppbox').innerHTML=`<span class="ic">🔧</span><div><div class="pp-l">Preprocessed Input</div><div class="pp-t">${cleaned_text}</div></div>`;
-    document.getElementById('results').classList.add('on');
+    document.getElementById('pp').innerHTML=`<div><div class="pp-l">Preprocessed</div><div class="pp-t">${ct}</div></div>`;
+    document.getElementById('res').classList.add('on');
 }
 
-document.getElementById('inp').addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();analyze();}});
+document.getElementById('inp').addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();run();}});
 </script>
 </body>
 </html>"""
 
 @app.route('/')
-def index():
-    return render_template_string(HTML)
+def index(): return render_template_string(HTML)
 
 @app.route('/predict', methods=['POST'])
 def predict_endpoint():
-    data = request.get_json()
-    text = data.get('text', '')
-    if not text: return jsonify({'error': 'No text provided'}), 400
+    text = request.get_json().get('text', '')
+    if not text: return jsonify({'error': 'No text'}), 400
     return jsonify(predict(text))
 
 if __name__ == '__main__':

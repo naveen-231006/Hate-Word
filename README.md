@@ -1,3 +1,15 @@
+---
+title: Tamil Offensive Language Detector
+emoji: 🛡️
+colorFrom: blue
+colorTo: red
+sdk: docker
+app_port: 7860
+pinned: false
+license: mit
+short_description: Detect offensive content in Tamil/Tanglish text using transformer ensemble
+---
+
 # Offensive Language Detection in Tamil Social Media Text
 
 A comparative study of multilingual transformer models (MuRIL, XLM-RoBERTa, mBERT) for detecting offensive language in Tamil and code-mixed Tamil-English (Tanglish) social media text, with majority-voting ensemble and LIME-based explainability.

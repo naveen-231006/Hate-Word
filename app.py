@@ -1,21 +1,131 @@
 """
 Tamil Offensive Language Detector — Interactive Web Demo
 Uses fine-tuned MuRIL, XLM-RoBERTa, and mBERT with majority-voting ensemble.
+Includes a keyword + regex English toxicity safety net.
 """
 import os, re, torch, numpy as np
 from flask import Flask, request, jsonify, render_template_string
 from transformers import AutoTokenizer, AutoModelForSequenceClassification
 from scipy.stats import mode
 
-MODEL_DIR = os.path.join(os.path.dirname(__file__), 'outputs', 'models')
+# ═══════════════════════════════════════════════════════════════════════════════
+# ENGLISH TOXICITY SAFETY NET — keyword dictionary + regex obfuscation handling
+# ═══════════════════════════════════════════════════════════════════════════════
+
+# Curated slur / profanity dictionary organized by category
+# Each entry is the canonical root; the regex engine handles variations.
+SLUR_DICT = {
+    'racial': [
+        'nigger', 'nigga', 'negro', 'coon', 'darkie', 'spic', 'spick',
+        'wetback', 'beaner', 'chink', 'gook', 'slant', 'paki', 'raghead',
+        'towelhead', 'camel jockey', 'sandnigger', 'kike', 'hymie',
+        'cracker', 'honky', 'gringo', 'redskin', 'injun', 'zipperhead',
+        'jigaboo', 'sambo', 'uncle tom', 'house nigger',
+    ],
+    'sexual_orientation': [
+        'faggot', 'fag', 'dyke', 'homo', 'tranny', 'shemale', 'ladyboy',
+        'sodomite', 'lesbo', 'queer',  # note: queer reclaimed but flagged in slur context
+    ],
+    'gendered': [
+        'bitch', 'whore', 'slut', 'cunt', 'hoe', 'skank', 'thot',
+    ],
+    'disability': [
+        'retard', 'retarded', 'spaz', 'cripple', 'tard',
+    ],
+    'general_profanity': [
+        'fuck', 'shit', 'asshole', 'bastard', 'dick', 'cock',
+        'motherfucker', 'mf', 'stfu', 'gtfo', 'pussy', 'wtf', 
+    ],
+}
+
+# Leetspeak / obfuscation substitution map
+_LEET = {
+    'a': r'[a@4àáâãäå]',
+    'b': r'[b8]',
+    'c': r'[cç<(]',
+    'd': r'[d]',
+    'e': r'[e3èéêë€]',
+    'f': r'[f]',
+    'g': r'[g9]',
+    'h': r'[h#]',
+    'i': r'[i1!|ìíîï]',
+    'j': r'[j]',
+    'k': r'[k]',
+    'l': r'[l1|]',
+    'm': r'[m]',
+    'n': r'[nñ]',
+    'o': r'[o0òóôõö]',
+    'p': r'[p]',
+    'q': r'[q]',
+    'r': r'[r]',
+    's': r'[s$5]',
+    't': r'[t7+]',
+    'u': r'[uùúûüv]',
+    'v': r'[v]',
+    'w': r'[w]',
+    'x': r'[x]',
+    'y': r'[y]',
+    'z': r'[z2]',
+}
+
+def _build_slur_pattern(word):
+    """Build a regex pattern for a slur that handles:
+       - leetspeak substitutions  (n1gga, f@g)
+       - repeated characters      (niggaaa, f***k)
+       - separator obfuscation    (n.i.g.g.a, n-i-g-g-a)
+       - common suffixes          (-er, -ers, -ing, -ed, -s)
+    """
+    sep = r'[\s.\-_*=!@#$%^&()]*'  # optional separator between chars
+    parts = []
+    for ch in word.lower():
+        if ch == ' ':
+            parts.append(r'\s+')
+        elif ch in _LEET:
+            parts.append(_LEET[ch] + '+')
+        else:
+            parts.append(re.escape(ch) + '+')
+    core = sep.join(parts)
+    suffixes = r'(?:e?[rd]s?|rs?|ing|ed|er|ers|ah|as?|z|o[s]?)?'
+    return r'(?:^|\b|(?<=[\s]))' + core + suffixes + r'(?:\b|$|(?=[\s]))'
+
+def _compile_toxicity_patterns():
+    """Pre-compile all slur regex patterns for fast matching."""
+    patterns = []
+    for category, words in SLUR_DICT.items():
+        for word in words:
+            try:
+                pat = re.compile(_build_slur_pattern(word), re.IGNORECASE)
+                patterns.append((word, category, pat))
+            except re.error:
+                pass  # skip if pattern is invalid
+    return patterns
+
+TOXICITY_PATTERNS = _compile_toxicity_patterns()
+print(f"Safety net loaded: {len(TOXICITY_PATTERNS)} patterns across {len(SLUR_DICT)} categories")
+
+def check_english_toxicity(text):
+    """Check text against the English toxicity dictionary.
+    Returns: (is_toxic: bool, matched_words: list[str], categories: set[str])
+    """
+    matched_words = []
+    categories = set()
+    text_lower = text.lower()
+    for word, category, pattern in TOXICITY_PATTERNS:
+        if pattern.search(text_lower):
+            if word not in matched_words:  # deduplicate
+                matched_words.append(word)
+                categories.add(category)
+    return len(matched_words) > 0, matched_words, categories
+
+MODEL_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'outputs', 'models')
 LABEL_NAMES = [
     'Not_offensive', 'Offensive_Untargeted', 'Offensive_Targeted_Individual',
     'Offensive_Targeted_Group', 'Offensive_Targeted_Other', 'not-Tamil'
 ]
 MODEL_CONFIGS = {
-    'mbert': {'name': 'mBERT', 'path': os.path.join(MODEL_DIR, 'mbert', 'best_model')},
-    'muril': {'name': 'MuRIL', 'path': os.path.join(MODEL_DIR, 'muril', 'best_model')},
-    'xlm-roberta': {'name': 'XLM-RoBERTa', 'path': os.path.join(MODEL_DIR, 'xlm-roberta', 'best_model')},
+    'mbert': {'name': 'mBERT', 'hub_id': 'naveen231006/tamil-mbert', 'path': os.path.join(MODEL_DIR, 'mbert', 'best_model')},
+    'muril': {'name': 'MuRIL', 'hub_id': 'naveen231006/tamil-muril', 'path': os.path.join(MODEL_DIR, 'muril', 'best_model')},
+    'xlm-roberta': {'name': 'XLM-RoBERTa', 'hub_id': 'naveen231006/tamil-xlm-roberta', 'path': os.path.join(MODEL_DIR, 'xlm-roberta', 'best_model')},
 }
 
 def preprocess_text(text):
@@ -30,17 +140,25 @@ def preprocess_text(text):
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 print(f"Device: {device}")
+
 mdls, toks = {}, {}
 for key, cfg in MODEL_CONFIGS.items():
-    print(f"Loading {cfg['name']}...")
-    toks[key] = AutoTokenizer.from_pretrained(cfg['path'])
-    mdls[key] = AutoModelForSequenceClassification.from_pretrained(cfg['path']).to(device).eval()
+    # Try local path first, fall back to HuggingFace Hub
+    model_source = cfg['path'] if os.path.isdir(cfg['path']) else cfg['hub_id']
+    print(f"Loading {cfg['name']} from {'local' if os.path.isdir(cfg['path']) else 'HuggingFace Hub'}...")
+    toks[key] = AutoTokenizer.from_pretrained(model_source)
+    mdls[key] = AutoModelForSequenceClassification.from_pretrained(model_source).to(device).eval()
     print(f"  {cfg['name']} loaded.")
 print("All models loaded!")
 
 def predict(text):
     cleaned = preprocess_text(text)
-    if not cleaned: return {'error': 'Empty text'}
+    if not cleaned: return None  # caller handles 400 response
+
+    # ── Step 1: English toxicity safety net (runs on ORIGINAL text) ──
+    is_toxic, matched_words, toxic_categories = check_english_toxicity(text)
+
+    # ── Step 2: Transformer ensemble predictions ──
     results, all_preds = {}, []
     for key in MODEL_CONFIGS:
         inputs = toks[key](cleaned, return_tensors='pt', truncation=True, max_length=128, padding='max_length').to(device)
@@ -52,13 +170,38 @@ def predict(text):
         results[key] = {'model': MODEL_CONFIGS[key]['name'], 'prediction': LABEL_NAMES[idx],
             'confidence': float(probs[idx]),
             'probabilities': {LABEL_NAMES[i]: float(probs[i]) for i in range(len(LABEL_NAMES))}}
-    ens_idx = int(mode(all_preds, keepdims=False)[0])
+    ens_idx = int(mode(np.array(all_preds), keepdims=False)[0])
     avg_p = np.mean([list(results[k]['probabilities'].values()) for k in results], axis=0)
+
+    # ── Step 3: Override ensemble if safety net triggered ──
+    safety_net_triggered = False
+    if is_toxic and LABEL_NAMES[ens_idx] == 'Not_offensive':
+        # Safety net override: force the prediction to Offensive_Untargeted
+        ens_idx = LABEL_NAMES.index('Offensive_Untargeted')
+        safety_net_triggered = True
+        # Adjust averaged probabilities to reflect the override
+        override_probs = avg_p.copy()
+        override_probs[LABEL_NAMES.index('Not_offensive')] *= 0.2
+        override_probs[ens_idx] = max(override_probs[ens_idx], 0.85)
+        # Re-normalize
+        override_probs = override_probs / override_probs.sum()
+        avg_p = override_probs
+
     results['ensemble'] = {'model': 'Ensemble', 'prediction': LABEL_NAMES[ens_idx],
         'confidence': float(avg_p[ens_idx]),
         'probabilities': {LABEL_NAMES[i]: float(avg_p[i]) for i in range(len(LABEL_NAMES))}}
-    return {'original_text': text, 'cleaned_text': cleaned, 'results': results,
-            'vote_count': sum(1 for p in all_preds if p == ens_idx)}
+
+    response = {
+        'original_text': text, 'cleaned_text': cleaned, 'results': results,
+        'vote_count': sum(1 for p in all_preds if p == ens_idx),
+        'safety_net': {
+            'triggered': safety_net_triggered,
+            'is_toxic': is_toxic,
+            'matched_words': matched_words,
+            'categories': list(toxic_categories),
+        }
+    }
+    return response
 
 app = Flask(__name__)
 
@@ -288,6 +431,47 @@ kbd{padding:1px 5px;background:var(--surface-2);border:1px solid var(--border);b
 .pp-l{font-size:.62rem;font-weight:700;color:var(--text-3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:2px;}
 .pp-t{font-size:.82rem;color:var(--text-2);font-family:'IBM Plex Mono',monospace;word-break:break-word;}
 
+/* Safety Net Alert */
+.sn-alert{
+    background:var(--amber-bg);border:1.5px solid var(--amber-border);
+    border-radius:10px;padding:16px 20px;margin-bottom:16px;
+    animation:up .35s ease;
+}
+.sn-alert.sn-override{
+    background:var(--red-bg);border-color:var(--red-border);
+}
+.sn-header{
+    display:flex;align-items:center;gap:8px;margin-bottom:8px;
+}
+.sn-icon{
+    width:28px;height:28px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    font-size:14px;flex-shrink:0;
+}
+.sn-alert .sn-icon{background:var(--amber-border);}
+.sn-alert.sn-override .sn-icon{background:var(--red-border);}
+.sn-title{
+    font-size:.82rem;font-weight:700;
+}
+.sn-alert .sn-title{color:var(--amber);}
+.sn-alert.sn-override .sn-title{color:var(--red);}
+.sn-body{font-size:.78rem;color:var(--text-2);line-height:1.6;}
+.sn-cats{
+    display:flex;gap:5px;flex-wrap:wrap;margin-top:8px;
+}
+.sn-cat{
+    padding:2px 9px;border-radius:4px;font-size:.62rem;font-weight:700;
+    text-transform:uppercase;letter-spacing:.5px;
+}
+.sn-alert .sn-cat{background:var(--amber-border);color:var(--amber);}
+.sn-alert.sn-override .sn-cat{background:var(--red-border);color:var(--red);}
+.sn-words{
+    margin-top:6px;font-family:'IBM Plex Mono',monospace;font-size:.72rem;
+    color:var(--text-3);
+}
+@keyframes pulse-shield{0%,100%{transform:scale(1)}50%{transform:scale(1.15)}}
+.sn-pulse{animation:pulse-shield 1.5s ease-in-out 2;}
+
 /* Footer */
 footer{text-align:center;padding:36px 0 20px;color:var(--text-3);font-size:.74rem;}
 footer a{color:var(--blue);text-decoration:none;}
@@ -334,6 +518,7 @@ footer a:hover{text-decoration:underline;}
 
 <div id="res">
     <div class="hero" id="hero"></div>
+    <div id="sn-box"></div>
     <div class="grid" id="grid"></div>
     <div class="pp" id="pp"></div>
 </div>
@@ -359,22 +544,34 @@ function tog(){const t=dk()?'light':'dark';document.documentElement.setAttribute
 function ex(e){document.getElementById('inp').value=e.textContent;document.getElementById('inp').focus();}
 function clr(){document.getElementById('inp').value='';document.getElementById('res').classList.remove('on');document.getElementById('inp').focus();}
 
+function esc(s){const d=document.createElement('div');d.textContent=s;return d.innerHTML;}
+
 async function run(){
     const t=document.getElementById('inp').value.trim();if(!t)return;
     const b=document.getElementById('go');b.disabled=true;b.textContent='Analyzing...';
     document.getElementById('ld').classList.add('on');document.getElementById('res').classList.remove('on');
-    try{const r=await fetch('/predict',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({text:t})});show(await r.json());}
-    catch(e){alert(e.message);}
+    try{
+        const r=await fetch('/predict',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({text:t})});
+        const j=await r.json();
+        if(!r.ok){alert(j.error||'Server error');return;}
+        if(j.error){alert(j.error);return;}
+        show(j);
+    }
+    catch(e){alert('Request failed: '+e.message);}
     finally{b.disabled=false;b.textContent='Analyze';document.getElementById('ld').classList.remove('on');}
 }
 
+const CAT_NM={racial:'Racial Slur',sexual_orientation:'Homophobic/Transphobic',gendered:'Gendered Slur',disability:'Ableist Slur',general_profanity:'Profanity'};
+
 function show(d){
-    const{results:R,cleaned_text:ct,vote_count:vc}=d;
+    const{results:R,cleaned_text:ct,vote_count:vc,safety_net:sn}=d;
     const e=R.ensemble,s=SEV[e.prediction],c=gc(e.prediction);
 
+    // Hero card
     const h=document.getElementById('hero');h.className='hero '+s;
+    const shieldHtml=sn&&sn.triggered?'<span class="sn-pulse" style="margin-left:6px">🛡️</span>':'';
     h.innerHTML=`<div class="stripe"></div>
-        <span class="htag ${s}">${EM[e.prediction]} Ensemble Result</span>
+        <span class="htag ${s}">${EM[e.prediction]} Ensemble Result${shieldHtml}</span>
         <div class="hpred" style="color:${c}">${NM[e.prediction]}</div>
         <div class="hrow">
             <div class="hcol"><div class="hv" style="color:${c}">${(e.confidence*100).toFixed(1)}%</div><div class="hl">Avg Confidence</div></div>
@@ -382,6 +579,26 @@ function show(d){
         </div>
         <div class="dots">${['mbert','muril','xlm-roberta'].map(k=>`<span class="dot ${R[k].prediction===e.prediction?'y':'n'}" title="${R[k].model}: ${NM[R[k].prediction]}"></span>`).join('')}</div>`;
 
+    // Safety net alert
+    const snBox=document.getElementById('sn-box');
+    if(sn&&sn.is_toxic){
+        const isOverride=sn.triggered;
+        const cats=sn.categories.map(c=>`<span class="sn-cat">${CAT_NM[c]||c}</span>`).join('');
+        const words=sn.matched_words.map(w=>'"'+w+'"').join(', ');
+        snBox.innerHTML=`<div class="sn-alert${isOverride?' sn-override':''}">
+            <div class="sn-header">
+                <div class="sn-icon">${isOverride?'🛡️':'⚠️'}</div>
+                <div class="sn-title">${isOverride?'Safety Net Override — Model prediction was overridden':'Toxicity Detected — Model already flagged as offensive'}</div>
+            </div>
+            <div class="sn-body">${isOverride?'The transformer models classified this text as non-offensive, but the English toxicity safety net detected harmful language and overrode the result.':'The keyword safety net detected English toxic language. The models also independently flagged this text.'}</div>
+            <div class="sn-cats">${cats}</div>
+            <div class="sn-words">Matched: ${words}</div>
+        </div>`;
+    } else {
+        snBox.innerHTML='';
+    }
+
+    // Model cards
     const g=document.getElementById('grid');g.innerHTML='';
     ['mbert','muril','xlm-roberta'].forEach(k=>{
         const r=R[k],cl=gc(r.prediction),ag=r.prediction===e.prediction;
@@ -393,7 +610,7 @@ function show(d){
         g.innerHTML+=`<div class="mc"><div class="mc-top"><span class="mc-n">${r.model}</span><span class="mc-b" style="background:${ag?'var(--green-bg)':'var(--red-bg)'};color:${ag?'var(--green)':'var(--red)'};border:1px solid ${ag?'var(--green-border)':'var(--red-border)'}">${ag?'Agree':'Differ'}</span></div><div class="mc-p" style="color:${cl}">${EM[r.prediction]} ${NM[r.prediction]}</div><div class="mc-c">${(r.confidence*100).toFixed(1)}%</div>${bars}</div>`;
     });
 
-    document.getElementById('pp').innerHTML=`<div><div class="pp-l">Preprocessed</div><div class="pp-t">${ct}</div></div>`;
+    document.getElementById('pp').innerHTML=`<div><div class="pp-l">Preprocessed</div><div class="pp-t">${esc(ct)}</div></div>`;
     document.getElementById('res').classList.add('on');
 }
 
@@ -407,13 +624,18 @@ def index(): return render_template_string(HTML)
 
 @app.route('/predict', methods=['POST'])
 def predict_endpoint():
-    text = request.get_json().get('text', '')
-    if not text: return jsonify({'error': 'No text'}), 400
-    return jsonify(predict(text))
+    data = request.get_json(silent=True)
+    if not data or not data.get('text', '').strip():
+        return jsonify({'error': 'No text provided'}), 400
+    result = predict(data['text'])
+    if result is None:
+        return jsonify({'error': 'Text was empty after preprocessing'}), 400
+    return jsonify(result)
 
 if __name__ == '__main__':
+    port = int(os.environ.get('PORT', 7860))
     print("\n" + "="*50)
     print("  Tamil Offensive Language Detector")
-    print("  Open: http://localhost:5000")
+    print(f"  Open: http://localhost:{port}")
     print("="*50 + "\n")
-    app.run(host='0.0.0.0', port=5000, debug=False)
+    app.run(host='0.0.0.0', port=port, debug=False)

@@ -1,0 +1,40 @@
+# Git & IDE
+.git
+.gitignore
+.vscode
+.idea
+
+# Training scripts (not needed at runtime)
+01_data_exploration.py
+02_preprocessing.py
+03_train.py
+04_evaluate.py
+05_error_analysis.py
+06_explainability.py
+07_ensemble.py
+train_colab.ipynb
+
+# Training utilities (not needed at runtime)
+utils/
+
+# Outputs that aren't model weights
+outputs/evaluation/
+outputs/analysis/
+outputs/exploration/
+outputs/preprocessed/
+
+# Paper & research
+paper/
+researchpapers/
+
+# Python artifacts
+__pycache__
+*.pyc
+.ipynb_checkpoints
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Gemini
+.gemini/

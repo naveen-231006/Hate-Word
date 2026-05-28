@@ -143,7 +143,9 @@ def tokenize_dataset(dataset, tokenizer, max_length):
 
     tokenized = dataset.map(tokenize_fn, batched=True, remove_columns=["text"])
     tokenized = tokenized.rename_column("label", "labels")
-    tokenized.set_format("torch")
+    # Note: we intentionally do NOT call set_format("torch") here.
+    # The Trainer handles tensor conversion internally, and set_format
+    # can trigger a torchvision VideoReader import bug on some Colab setups.
     return tokenized
 
 

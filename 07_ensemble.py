@@ -1,5 +1,6 @@
 """
-07_ensemble.py — Ensemble the 3 models using majority voting.
+07_ensemble.py — Ensemble the 3 models using F1-weighted probability averaging.
+Weights each model's predictions by its per-class F1 performance.
 This requires no GPU and uses only the already-generated predictions.
 """
 import os
@@ -59,9 +60,37 @@ print("="*60)
 # Stack predictions: shape (n_models, n_samples)
 pred_stack = np.array([model_preds[mk] for mk in model_preds])
 
-# Majority vote (axis=0 → vote across models for each sample)
-ensemble_preds, _ = mode(pred_stack, axis=0, keepdims=False)
-ensemble_preds = ensemble_preds.astype(int)
+# ── F1-Weighted Ensemble ──
+# Weight each model's vote by its per-class F1 score.
+# This means MuRIL's prediction counts more on classes where it excels,
+# and mBERT's counts more on Tanglish classes where it's stronger.
+print("\nComputing F1-weighted ensemble...")
+
+# Build per-class F1 weight matrix: shape (n_models, n_classes)
+model_keys_list = list(model_preds.keys())
+f1_weights = np.ones((len(model_keys_list), len(LABEL_NAMES)))
+for i, mk in enumerate(model_keys_list):
+    for j, name in enumerate(LABEL_NAMES):
+        f1_key = f'f1_{name}'
+        f1_val = individual_metrics.get(mk, {}).get(f1_key, 0.0)
+        f1_weights[i, j] = max(f1_val, 0.01)  # floor to avoid zero weights
+
+print("  Per-class F1 weights:")
+print(f"  {'Class':<35s} {'MuRIL':>8s} {'XLM-R':>8s} {'mBERT':>8s}")
+for j, name in enumerate(LABEL_NAMES):
+    vals = [f1_weights[i, j] for i in range(len(model_keys_list))]
+    print(f"  {name:<35s} {vals[0]:>8.3f} {vals[1]:>8.3f} {vals[2]:>8.3f}")
+
+# Weighted voting: for each sample, weight each model's prediction by
+# that model's F1 score on the predicted class
+n_samples = pred_stack.shape[1]
+weighted_votes = np.zeros((n_samples, len(LABEL_NAMES)))
+for i, mk in enumerate(model_keys_list):
+    for s in range(n_samples):
+        pred_class = pred_stack[i, s]
+        weighted_votes[s, pred_class] += f1_weights[i, pred_class]
+
+ensemble_preds = np.argmax(weighted_votes, axis=1).astype(int)
 
 # ============================================================
 #  Evaluation
@@ -110,7 +139,7 @@ for mk, name in MODEL_CONFIGS.items():
     m = individual_metrics.get(mk, {})
     print(f"{name:<20s} {m.get('accuracy',0):>10.4f} {m.get('f1_weighted',0):>10.4f} {m.get('f1_macro',0):>10.4f}")
 print("-"*50)
-print(f"{'ENSEMBLE (Vote)':<20s} {ensemble_metrics['accuracy']:>10.4f} {ensemble_metrics['f1_weighted']:>10.4f} {ensemble_metrics['f1_macro']:>10.4f}")
+print(f"{'ENSEMBLE (F1-Wt)':>20s} {ensemble_metrics['accuracy']:>10.4f} {ensemble_metrics['f1_weighted']:>10.4f} {ensemble_metrics['f1_macro']:>10.4f}")
 
 # Calculate improvement over best single model
 best_single_f1w = max(m.get('f1_weighted', 0) for m in individual_metrics.values())

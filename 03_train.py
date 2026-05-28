@@ -1,15 +1,19 @@
 """
-Phase 3: Model Fine-Tuning
-============================
-Fine-tunes MuRIL, XLM-RoBERTa, and mBERT on the Tamil hate speech dataset.
-Designed to work on both CPU (slower) and GPU.
-For Colab: just run this script after mounting drive and installing requirements.
+Phase 3: Model Fine-Tuning (Improved)
+=======================================
+Fine-tunes MuRIL, XLM-RoBERTa, and mBERT on the Tamil hate speech dataset
+using Focal Loss, classifier dropout, and label smoothing for better
+minority-class performance.
+
+Designed for Google Colab with T4 GPU (~30-40 min per model).
+Each model is saved immediately after training to avoid Colab timeout issues.
 
 Usage:
     python 03_train.py --model muril
     python 03_train.py --model xlm-roberta
     python 03_train.py --model mbert
     python 03_train.py --model all
+    python 03_train.py --model all --hub-repo your-username/repo-name
 """
 
 import os
@@ -23,6 +27,7 @@ from datasets import Dataset, DatasetDict, load_from_disk
 from transformers import (
     AutoTokenizer,
     AutoModelForSequenceClassification,
+    AutoConfig,
     TrainingArguments,
     EarlyStoppingCallback,
 )
@@ -30,7 +35,7 @@ from transformers import (
 # Add project root to path
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from utils.trainer_utils import (
-    WeightedTrainer,
+    FocalLossTrainer,
     compute_metrics,
     compute_class_weights,
     LABEL2ID,
@@ -61,6 +66,15 @@ MODEL_CONFIGS = {
 }
 
 # ──────────────────────────────────────────────
+# Focal Loss hyperparameters
+# ──────────────────────────────────────────────
+
+FOCAL_GAMMA = 2.0          # focusing parameter (0 = standard CE, 2 = recommended)
+LABEL_SMOOTHING = 0.1      # prevents overconfident predictions, helps ensemble
+CLASSIFIER_DROPOUT = 0.3   # higher dropout on classification head reduces overfitting
+
+
+# ──────────────────────────────────────────────
 # Training configuration (adjusts for CPU vs GPU)
 # ──────────────────────────────────────────────
 
@@ -70,13 +84,13 @@ def get_training_args(model_key, output_dir, use_gpu):
     if use_gpu:
         return TrainingArguments(
             output_dir=output_dir,
-            num_train_epochs=5,
+            num_train_epochs=6,
             per_device_train_batch_size=16,
             per_device_eval_batch_size=32,
             gradient_accumulation_steps=2,  # effective batch = 32
-            learning_rate=2e-5,
+            learning_rate=3e-5,
             weight_decay=0.01,
-            warmup_ratio=0.1,
+            warmup_ratio=0.06,
             fp16=True,
             eval_strategy="epoch",
             save_strategy="epoch",
@@ -84,7 +98,7 @@ def get_training_args(model_key, output_dir, use_gpu):
             metric_for_best_model="f1_weighted",
             greater_is_better=True,
             save_total_limit=2,
-            logging_steps=100,
+            logging_steps=50,
             report_to="none",
             seed=42,
         )
@@ -92,13 +106,13 @@ def get_training_args(model_key, output_dir, use_gpu):
         # CPU-friendly: smaller batch, fewer epochs
         return TrainingArguments(
             output_dir=output_dir,
-            num_train_epochs=3,
+            num_train_epochs=4,
             per_device_train_batch_size=8,
             per_device_eval_batch_size=16,
             gradient_accumulation_steps=4,  # effective batch = 32
-            learning_rate=2e-5,
+            learning_rate=3e-5,
             weight_decay=0.01,
-            warmup_ratio=0.1,
+            warmup_ratio=0.06,
             fp16=False,
             eval_strategy="epoch",
             save_strategy="epoch",
@@ -137,8 +151,9 @@ def tokenize_dataset(dataset, tokenizer, max_length):
 # Training pipeline for a single model
 # ──────────────────────────────────────────────
 
-def train_model(model_key, preprocessed_dir="outputs/preprocessed", output_base="outputs/models"):
-    """Train a single model."""
+def train_model(model_key, preprocessed_dir="outputs/preprocessed",
+                output_base="outputs/models", hub_repo=None):
+    """Train a single model and save immediately."""
     config = MODEL_CONFIGS[model_key]
     model_name = config["name"]
     hf_id = config["hf_id"]
@@ -153,6 +168,8 @@ def train_model(model_key, preprocessed_dir="outputs/preprocessed", output_base=
     print("\n" + "=" * 60)
     print(f"  Training: {model_name} ({hf_id})")
     print(f"  Device:   {device_info}")
+    print(f"  Focal Loss: gamma={FOCAL_GAMMA}, label_smoothing={LABEL_SMOOTHING}")
+    print(f"  Classifier dropout: {CLASSIFIER_DROPOUT}")
     print("=" * 60)
 
     # 1. Load preprocessed data
@@ -191,45 +208,68 @@ def train_model(model_key, preprocessed_dir="outputs/preprocessed", output_base=
     class_weights = compute_class_weights(train_labels_np)
     print(f"  ✓ Class weights: {[f'{w:.3f}' for w in class_weights]}")
 
-    # 4. Load model
-    print(f"\n[4/5] Loading {model_name} model...")
-    model = AutoModelForSequenceClassification.from_pretrained(
+    # 4. Load model with increased classifier dropout
+    print(f"\n[4/5] Loading {model_name} model (classifier_dropout={CLASSIFIER_DROPOUT})...")
+    model_config = AutoConfig.from_pretrained(
         hf_id,
         num_labels=NUM_LABELS,
         id2label=ID2LABEL,
         label2id=LABEL2ID,
+        classifier_dropout=CLASSIFIER_DROPOUT,
+    )
+    model = AutoModelForSequenceClassification.from_pretrained(
+        hf_id,
+        config=model_config,
     )
     total_params = sum(p.numel() for p in model.parameters())
     trainable_params = sum(p.numel() for p in model.parameters() if p.requires_grad)
     print(f"  ✓ Total parameters: {total_params:,}")
     print(f"  ✓ Trainable parameters: {trainable_params:,}")
 
-    # 5. Train
-    print(f"\n[5/5] Starting training...")
+    # 5. Train with Focal Loss
+    print(f"\n[5/5] Starting training with FocalLoss (gamma={FOCAL_GAMMA})...")
     training_args = get_training_args(model_key, output_dir, use_gpu)
 
-    trainer = WeightedTrainer(
+    trainer = FocalLossTrainer(
         class_weights=class_weights,
+        gamma=FOCAL_GAMMA,
+        label_smoothing=LABEL_SMOOTHING,
         model=model,
         args=training_args,
         train_dataset=train_tok,
         eval_dataset=val_tok,
         compute_metrics=compute_metrics,
-        callbacks=[EarlyStoppingCallback(early_stopping_patience=2)],
+        callbacks=[EarlyStoppingCallback(early_stopping_patience=3)],
     )
 
     train_result = trainer.train()
 
-    # Save best model + tokenizer
+    # === SAVE IMMEDIATELY (Colab-safe) ===
     best_model_dir = os.path.join(output_dir, "best_model")
+    print(f"\n  💾 Saving model to {best_model_dir}...")
     trainer.save_model(best_model_dir)
     tokenizer.save_pretrained(best_model_dir)
+    print(f"  ✓ Model saved locally!")
+
+    # Push to HuggingFace Hub if requested (most reliable for Colab)
+    if hub_repo:
+        hub_model_name = f"{hub_repo}-{model_key}"
+        print(f"\n  ☁️  Pushing to HuggingFace Hub: {hub_model_name}...")
+        try:
+            trainer.push_to_hub(hub_model_name, private=True)
+            tokenizer.push_to_hub(hub_model_name, private=True)
+            print(f"  ✓ Pushed to Hub: {hub_model_name}")
+        except Exception as e:
+            print(f"  ⚠ Hub push failed (model is still saved locally): {e}")
 
     # Save training history
     history = {
         "model": model_name,
         "hf_id": hf_id,
         "device": device_info,
+        "focal_gamma": FOCAL_GAMMA,
+        "label_smoothing": LABEL_SMOOTHING,
+        "classifier_dropout": CLASSIFIER_DROPOUT,
         "train_runtime": train_result.metrics.get("train_runtime", 0),
         "train_loss": train_result.metrics.get("train_loss", 0),
         "best_metric": trainer.state.best_metric,
@@ -245,7 +285,8 @@ def train_model(model_key, preprocessed_dir="outputs/preprocessed", output_base=
     print(f"\n  ✅ {model_name} training complete!")
     print(f"  ✓ Best model saved to: {best_model_dir}")
     print(f"  ✓ Best {training_args.metric_for_best_model}: {trainer.state.best_metric:.4f}")
-    print(f"  ✓ Training time: {train_result.metrics.get('train_runtime', 0):.0f}s")
+    print(f"  ✓ Training time: {train_result.metrics.get('train_runtime', 0):.0f}s "
+          f"({train_result.metrics.get('train_runtime', 0)/60:.1f} min)")
 
     return history
 
@@ -269,21 +310,40 @@ def main():
         default="outputs/preprocessed",
         help="Path to preprocessed data directory",
     )
+    parser.add_argument(
+        "--hub-repo",
+        type=str,
+        default=None,
+        help="HuggingFace Hub repo prefix to push models (e.g. 'username/tamil'). "
+             "Each model will be pushed as {repo}-{model_key}.",
+    )
     args = parser.parse_args()
 
     print("=" * 60)
-    print("  PHASE 3: Model Fine-Tuning")
+    print("  PHASE 3: Model Fine-Tuning (Improved)")
     print("=" * 60)
     print(f"  PyTorch version: {torch.__version__}")
     print(f"  CUDA available:  {torch.cuda.is_available()}")
     if torch.cuda.is_available():
         print(f"  GPU:             {torch.cuda.get_device_name(0)}")
+    print(f"\n  Improvements over v1:")
+    print(f"    • Focal Loss (gamma={FOCAL_GAMMA}) instead of Weighted CE")
+    print(f"    • Label smoothing: {LABEL_SMOOTHING}")
+    print(f"    • Classifier dropout: {CLASSIFIER_DROPOUT}")
+    print(f"    • Oversampled training data (minority classes boosted)")
+    print(f"    • Learning rate: 3e-5, Early stopping patience: 3")
+    if args.hub_repo:
+        print(f"    • Will push to Hub: {args.hub_repo}-*")
 
     models_to_train = list(MODEL_CONFIGS.keys()) if args.model == "all" else [args.model]
     all_histories = {}
 
     for model_key in models_to_train:
-        history = train_model(model_key, preprocessed_dir=args.preprocessed_dir)
+        history = train_model(
+            model_key,
+            preprocessed_dir=args.preprocessed_dir,
+            hub_repo=args.hub_repo,
+        )
         all_histories[model_key] = history
 
     # Save combined summary
@@ -311,3 +371,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+

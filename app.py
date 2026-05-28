@@ -151,6 +151,25 @@ for key, cfg in MODEL_CONFIGS.items():
     print(f"  {cfg['name']} loaded.")
 print("All models loaded!")
 
+# Load per-class F1 weights for weighted ensemble (if available)
+_F1_WEIGHTS = {}
+_metrics_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'outputs', 'evaluation', 'comparison_metrics.json')
+if os.path.exists(_metrics_path):
+    import json as _json
+    with open(_metrics_path) as _f:
+        _ind_metrics = _json.load(_f)
+    for mk in MODEL_CONFIGS:
+        _F1_WEIGHTS[mk] = []
+        for name in LABEL_NAMES:
+            f1_val = _ind_metrics.get(mk, {}).get(f'f1_{name}', 0.0)
+            _F1_WEIGHTS[mk].append(max(f1_val, 0.01))  # floor to avoid zero
+    print(f"F1-weighted ensemble loaded from {_metrics_path}")
+else:
+    # Fallback: equal weights
+    for mk in MODEL_CONFIGS:
+        _F1_WEIGHTS[mk] = [1.0] * len(LABEL_NAMES)
+    print("No per-class F1 metrics found — using equal ensemble weights")
+
 def predict(text):
     cleaned = preprocess_text(text)
     if not cleaned: return None  # caller handles 400 response
@@ -170,9 +189,19 @@ def predict(text):
         results[key] = {'model': MODEL_CONFIGS[key]['name'], 'prediction': LABEL_NAMES[idx],
             'confidence': float(probs[idx]),
             'probabilities': {LABEL_NAMES[i]: float(probs[i]) for i in range(len(LABEL_NAMES))}}
-    avg_p = np.mean([list(results[k]['probabilities'].values()) for k in results], axis=0)
-    # Use confidence-weighted ensemble (avg probabilities) instead of simple majority vote
-    # This ensures a highly confident model outweighs two uncertain ones
+
+    # F1-weighted probability averaging:
+    # Weight each model's probability distribution by its per-class F1 scores
+    model_keys = list(MODEL_CONFIGS.keys())
+    weighted_probs = np.zeros(len(LABEL_NAMES))
+    total_weight = np.zeros(len(LABEL_NAMES))
+    for key in model_keys:
+        probs_arr = np.array([results[key]['probabilities'][name] for name in LABEL_NAMES])
+        w = np.array(_F1_WEIGHTS[key])
+        weighted_probs += probs_arr * w
+        total_weight += w
+    avg_p = weighted_probs / np.maximum(total_weight, 1e-8)
+    avg_p = avg_p / avg_p.sum()  # re-normalize
     ens_idx = int(np.argmax(avg_p))
 
     # ── Step 3: Override ensemble if safety net triggered ──

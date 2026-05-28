@@ -1,11 +1,13 @@
 """
 Utility functions for training Tamil hate speech detection models.
-Includes custom weighted trainer, metrics computation, and label mappings.
+Includes custom weighted trainer, focal loss trainer, metrics computation,
+and label mappings.
 """
 
 import torch
 import numpy as np
 from torch import nn
+import torch.nn.functional as F
 from transformers import Trainer
 from sklearn.metrics import (
     accuracy_score,
@@ -33,11 +35,11 @@ NUM_LABELS = len(LABEL_NAMES)
 
 
 # ──────────────────────────────────────────────
-# Metrics
+# Metrics (with per-class F1 tracking)
 # ──────────────────────────────────────────────
 
 def compute_metrics(eval_pred):
-    """Compute accuracy, precision, recall, F1 (macro & weighted) for evaluation."""
+    """Compute accuracy, precision, recall, F1 (macro & weighted) + per-class F1."""
     logits, labels = eval_pred
     predictions = np.argmax(logits, axis=-1)
 
@@ -50,7 +52,13 @@ def compute_metrics(eval_pred):
         labels, predictions, average="weighted", zero_division=0
     )
 
-    return {
+    # Per-class F1 for tracking minority class performance during training
+    _, _, f1_per_class, _ = precision_recall_fscore_support(
+        labels, predictions, average=None, zero_division=0,
+        labels=list(range(NUM_LABELS))
+    )
+
+    metrics = {
         "accuracy": accuracy,
         "f1_macro": f1_macro,
         "f1_weighted": f1_weighted,
@@ -60,9 +68,92 @@ def compute_metrics(eval_pred):
         "recall_weighted": recall_weighted,
     }
 
+    # Add per-class F1 with short names for readable training logs
+    short_names = ["not_off", "untarg", "t_indiv", "t_group", "t_other", "not_tam"]
+    for i, short in enumerate(short_names):
+        metrics[f"f1_{short}"] = f1_per_class[i]
+
+    return metrics
+
 
 # ──────────────────────────────────────────────
-# Weighted Trainer (for class imbalance)
+# Focal Loss (for extreme class imbalance)
+# ──────────────────────────────────────────────
+
+class FocalLoss(nn.Module):
+    """
+    Focal Loss (Lin et al., 2017) for handling class imbalance.
+
+    Down-weights loss for well-classified (easy) examples and focuses
+    training on hard, misclassified examples. Combined with class weights
+    (alpha), this is far more effective than weighted CE alone for
+    extreme imbalance (e.g. 72% vs 1.3% class distribution).
+
+    Args:
+        alpha: Per-class weights tensor (same as CE weights).
+        gamma: Focusing parameter. gamma=0 is standard CE.
+               gamma=2.0 is recommended for heavy imbalance.
+        label_smoothing: Smoothing factor (0.0 = no smoothing).
+    """
+
+    def __init__(self, alpha=None, gamma=2.0, label_smoothing=0.0, reduction="mean"):
+        super().__init__()
+        self.alpha = alpha
+        self.gamma = gamma
+        self.label_smoothing = label_smoothing
+        self.reduction = reduction
+
+    def forward(self, logits, targets):
+        ce_loss = F.cross_entropy(
+            logits, targets,
+            weight=self.alpha,
+            label_smoothing=self.label_smoothing,
+            reduction="none",
+        )
+        pt = torch.exp(-ce_loss)  # probability of correct class
+        focal_loss = ((1 - pt) ** self.gamma) * ce_loss
+
+        if self.reduction == "mean":
+            return focal_loss.mean()
+        elif self.reduction == "sum":
+            return focal_loss.sum()
+        return focal_loss
+
+
+class FocalLossTrainer(Trainer):
+    """Custom Trainer using Focal Loss for extreme class imbalance.
+
+    Drop-in replacement for WeightedTrainer with significantly better
+    performance on minority classes (Offensive_Targeted_Other, etc.).
+    """
+
+    def __init__(self, class_weights=None, gamma=2.0, label_smoothing=0.1,
+                 *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.gamma = gamma
+        self.label_smoothing = label_smoothing
+        if class_weights is not None:
+            self.class_weights = torch.tensor(class_weights, dtype=torch.float32)
+        else:
+            self.class_weights = None
+
+    def compute_loss(self, model, inputs, return_outputs=False, **kwargs):
+        labels = inputs.pop("labels")
+        outputs = model(**inputs)
+        logits = outputs.logits
+
+        weight = self.class_weights.to(logits.device) if self.class_weights is not None else None
+        loss_fn = FocalLoss(
+            alpha=weight,
+            gamma=self.gamma,
+            label_smoothing=self.label_smoothing,
+        )
+        loss = loss_fn(logits.view(-1, self.model.config.num_labels), labels.view(-1))
+        return (loss, outputs) if return_outputs else loss
+
+
+# ──────────────────────────────────────────────
+# Legacy Weighted Trainer (kept for backward compatibility)
 # ──────────────────────────────────────────────
 
 class WeightedTrainer(Trainer):

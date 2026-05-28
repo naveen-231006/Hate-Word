@@ -12,6 +12,7 @@ import os
 import re
 import pandas as pd
 from datasets import load_dataset, Dataset, DatasetDict
+from sklearn.utils import resample
 
 # ──────────────────────────────────────────────
 # Configuration
@@ -82,6 +83,41 @@ def preprocess_dataset(dataset_split):
 
 
 # ──────────────────────────────────────────────
+# Oversampling for minority classes
+# ──────────────────────────────────────────────
+
+def oversample_minority_classes(df, min_ratio=0.15, random_state=42):
+    """
+    Oversample minority classes so each has at least `min_ratio` of the
+    majority class count.  E.g. min_ratio=0.15 means the rarest class
+    will have ≥15% as many samples as Not_offensive.
+
+    This prevents the model from completely ignoring classes like
+    Offensive_Targeted_Other (originally 1.3% → F1 = 0.00).
+    """
+    majority_count = df["label"].value_counts().max()
+    target_min = int(majority_count * min_ratio)
+
+    parts = []
+    for label_id in sorted(df["label"].unique()):
+        class_df = df[df["label"] == label_id]
+        if len(class_df) < target_min:
+            oversampled = resample(
+                class_df,
+                replace=True,
+                n_samples=target_min,
+                random_state=random_state,
+            )
+            parts.append(oversampled)
+            print(f"    ↑ {LABEL_NAMES[label_id]}: {len(class_df):,} → {target_min:,}")
+        else:
+            parts.append(class_df)
+            print(f"    = {LABEL_NAMES[label_id]}: {len(class_df):,} (unchanged)")
+
+    return pd.concat(parts).sample(frac=1, random_state=random_state).reset_index(drop=True)
+
+
+# ──────────────────────────────────────────────
 # Main preprocessing pipeline
 # ──────────────────────────────────────────────
 
@@ -125,7 +161,7 @@ def main():
     print(f"  ✓ Removed {before_val - len(val_df)} empty validation samples")
 
     # 4. Create train/val/test split (split validation 50/50)
-    print("\n[4/5] Creating train/val/test split...")
+    print("\n[4/6] Creating train/val/test split...")
     val_df_shuffled = val_df.sample(frac=1, random_state=42).reset_index(drop=True)
     split_idx = len(val_df_shuffled) // 2
     new_val_df = val_df_shuffled[:split_idx].reset_index(drop=True)
@@ -134,6 +170,12 @@ def main():
     print(f"  ✓ Train: {len(train_df):,}")
     print(f"  ✓ Val:   {len(new_val_df):,}")
     print(f"  ✓ Test:  {len(test_df):,}")
+
+    # 5. Oversample minority classes in training data
+    print("\n[5/6] Oversampling minority classes in training data...")
+    train_df_orig_len = len(train_df)
+    train_df = oversample_minority_classes(train_df, min_ratio=0.15)
+    print(f"  ✓ Training samples: {train_df_orig_len:,} → {len(train_df):,} (after oversampling)")
 
     # Verify no data leakage
     train_texts = set(train_df["text"].tolist())
@@ -147,8 +189,8 @@ def main():
     print(f"    Train ∩ Test: {len(leakage_train_test)} overlapping samples")
     print(f"    Val ∩ Test:   {len(leakage_val_test)} overlapping samples")
 
-    # 5. Save preprocessed data
-    print("\n[5/5] Saving preprocessed data...")
+    # 6. Save preprocessed data
+    print("\n[6/6] Saving preprocessed data...")
 
     # Save as CSV
     train_df.to_csv(os.path.join(OUTPUT_DIR, "train.csv"), index=False)
@@ -167,7 +209,7 @@ def main():
 
     # Print label distribution for each split
     print("\n  Label distributions per split:")
-    for split_name, df in [("Train", train_df), ("Val", new_val_df), ("Test", test_df)]:
+    for split_name, df in [("Train (oversampled)", train_df), ("Val", new_val_df), ("Test", test_df)]:
         print(f"\n  {split_name}:")
         for label_id in range(len(LABEL_NAMES)):
             count = (df["label"] == label_id).sum()

@@ -84,10 +84,10 @@ def get_training_args(model_key, output_dir, use_gpu):
     if use_gpu:
         return TrainingArguments(
             output_dir=output_dir,
-            num_train_epochs=6,
+            num_train_epochs=4,
             per_device_train_batch_size=16,
             per_device_eval_batch_size=32,
-            gradient_accumulation_steps=2,  # effective batch = 32
+            gradient_accumulation_steps=1,  # no accumulation = faster
             learning_rate=3e-5,
             weight_decay=0.01,
             warmup_ratio=0.06,
@@ -98,7 +98,7 @@ def get_training_args(model_key, output_dir, use_gpu):
             metric_for_best_model="f1_weighted",
             greater_is_better=True,
             save_total_limit=2,
-            logging_steps=50,
+            logging_steps=100,
             report_to="none",
             seed=42,
         )
@@ -241,7 +241,7 @@ def train_model(model_key, preprocessed_dir="outputs/preprocessed",
         train_dataset=train_tok,
         eval_dataset=val_tok,
         compute_metrics=compute_metrics,
-        callbacks=[EarlyStoppingCallback(early_stopping_patience=3)],
+        callbacks=[EarlyStoppingCallback(early_stopping_patience=2)],
     )
 
     train_result = trainer.train()

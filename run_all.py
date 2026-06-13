@@ -10,10 +10,22 @@ Usage:
     python run_all.py --step evaluate    # Just evaluation
 """
 
+import os
 import subprocess
 import sys
 import time
 import argparse
+
+# Force UTF-8 encoding for stdout/stderr to prevent UnicodeEncodeErrors on Windows
+if sys.platform.startswith('win'):
+    try:
+        sys.stdout.reconfigure(encoding='utf-8')
+        sys.stderr.reconfigure(encoding='utf-8')
+    except AttributeError:
+        pass
+
+# Ensure all subprocesses run with UTF-8 IO encoding
+os.environ["PYTHONIOENCODING"] = "utf-8"
 
 
 def run(cmd, desc):
@@ -25,8 +37,8 @@ def run(cmd, desc):
     start = time.time()
     result = subprocess.run(cmd, shell=True)
     elapsed = time.time() - start
-    status = "✅" if result.returncode == 0 else "❌"
-    print(f"\n{status} {desc} — {elapsed/60:.1f} min (exit code {result.returncode})")
+    status = "[OK]" if result.returncode == 0 else "[FAIL]"
+    print(f"\n{status} {desc} - {elapsed/60:.1f} min (exit code {result.returncode})")
     return result.returncode == 0
 
 
@@ -48,7 +60,7 @@ def main():
     # ── Step 1: Preprocessing ──
     if args.step in ["all", "preprocess"]:
         ok = run(
-            f"{sys.executable} 02_preprocessing_multilang.py --lang all",
+            f'"{sys.executable}" 02_preprocessing_multilang.py --lang all',
             "STEP 1: Preprocess all languages"
         )
         steps_run += 1
@@ -68,7 +80,7 @@ def main():
 
         for exp in experiments:
             ok = run(
-                f"{sys.executable} 03_train_multilang.py --experiment {exp} --model {args.model}",
+                f'"{sys.executable}" 03_train_multilang.py --experiment {exp} --model {args.model}',
                 f"STEP 2: Train {exp}"
             )
             steps_run += 1
@@ -77,7 +89,7 @@ def main():
     # ── Step 3: Evaluation ──
     if args.step in ["all", "evaluate"]:
         ok = run(
-            f"{sys.executable} 04_evaluate_multilang.py --experiment {args.experiment}",
+            f'"{sys.executable}" 04_evaluate_multilang.py --experiment {args.experiment}',
             "STEP 3: Evaluate all experiments"
         )
         steps_run += 1
@@ -86,7 +98,7 @@ def main():
     # ── Step 4: Ensemble ──
     if args.step in ["all", "ensemble"]:
         ok = run(
-            f"{sys.executable} 07_ensemble_multilang.py --experiment {args.experiment}",
+            f'"{sys.executable}" 07_ensemble_multilang.py --experiment {args.experiment}',
             "STEP 4: Ensemble all experiments"
         )
         steps_run += 1
@@ -95,21 +107,21 @@ def main():
     # ── Step 5: Explainability ──
     if args.step in ["all", "explain"]:
         ok = run(
-            f"{sys.executable} 06_explainability_multilang.py --experiment mono_tamil --model mbert",
+            f'"{sys.executable}" 06_explainability_multilang.py --experiment mono_tamil --model mbert',
             "STEP 5a: LIME explanations (Tamil)"
         )
         steps_run += 1
         steps_ok += ok
 
         ok = run(
-            f"{sys.executable} 06_explainability_multilang.py --experiment mono_malayalam --model mbert",
+            f'"{sys.executable}" 06_explainability_multilang.py --experiment mono_malayalam --model mbert',
             "STEP 5b: LIME explanations (Malayalam)"
         )
         steps_run += 1
         steps_ok += ok
 
         ok = run(
-            f"{sys.executable} 06_explainability_multilang.py --experiment mono_kannada --model mbert",
+            f'"{sys.executable}" 06_explainability_multilang.py --experiment mono_kannada --model mbert',
             "STEP 5c: LIME explanations (Kannada)"
         )
         steps_run += 1
@@ -118,7 +130,7 @@ def main():
     # ── Step 6: Paper figures ──
     if args.step in ["all", "visualize"]:
         ok = run(
-            f"{sys.executable} visualize_results.py",
+            f'"{sys.executable}" visualize_results.py',
             "STEP 6: Generate paper figures"
         )
         steps_run += 1

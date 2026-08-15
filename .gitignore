@@ -1,11 +1,8 @@
-# Model checkpoints (too large for GitHub)
-outputs/models/*/best_model/
+# Model checkpoints (intermediate, not needed)
 outputs/models/*/checkpoint-*/
 
-# Large binary files
+# Large binary files (not tracked)
 *.pt
-*.bin
-*.safetensors
 *.zip
 
 # Python
